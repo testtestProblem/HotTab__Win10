@@ -149,7 +149,7 @@ namespace HotTab_Win10
 
         private void deviceControl_btn_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Frame.Navigate(typeof(DeviceControlPage));
         }
 
         private async void information_btn_Click(object sender, RoutedEventArgs e)
@@ -160,7 +160,7 @@ namespace HotTab_Win10
 
             BasicInformation = response.Message["BasicInfo2UWP"] as string;
 
-            //this.Frame.Navigate(typeof(InformationPage));
+            this.Frame.Navigate(typeof(InformationPage));
         }
     }
 }

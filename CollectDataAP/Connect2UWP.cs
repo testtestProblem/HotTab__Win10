@@ -44,7 +44,7 @@ namespace CollectDataAP
         /// </summary>
         private async void Connection_RequestReceived(AppServiceConnection sender, AppServiceRequestReceivedEventArgs args)
         { 
-            Console.WriteLine("Connection_RequestReceived");
+            //Console.WriteLine("Connection_RequestReceived");
 
             foreach(object key in args.Request.Message.Keys)
             {
@@ -129,7 +129,6 @@ namespace CollectDataAP
                     }
                 }
             }
-
         }
 
         public async void SendData2UWP(uint data)

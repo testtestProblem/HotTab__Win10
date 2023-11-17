@@ -1,0 +1,16 @@
+﻿<Page
+    x:Class="HotTab_Win10.InformationPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:HotTab_Win10"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Button x:Name="return_btn" Content="←" VerticalAlignment="Top" Height="34" Width="36" Click="return_btn_Click"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Margin="37,55,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top"/>
+
+    </Grid>
+</Page>

@@ -37,7 +37,7 @@ namespace HotTab_Win10
 
         }
 
-        protected async override void OnNavigatedTo(NavigationEventArgs e)
+        protected  override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
 

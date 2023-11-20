@@ -33,7 +33,7 @@ namespace HotTab_Win10
             this.InitializeComponent();
         }
 
-        protected async override void OnNavigatedTo(NavigationEventArgs e)
+        protected  override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
 
@@ -41,7 +41,7 @@ namespace HotTab_Win10
             {
                 App.AppServiceConnected += MainPage_AppServiceConnected;
                 App.AppServiceDisconnected += MainPage_AppServiceDisconnected;
-                await FullTrustProcessLauncher.LaunchFullTrustProcessForCurrentAppAsync();
+                //await FullTrustProcessLauncher.LaunchFullTrustProcessForCurrentAppAsync();
             }
 
             //UWP will crash

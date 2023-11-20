@@ -37,7 +37,7 @@ namespace HotTab_Win10
             // ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
         }
 
-        protected async override void OnNavigatedTo(NavigationEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
 
@@ -50,7 +50,7 @@ namespace HotTab_Win10
                 //ApplicationData.Current.LocalSettings.Values["parameters"] = "test";
 
                 //for sideload app
-                await FullTrustProcessLauncher.LaunchFullTrustProcessForCurrentAppAsync();
+                //await FullTrustProcessLauncher.LaunchFullTrustProcessForCurrentAppAsync();
             }
         }
 

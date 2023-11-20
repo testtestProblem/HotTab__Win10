@@ -9,6 +9,7 @@ using Windows.ApplicationModel.AppService;
 using Windows.ApplicationModel.Background;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Foundation.Metadata;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -93,7 +94,7 @@ namespace HotTab_Win10
         /// will be used such as when the application is launched to open a specific file.
         /// </summary>
         /// <param name="e">Details about the launch request and process.</param>
-        protected override void OnLaunched(LaunchActivatedEventArgs e)
+        protected async override void OnLaunched(LaunchActivatedEventArgs e)
         {
             Frame rootFrame = Window.Current.Content as Frame;
 
@@ -126,6 +127,11 @@ namespace HotTab_Win10
                 }
                 // Ensure the current window is active
                 Window.Current.Activate();
+            }
+
+            if (ApiInformation.IsApiContractPresent("Windows.ApplicationModel.FullTrustAppContract", 1, 0))
+            {
+                await FullTrustProcessLauncher.LaunchFullTrustProcessForCurrentAppAsync();
             }
         }
 

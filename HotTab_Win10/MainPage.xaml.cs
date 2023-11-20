@@ -10,6 +10,7 @@ using Windows.Foundation.Collections;
 using Windows.Foundation.Metadata;
 using Windows.UI.Core;
 using Windows.UI.Popups;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -33,8 +34,8 @@ namespace HotTab_Win10
         {
             this.InitializeComponent();
 
-            // ApplicationView.PreferredLaunchViewSize = new Size(200, 200);
-            // ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
+            ApplicationView.PreferredLaunchViewSize = new Size(200, 200);
+            ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)

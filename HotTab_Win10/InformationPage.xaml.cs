@@ -52,7 +52,7 @@ namespace HotTab_Win10
                 //for sideload app
                 //await FullTrustProcessLauncher.LaunchFullTrustProcessForCurrentAppAsync();
             }
-
+            textBox.Text = "";
             textBox.Text = MainPage.BasicInformation;
         }
 

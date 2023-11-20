@@ -8,6 +8,9 @@ Reference - https://icofont.com/
 Or, changing to HTML for easyer search what you want  
 ![image](https://github.com/testtestProblem/HotTab_Win10/assets/107662393/0683dd86-1df5-442b-8196-c65a9656e9e4)
 
+* install ttf  
+![image](https://github.com/testtestProblem/HotTab_Win10/assets/107662393/91afe5c5-2b9c-4f8c-8c1b-140dbabecf50)
+
 * Put ttf into assets  
 ![image](https://github.com/testtestProblem/HotTab_Win10/assets/107662393/73c07b2a-4b03-46de-bfcd-04b9028ff3c8)
 

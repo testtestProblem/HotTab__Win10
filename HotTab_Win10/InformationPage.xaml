@@ -9,7 +9,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <Button x:Name="return_btn" Content="←" VerticalAlignment="Top" Height="34" Width="36" Click="return_btn_Click"/>
+        <Button x:Name="return_btn" Content="&#xea5c;" FontFamily="{StaticResource ResourceKey=CustomIconFont}" VerticalAlignment="Top" Height="34" Width="36" Click="return_btn_Click"/>
         <TextBox x:Name="textBox" HorizontalAlignment="Left" Margin="37,55,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top"/>
 
     </Grid>

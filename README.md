@@ -17,7 +17,7 @@ Or, changing to HTML for easyer search what you want
 * ttf propertice set copy always  
 ![image](https://github.com/testtestProblem/HotTab_Win10/assets/107662393/16204720-2d8d-4239-b874-e15dd2a88bf5)
 
-* Add this into app.xmal
+* Add this into app.xmal  
 Attention - Filename should defined  
 ```XAML
 <Application

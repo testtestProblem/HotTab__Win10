@@ -12,6 +12,7 @@ Or, changing to HTML for easyer search what you want
 ![image](https://github.com/testtestProblem/HotTab_Win10/assets/107662393/73c07b2a-4b03-46de-bfcd-04b9028ff3c8)
 
 * Add this into app.xmal
+Attention - Filename should defined  
 ```XAML
 <Application
     x:Class="HotTab_Win10.App"
@@ -26,7 +27,6 @@ Or, changing to HTML for easyer search what you want
 
 </Application>
 ```
-Attention - Filename should defined  
 
 * Add icon font into MainPage.xaml
 ```

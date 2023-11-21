@@ -1,3 +1,51 @@
+# Monitor key code
+* About hook  
+Hook can monitor thread. There are two part hook, one is local, another is global.  
+When setting hook need to do three part, one is install hook, another is install hook, the other is goto next hook.  
+```C#
+[DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+        private static extern IntPtr SetWindowsHookEx(int idHook,
+            LowLevelKeyboardProc lpfn, IntPtr hMod, uint dwThreadId);
+
+[DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static extern bool UnhookWindowsHookEx(IntPtr hhk);
+
+[DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+        private static extern IntPtr CallNextHookEx(IntPtr hhk, int nCode,
+            IntPtr wParam, IntPtr lParam);
+```
+
+```C#
+//Hook id
+        private const int WH_KEYBOARD_LL = 13;           //Type of Hook - Low Level Keyboard
+
+private static IntPtr SetHook(LowLevelKeyboardProc proc)
+        {
+            using (Process curProcess = Process.GetCurrentProcess())
+            using (ProcessModule curModule = curProcess.MainModule)
+            {
+                return SetWindowsHookEx(WH_KEYBOARD_LL, proc, GetModuleHandle(curModule.ModuleName), 0);
+            }
+        }
+```
+
+# Create thread
+Create new thread can not make others function stop by using ```Application.Run(); ```  
+
+* About making thread  
+```C#
+        new Thread(() => t_KeyCode()).Start();
+```
+```C#
+private static void t_KeyCode()
+        {
+            HotKey.KeyCode();
+        }
+```
+
+
+
 # Make font icon  
 * Download font icon  
 Reference - https://icofont.com/  

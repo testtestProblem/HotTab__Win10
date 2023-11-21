@@ -16,7 +16,7 @@ namespace CollectDataAP
         private static bool initialized = false;
         private static Int32 hdc;
 
-        private static void InitializeClass()
+        public static void InitializeClass()
         {
             if (initialized)
                 return;

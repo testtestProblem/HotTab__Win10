@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Windows.ApplicationModel;
@@ -24,8 +25,10 @@ namespace CollectDataAP
 
             //handle = Process.GetCurrentProcess().MainWindowHandle;
 
-            //hookID = SetHook(_proc);  //Set our hook
+            //hookID = SetHook(_proc);   //Set our hook
             //Application.Run();         //Start a standard application method loop 
+
+            new Thread(() => t_KeyCode()).Start();
 
 
             Connect2UWP connect2UWP = new Connect2UWP();
@@ -80,6 +83,11 @@ namespace CollectDataAP
                     connect2UWP.Send2UWP_2("Hi!", "UWP");
                 }
             }
+        }
+
+        private static void t_KeyCode()
+        {
+            HotKey.KeyCode();
         }
     }
 }

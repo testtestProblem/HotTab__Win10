@@ -30,6 +30,8 @@ namespace CollectDataAP
         public static extern IntPtr SendMessageW(IntPtr hWnd, int Msg,
             IntPtr wParam, IntPtr lParam);
 
+        [DllImport(@"WMIO2.dll")]
+        public static extern bool ModeOpen(uint uiMode);
 
         //Hook id
         private const int WH_KEYBOARD_LL = 13;                    //Type of Hook - Low Level Keyboard
@@ -56,6 +58,20 @@ namespace CollectDataAP
         private static IntPtr _hookID = IntPtr.Zero;
 
         private static IntPtr handle;
+
+        //start monitor key code
+        public static void KeyCode()
+        {
+            Brightness.InitializeClass();
+
+            ModeOpen(2);    //choose hotkey mode 2
+
+            HotKey.handle = Process.GetCurrentProcess().MainWindowHandle;
+            _hookID = SetHook(_proc);    //Set our hook
+
+            Application.Run();         //Start a standard application method loop 
+        }
+
 
         private static IntPtr SetHook(LowLevelKeyboardProc proc)
         {
@@ -89,15 +105,15 @@ namespace CollectDataAP
                 }
                 else if (theKey.Contains("C"))
                 {
-                    //SetBrightness(126);
+                    Brightness.SetBrightness(126);
                 }
                 else if (theKey.Contains("D"))
                 {
-                    //SetBrightness(256);
+                    Brightness.SetBrightness(256);
                 }
                 else if (theKey.Contains("E"))
                 {
-                    //SetBrightness(10);
+                    Brightness.SetBrightness(10);
                 }
                 else if (theKey.Contains("F"))
                 {
@@ -112,21 +128,16 @@ namespace CollectDataAP
                 {
                     System.Diagnostics.Process.Start("cmd");
                 }
-                else if (theKey.Contains("a"))
-                {
-                    System.Diagnostics.Process.Start("SnippingTool");
-                }
-                else if (theKey.Contains("b"))
+                else if (theKey.Contains("I"))
                 {
                     System.Diagnostics.Process.Start("Taskmgr");
                 }
-                else if (theKey.Contains("c"))
+                else if (theKey.Contains("J"))
                 {
                     System.Diagnostics.Process.Start("mspaint");
                 }
-
-
-                if (theKey == "Escape")                           //If they press escape
+                
+                else if (theKey == "Escape")                           //If they press escape
                 {
                     UnhookWindowsHookEx(_hookID);                 //Release our hook
                     Environment.Exit(0);                          //Exit our program

@@ -1,3 +1,8 @@
+# Hide console
+* set output type 
+![image](https://github.com/testtestProblem/HotTab_Win10/assets/107662393/e4def112-6824-4b09-8e0c-6313fca53b27)
+ 
+
 # Monitor key code
 * About hook  
 Hook can monitor thread. There are two part hook, one is local, another is global.  

@@ -1,3 +1,111 @@
+# Monitor key code
+* About hook  
+Hook can monitor thread. There are two part hook, one is local, another is global.  
+When setting hook need to do three part, one is install hook, another is install hook, the other is goto next hook.  
+```C#
+[DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+        private static extern IntPtr SetWindowsHookEx(int idHook,
+            LowLevelKeyboardProc lpfn, IntPtr hMod, uint dwThreadId);
+
+[DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static extern bool UnhookWindowsHookEx(IntPtr hhk);
+
+[DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+        private static extern IntPtr CallNextHookEx(IntPtr hhk, int nCode,
+            IntPtr wParam, IntPtr lParam);
+```
+* monitor key code globol hook
+```C#
+//Hook id
+        private const int WH_KEYBOARD_LL = 13;           //Type of Hook - Low Level Keyboard
+```
+* set hook
+```C#
+private static IntPtr SetHook(LowLevelKeyboardProc proc)
+        {
+            using (Process curProcess = Process.GetCurrentProcess())
+            using (ProcessModule curModule = curProcess.MainModule)
+            {
+                return SetWindowsHookEx(WH_KEYBOARD_LL, proc, GetModuleHandle(curModule.ModuleName), 0);
+            }
+        }
+```
+* key event
+```C#
+//Key id
+        private const int WM_KEYDOWN = 0x0100;                    //Value passed on KeyDown
+        private const int WM_SYSKEYDOWN = 0x0104;                  //Value passed on  KeyDown for menu (alt)
+        private const int WM_KEYUP = 0x0101;                      //Value passed on KeyUp
+```
+* hook funcion
+```C#
+private static IntPtr HookCallback(int nCode, IntPtr wParam, IntPtr lParam)
+        {
+            //SendMessageW(_hookID, WM_APPCOMMAND, _hookID, (IntPtr)APPCOMMAND_VOLUME_UP);
+            // SendMessageW(HWND_BROADCAST, WM_APPCOMMAND, HWND_BROADCAST, (IntPtr)APPCOMMAND_VOLUME_UP);
+
+            if (nCode >= 0 && (wParam == (IntPtr)WM_KEYDOWN || wParam == (IntPtr)WM_SYSKEYDOWN)) //A Key was pressed down
+            {
+                    ...
+            }
+            else if (nCode >= 0 && wParam == (IntPtr)WM_KEYUP)    //KeyUP
+            {
+                    ...
+            }
+            return CallNextHookEx(_hookID, nCode, wParam, lParam); //Call the next hook
+
+        }
+            
+```
+
+
+```
+
+
+# Create thread
+Create new thread can not make others function stop by using ```Application.Run(); ```  
+
+* About making thread  
+```C#
+        new Thread(() => t_KeyCode()).Start();
+```
+```C#
+private static void t_KeyCode()
+        {
+            HotKey.KeyCode();
+        }
+```
+
+# Adjust volume
+* send message  
+There are two type message, one is SendMessage(......), the other is PostMessage(......).  
+The SendMessage function calls the window procedure for the specified window and does not return until the window procedure has processed the message
+PostMessage is that post a message to a thread's message queue and return immediately  
+
+An accessibility application can use SendMessage to send WM_APPCOMMAND messages to the shell to launch applications.
+```C#
+        private const int WM_APPCOMMAND = 0x319;
+```
+application command
+```C#
+        private const int APPCOMMAND_VOLUME_UP = 0xA0000;
+        private const int APPCOMMAND_VOLUME_DOWN = 0x90000;
+```
+volume up example
+```C#
+        SendMessageW(handle, WM_APPCOMMAND, IntPtr.Zero, (IntPtr)APPCOMMAND_VOLUME_UP);
+```
+
+# Launch app
+Default file from ```C:\WINDOWS\System32```
+```C#
+System.Diagnostics.Process.Start("calc");
+System.Diagnostics.Process.Start("Taskmgr");
+
+Process.Start("C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe");
+```
+
 # Make font icon  
 * Download font icon  
 Reference - https://icofont.com/  

@@ -39,7 +39,7 @@ namespace CollectDataAP
 
         //Key id
         private const int WM_KEYDOWN = 0x0100;                    //Value passed on KeyDown
-        private const int WM_SYSKEYDOWN = 0x0104;                  //Value passed on  KeyDown for menu 
+        private const int WM_SYSKEYDOWN = 0x0104;                  //Value passed on  KeyDown for menu (alt)
         private const int WM_KEYUP = 0x0101;                      //Value passed on KeyUp
 
         //Key flag for hotkey 

@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.AppService;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 
 namespace CollectDataAP
 {
@@ -27,6 +28,31 @@ namespace CollectDataAP
 
             //hookID = SetHook(_proc);   //Set our hook
             //Application.Run();         //Start a standard application method loop 
+            /*
+            string mutex_id = "MY_APP";
+            using (System.Threading.Mutex mutex = new Mutex(false, mutex_id))
+            {
+                if (!mutex.WaitOne(0, false))
+                {
+                    ErrorMessage();
+                    return;
+                }
+                // Do stuff
+            }
+            */
+
+            const string appName = "MyAppName";
+            bool createdNew;
+
+            Mutex mutex = new Mutex(true, appName, out createdNew);
+
+            if (!createdNew)
+            {
+                Console.WriteLine(appName + " is already running! Exiting the application.");
+                //Console.ReadKey();
+                return;
+            }
+            
 
             new Thread(() => t_KeyCode()).Start();
 
@@ -83,6 +109,27 @@ namespace CollectDataAP
                     connect2UWP.Send2UWP_2("Hi!", "UWP");
                 }
             }
+        }
+
+        private static async void ErrorMessage()
+        {
+            // Create the message dialog and set its content
+            var messageDialog = new MessageDialog("Can not get mutex!");
+
+            // Add commands and set their callbacks; both buttons use the same callback function instead of inline event handlers
+            messageDialog.Commands.Add(new UICommand(
+                "Try again"));
+            messageDialog.Commands.Add(new UICommand(
+                "Close"));
+
+            // Set the command that will be invoked by default
+            messageDialog.DefaultCommandIndex = 0;
+
+            // Set the command to be invoked when escape is pressed
+            messageDialog.CancelCommandIndex = 1;
+
+            // Show the message dialog
+            await messageDialog.ShowAsync();
         }
 
         private static void t_KeyCode()

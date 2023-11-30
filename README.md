@@ -119,7 +119,7 @@ volume up example
         SendMessageW(handle, WM_APPCOMMAND, IntPtr.Zero, (IntPtr)APPCOMMAND_VOLUME_UP);
 ```
 
-# Launch app
+# Launch other app
 Default file from ```C:\WINDOWS\System32```
 ```C#
 System.Diagnostics.Process.Start("calc");

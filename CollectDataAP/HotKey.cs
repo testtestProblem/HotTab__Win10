@@ -66,7 +66,7 @@ namespace CollectDataAP
 
             ModeOpen(2);    //choose hotkey mode 2
 
-            HotKey.handle = Process.GetCurrentProcess().MainWindowHandle;
+            HotKey.handle = Process.GetCurrentProcess().Handle;
             _hookID = SetHook(_proc);    //Set our hook
 
             Application.Run();         //Start a standard application method loop 

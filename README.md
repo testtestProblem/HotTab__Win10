@@ -1,5 +1,5 @@
 # Hide console
-* set output type to Windows Application   
+* Set output type to Windows Application   
 ![image](https://github.com/testtestProblem/HotTab_Win10/assets/107662393/e4def112-6824-4b09-8e0c-6313fca53b27)
  
 

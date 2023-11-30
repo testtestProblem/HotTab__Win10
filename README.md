@@ -1,6 +1,6 @@
 # Restrict one instance
-* UWP have restricted one instance in default  
-* Console must use ```Mutex``` to restricted one instance  
+* UWP have restricted one process in default  
+* Console must use ```Mutex``` to restricted one process  
 ```C#
 const string appName = "MyAppName";
             bool createdNew;

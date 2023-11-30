@@ -174,18 +174,22 @@ namespace CollectDataAP
                     else if (theKey.Contains("D3"))
                     {
                         Console.WriteLine("F1 Key Short Press");
+                        SendMessageW(handle, WM_APPCOMMAND, IntPtr.Zero, (IntPtr)APPCOMMAND_VOLUME_UP); 
                     }
                     else if (theKey.Contains("D4"))
                     {
                         Console.WriteLine("F1 Key Long Press");
+                        System.Diagnostics.Process.Start("calc");
                     }
                     else if (theKey.Contains("D5"))
                     {
                         Console.WriteLine("F2 Key Short Press");
+                        SendMessageW(handle, WM_APPCOMMAND, IntPtr.Zero, (IntPtr)APPCOMMAND_VOLUME_DOWN);
                     }
                     else if (theKey.Contains("D6"))
                     {
                         Console.WriteLine("F2 Key Long Presss");
+                        System.Diagnostics.Process.Start("cmd");
                     }
                     else if (theKey.Contains("D7"))
                     {

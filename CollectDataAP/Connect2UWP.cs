@@ -177,7 +177,7 @@ namespace CollectDataAP
         {
             //In console, connection to the UWP lost, so we shut down the desktop process
             Console.WriteLine("UWP Disconnect! Please restart APP!");
-            Console.ReadLine();
+            //Console.ReadLine();
             Environment.Exit(0);
 
             //In app, connection to the UWP lost, so we shut down the desktop process

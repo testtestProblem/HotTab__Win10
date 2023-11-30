@@ -1,3 +1,20 @@
+# Restrict one instance
+* UWP have restricted one instance in default  
+* Console must use ```Mutex``` to restricted one instance  
+```C#
+const string appName = "MyAppName";
+            bool createdNew;
+
+            Mutex mutex = new Mutex(true, appName, out createdNew);
+
+            if (!createdNew)
+            {
+                Console.WriteLine(appName + " is already running! Exiting the application.");
+                //Console.ReadKey();
+                return;
+            }
+```
+
 # Hide console
 * Set output type to Windows Application   
 ![image](https://github.com/testtestProblem/HotTab_Win10/assets/107662393/e4def112-6824-4b09-8e0c-6313fca53b27)

@@ -1,3 +1,20 @@
+# Restrict one instance
+* UWP have restricted one process in default  
+* Console must use ```Mutex``` to restricted one process  
+```C#
+const string appName = "MyAppName";
+            bool createdNew;
+
+            Mutex mutex = new Mutex(true, appName, out createdNew);
+
+            if (!createdNew)
+            {
+                Console.WriteLine(appName + " is already running! Exiting the application.");
+                //Console.ReadKey();
+                return;
+            }
+```
+
 # Hide console
 * Set output type to Windows Application   
 ![image](https://github.com/testtestProblem/HotTab_Win10/assets/107662393/e4def112-6824-4b09-8e0c-6313fca53b27)
@@ -102,7 +119,7 @@ volume up example
         SendMessageW(handle, WM_APPCOMMAND, IntPtr.Zero, (IntPtr)APPCOMMAND_VOLUME_UP);
 ```
 
-# Launch app
+# Launch other app
 Default file from ```C:\WINDOWS\System32```
 ```C#
 System.Diagnostics.Process.Start("calc");

@@ -87,7 +87,7 @@ namespace HotTab_Win10
         // Changes the color of the Button to Red.
         private void OnGotFocusHandler(object sender, RoutedEventArgs e)
         {
-            btn_barcode.Background = new SolidColorBrush(Windows.UI.Colors.Orange);
+            //btn_barcode.Background = new SolidColorBrush(Windows.UI.Colors.Orange);
         }
 
         // Raised when Button losses focus.
@@ -96,7 +96,7 @@ namespace HotTab_Win10
         {
             // Button tb = e.Source as Button;
             //tb.Background = Brushes.White;
-            btn_barcode.Background = new SolidColorBrush(Windows.UI.Colors.Pink);
+            //btn_barcode.Background = new SolidColorBrush(Windows.UI.Colors.Pink);
         }
 
         /// <summary>

@@ -173,12 +173,13 @@ namespace CollectDataAP
                     if (theKey.Contains("D0"))
                     {
                         Console.WriteLine("Menu Key Pressed");
-                        //SendMessageW(HWND_BROADCAST, WM_APPCOMMAND, HWND_BROADCAST, (IntPtr)APPCOMMAND_VOLUME_UP);
+                        SendMessageW(handle, WM_APPCOMMAND, HWND_BROADCAST, (IntPtr)APPCOMMAND_VOLUME_UP);
                     }
                     else if (theKey.Contains("D3"))
                     {
                         Console.WriteLine("F1 Key Short Press");
-                        SendMessageW(handle, WM_APPCOMMAND, IntPtr.Zero, (IntPtr)APPCOMMAND_VOLUME_UP); 
+                        //SendMessageW(handle, WM_APPCOMMAND, IntPtr.Zero, (IntPtr)APPCOMMAND_VOLUME_UP); 
+                        System.Diagnostics.Process.Start("Taskmgr");
                     }
                     else if (theKey.Contains("D4"))
                     {
@@ -188,7 +189,8 @@ namespace CollectDataAP
                     else if (theKey.Contains("D5"))
                     {
                         Console.WriteLine("F2 Key Short Press");
-                        SendMessageW(handle, WM_APPCOMMAND, IntPtr.Zero, (IntPtr)APPCOMMAND_VOLUME_DOWN);
+                        //SendMessageW(handle, WM_APPCOMMAND, IntPtr.Zero, (IntPtr)APPCOMMAND_VOLUME_DOWN);
+                        System.Diagnostics.Process.Start("mspaint");
                     }
                     else if (theKey.Contains("D6"))
                     {

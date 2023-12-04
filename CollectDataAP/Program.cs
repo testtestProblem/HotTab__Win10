@@ -51,6 +51,7 @@ namespace CollectDataAP
 
             //reduce cpu usage rate
             Application.Run();
+
             /*
             while ((choice = Console.ReadLine()) != "0")
             {

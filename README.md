@@ -1,5 +1,5 @@
-# Reduse cpu usation 
-* using ```Application.Run();``` is batter than ```while (Console.ReadLine() != "0")```  
+# Reduse cpu usage rate 
+* Using ```Application.Run();``` is batter than ```while (Console.ReadLine() != "0")```  
 
 # Restrict one instance
 * UWP have restricted one process in default  

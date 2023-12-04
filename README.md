@@ -1,3 +1,6 @@
+# Reduse cpu usation 
+* using ```Application.Run();``` is batter than ```while (Console.ReadLine() != "0")```  
+
 # Restrict one instance
 * UWP have restricted one process in default  
 * Console must use ```Mutex``` to restricted one process  

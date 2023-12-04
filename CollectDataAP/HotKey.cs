@@ -66,8 +66,9 @@ namespace CollectDataAP
 
             ModeOpen(2);    //choose hotkey mode 2
 
-            HotKey.handle = Process.GetCurrentProcess().Handle;
-            
+            //HotKey.handle = Process.GetCurrentProcess().Handle;
+            //for sove package can not find handle problem
+            HotKey.handle = Program.handle;
 
             _hookID = SetHook(_proc);    //Set our hook
 
@@ -102,11 +103,11 @@ namespace CollectDataAP
 
                 if (theKey.Contains("A"))
                 {
-                    SendMessageW(HWND_BROADCAST, WM_APPCOMMAND, IntPtr.Zero, (IntPtr)APPCOMMAND_VOLUME_UP);
+                    SendMessageW(handle, WM_APPCOMMAND, IntPtr.Zero, (IntPtr)APPCOMMAND_VOLUME_UP);
                 }
                 else if (theKey.Contains("B"))
                 {
-                    SendMessageW(allProcess[0].MainWindowHandle , WM_APPCOMMAND, IntPtr.Zero, (IntPtr)APPCOMMAND_VOLUME_DOWN);
+                    SendMessageW(handle, WM_APPCOMMAND, IntPtr.Zero, (IntPtr)APPCOMMAND_VOLUME_DOWN);
                 }
                 else if (theKey.Contains("C"))
                 {
@@ -123,7 +124,6 @@ namespace CollectDataAP
                 else if (theKey.Contains("F"))
                 {
                     System.Diagnostics.Process.Start("calc");
-
                 }
                 else if (theKey.Contains("G"))
                 {
@@ -141,7 +141,6 @@ namespace CollectDataAP
                 {
                     System.Diagnostics.Process.Start("mspaint");
                 }
-                
                 else if (theKey == "Escape")                           //If they press escape
                 {
                     UnhookWindowsHookEx(_hookID);                 //Release our hook
@@ -174,7 +173,7 @@ namespace CollectDataAP
                     if (theKey.Contains("D0"))
                     {
                         Console.WriteLine("Menu Key Pressed");
-                        SendMessageW(HWND_BROADCAST, WM_APPCOMMAND, HWND_BROADCAST, (IntPtr)APPCOMMAND_VOLUME_UP);
+                        //SendMessageW(HWND_BROADCAST, WM_APPCOMMAND, HWND_BROADCAST, (IntPtr)APPCOMMAND_VOLUME_UP);
                     }
                     else if (theKey.Contains("D3"))
                     {

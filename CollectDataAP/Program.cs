@@ -17,43 +17,15 @@ namespace CollectDataAP
 {
     class Program
     {
+        public static IntPtr handle;
+
         static void Main(string[] args)
         {
-            //LowLevelKeyboardProc _proc = HookCallback; //The function called when a key is pressed
-            //IntPtr _hookID = IntPtr.Zero;
+            MutexForConsole();
 
-            //IntPtr handle;
+            handle = Process.GetCurrentProcess().Handle;
 
-            //handle = Process.GetCurrentProcess().MainWindowHandle;
-
-            //hookID = SetHook(_proc);   //Set our hook
-            //Application.Run();         //Start a standard application method loop 
-            /*
-            string mutex_id = "MY_APP";
-            using (System.Threading.Mutex mutex = new Mutex(false, mutex_id))
-            {
-                if (!mutex.WaitOne(0, false))
-                {
-                    ErrorMessage();
-                    return;
-                }
-                // Do stuff
-            }
-            */
-
-            const string appName = "MyAppName";
-            bool createdNew;
-
-            Mutex mutex = new Mutex(true, appName, out createdNew);
-
-            if (!createdNew)
-            {
-                Console.WriteLine(appName + " is already running! Exiting the application.");
-                //Console.ReadKey();
-                return;
-            }
-            
-
+            //add thread for hotkey
             new Thread(() => t_KeyCode()).Start();
 
 
@@ -77,6 +49,9 @@ namespace CollectDataAP
             Console.WriteLine("\nDevice state code: " + deviceStateCode.ToString());
             Console.WriteLine(deviceState.ParseDeviceStatePowerCode());
 
+            //reduce cpu usage rate
+            Application.Run();
+            /*
             while ((choice = Console.ReadLine()) != "0")
             {
                 if (choice == "1")
@@ -108,6 +83,22 @@ namespace CollectDataAP
                 {
                     connect2UWP.Send2UWP_2("Hi!", "UWP");
                 }
+            }*/
+        }
+
+        //if have second console, colsed it
+        static void MutexForConsole()
+        {
+            const string appName = "MyAppName";
+            bool createdNew;
+
+            Mutex mutex = new Mutex(true, appName, out createdNew);
+            
+            if (!createdNew)
+            {
+                Console.WriteLine(appName + " is already running! Exiting the application.");
+                //Console.ReadKey();
+                Environment.Exit(0);
             }
         }
 

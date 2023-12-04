@@ -147,6 +147,29 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\device\5V-B.bmp" />
+    <Content Include="Assets\device\5V-O.bmp" />
+    <Content Include="Assets\device\BarCode Reader1.bmp" />
+    <Content Include="Assets\device\blueTooth1.bmp" />
+    <Content Include="Assets\device\Camera1.bmp" />
+    <Content Include="Assets\device\gANT_GPS.png" />
+    <Content Include="Assets\device\gLCD.png" />
+    <Content Include="Assets\device\GPS.bmp" />
+    <Content Include="Assets\device\G_3G.png" />
+    <Content Include="Assets\device\G_BarCode Reader.bmp" />
+    <Content Include="Assets\device\G_blueTooth.bmp" />
+    <Content Include="Assets\device\G_Camera.bmp" />
+    <Content Include="Assets\device\G_GPS.bmp" />
+    <Content Include="Assets\device\G_RFID.bmp" />
+    <Content Include="Assets\device\G_TouchSet.bmp" />
+    <Content Include="Assets\device\G_Wi-Fi.bmp" />
+    <Content Include="Assets\device\RFID.bmp" />
+    <Content Include="Assets\device\TouchSet.bmp" />
+    <Content Include="Assets\device\wANT_GPS.png" />
+    <Content Include="Assets\device\Wi-Fi.bmp" />
+    <Content Include="Assets\device\wLCD.png" />
+    <Content Include="Assets\device\_3G.png" />
+    <Content Include="Assets\RFID.bmp" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

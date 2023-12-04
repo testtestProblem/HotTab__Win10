@@ -67,6 +67,8 @@ namespace CollectDataAP
             ModeOpen(2);    //choose hotkey mode 2
 
             HotKey.handle = Process.GetCurrentProcess().Handle;
+            
+
             _hookID = SetHook(_proc);    //Set our hook
 
             Application.Run();         //Start a standard application method loop 
@@ -89,6 +91,9 @@ namespace CollectDataAP
             //SendMessageW(_hookID, WM_APPCOMMAND, _hookID, (IntPtr)APPCOMMAND_VOLUME_UP);
             // SendMessageW(HWND_BROADCAST, WM_APPCOMMAND, HWND_BROADCAST, (IntPtr)APPCOMMAND_VOLUME_UP);
 
+            Process[] allProcess = Process.GetProcesses();
+            //HotKey.handle = allProcess.First().Handle;
+
             if (nCode >= 0 && (wParam == (IntPtr)WM_KEYDOWN || wParam == (IntPtr)WM_SYSKEYDOWN)) //A Key was pressed down
             {
                 int vkCode = Marshal.ReadInt32(lParam);           //Get the keycode
@@ -97,11 +102,11 @@ namespace CollectDataAP
 
                 if (theKey.Contains("A"))
                 {
-                    SendMessageW(handle, WM_APPCOMMAND, IntPtr.Zero, (IntPtr)APPCOMMAND_VOLUME_UP);
+                    SendMessageW(HWND_BROADCAST, WM_APPCOMMAND, IntPtr.Zero, (IntPtr)APPCOMMAND_VOLUME_UP);
                 }
                 else if (theKey.Contains("B"))
                 {
-                    SendMessageW(handle, WM_APPCOMMAND, IntPtr.Zero, (IntPtr)APPCOMMAND_VOLUME_DOWN);
+                    SendMessageW(allProcess[0].MainWindowHandle , WM_APPCOMMAND, IntPtr.Zero, (IntPtr)APPCOMMAND_VOLUME_DOWN);
                 }
                 else if (theKey.Contains("C"))
                 {

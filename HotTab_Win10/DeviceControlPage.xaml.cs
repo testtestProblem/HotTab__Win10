@@ -16,6 +16,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 using static HotTab_Device2.DeviceState;
 
@@ -44,9 +45,58 @@ namespace HotTab_Win10
                 //await FullTrustProcessLauncher.LaunchFullTrustProcessForCurrentAppAsync();
             }
 
+
+            //for inital UI
+            HasBeen_Click((uint)Modules.AllLED);
+            //btn_allLED.Background = new SolidColorBrush(Windows.UI.Colors.Orange); //for test
+
+            //image_wifi.Source = new BitmapImage(new Uri(@"C:\Users\WIN10\source\repos\HotTabWin10_3\HotTab_Win10\HotTab_Win10\Assets\device\_3G.png", UriKind.Absolute));
+
+            // Create source
+            //BitmapImage myBitmapImage = new BitmapImage();
+
+            // BitmapImage.UriSource must be in a BeginInit/EndInit block
+            //myBitmapImage.BeginInit();
+            //myBitmapImage.UriSource = new Uri(@"C:\Users\WIN10\source\repos\HotTabWin10_3\HotTab_Win10\HotTab_Win10\Assets\device\_3G.png", UriKind.Absolute);
+
+            // To save significant application memory, set the DecodePixelWidth or
+            // DecodePixelHeight of the BitmapImage value of the image source to the desired
+            // height or width of the rendered image. If you don't do this, the application will
+            // cache the image as though it were rendered as its normal size rather than just
+            // the size that is displayed.
+            // Note: In order to preserve aspect ratio, set DecodePixelWidth
+            // or DecodePixelHeight but not both.
+            //myBitmapImage.DecodePixelWidth = 200;
+            //myBitmapImage.EndInit();
+
+            //image_wifi.Source = myBitmapImage;
+
+
+            //create a new bitmage image  
+            //BitmapImage bitmapImage = new BitmapImage();
+            //bitmapImage.UriSource = new Uri("ms-appx:///Assets/device/_3G.png");
+            //image_wifi.Source = bitmapImage;
+
+            //image_wifi.Source = new BitmapImage(new Uri("ms-appx:///Assets/device/_3G.png"));
+
             //UWP will crash
             //HasBeen_Click(0);
+        }
 
+        // Raised when Button gains focus.
+        // Changes the color of the Button to Red.
+        private void OnGotFocusHandler(object sender, RoutedEventArgs e)
+        {
+            btn_barcode.Background = new SolidColorBrush(Windows.UI.Colors.Orange);
+        }
+
+        // Raised when Button losses focus.
+        // Changes the color of the Button back to white.
+        private void OnLostFocusHandler(object sender, RoutedEventArgs e)
+        {
+            // Button tb = e.Source as Button;
+            //tb.Background = Brushes.White;
+            btn_barcode.Background = new SolidColorBrush(Windows.UI.Colors.Pink);
         }
 
         /// <summary>
@@ -111,56 +161,69 @@ namespace HotTab_Win10
         {
             if ((deviceStateCode & (uint)Modules.Wifi) == (uint)Modules.Wifi)
             {
-                btn_wifi.Background = new SolidColorBrush(Windows.UI.Colors.Orange);
+                //btn_wifi.Background = new SolidColorBrush(Windows.UI.Colors.Orange);
+                //image_wifi.Source = new BitmapImage(new Uri(@"/Assets/device/G_Wi-Fi.bmp", UriKind.Relative));
+                image_wifi.Source = new BitmapImage(new Uri("ms-appx:///Assets/device/G_Wi-Fi.bmp"));
             }
             else
             {
-                btn_wifi.Background = new SolidColorBrush(Windows.UI.Colors.Transparent);
+                //btn_wifi.Background = new SolidColorBrush(Windows.UI.Colors.Transparent);
+                image_wifi.Source = new BitmapImage(new Uri("ms-appx:///Assets/device/Wi-Fi.bmp"));
             }
 
             if ((deviceStateCode & (uint)Modules.Gobi3G) == (uint)Modules.Gobi3G)
             {
-                btn_gobi3G.Background = new SolidColorBrush(Windows.UI.Colors.Orange);
+                //btn_gobi3G.Background = new SolidColorBrush(Windows.UI.Colors.Orange);
+                image_gobi3G.Source = new BitmapImage(new Uri("ms-appx:///Assets/device/G_3G.png"));
             }
             else
             {
-                btn_gobi3G.Background = new SolidColorBrush(Windows.UI.Colors.Transparent);
+                //btn_gobi3G.Background = new SolidColorBrush(Windows.UI.Colors.Transparent);
+                image_gobi3G.Source = new BitmapImage(new Uri("ms-appx:///Assets/device/_3G.png"));
             }
 
             if ((deviceStateCode & (uint)Modules.GPS) == (uint)Modules.GPS)
             {
-                btn_GPS.Background = new SolidColorBrush(Windows.UI.Colors.Orange);
+                //btn_GPS.Background = new SolidColorBrush(Windows.UI.Colors.Orange);
+                image_GPS.Source = new BitmapImage(new Uri("ms-appx:///Assets/device/G_GPS.bmp"));
             }
             else
             {
-                btn_GPS.Background = new SolidColorBrush(Windows.UI.Colors.Transparent);
+                //btn_GPS.Background = new SolidColorBrush(Windows.UI.Colors.Transparent);
+                image_GPS.Source = new BitmapImage(new Uri("ms-appx:///Assets/device/GPS.bmp"));
             }
 
             if ((deviceStateCode & (uint)Modules.Bluetooth) == (uint)Modules.Bluetooth)
             {
-                btn_bluetooth.Background = new SolidColorBrush(Windows.UI.Colors.Orange);
+                //btn_bluetooth.Background = new SolidColorBrush(Windows.UI.Colors.Orange);
+                image_bluetooth.Source = new BitmapImage(new Uri("ms-appx:///Assets/device/G_blueTooth1.bmp"));
             }
             else
             {
-                btn_bluetooth.Background = new SolidColorBrush(Windows.UI.Colors.Transparent);
+                //btn_bluetooth.Background = new SolidColorBrush(Windows.UI.Colors.Transparent);
+                image_bluetooth.Source = new BitmapImage(new Uri("ms-appx:///Assets/device/blueTooth1.bmp"));
             }
 
             if ((deviceStateCode & (uint)Modules.WebCamRear) == (uint)Modules.WebCamRear)
             {
-                btn_webCamRear.Background = new SolidColorBrush(Windows.UI.Colors.Orange);
+                //btn_webCamRear.Background = new SolidColorBrush(Windows.UI.Colors.Orange);
+                image_webCamRear.Source = new BitmapImage(new Uri("ms-appx:///Assets/device/G_Camera.bmp"));
             }
             else
             {
-                btn_webCamRear.Background = new SolidColorBrush(Windows.UI.Colors.Transparent);
+                //btn_webCamRear.Background = new SolidColorBrush(Windows.UI.Colors.Transparent);
+                image_webCamRear.Source = new BitmapImage(new Uri("ms-appx:///Assets/device/Camera1.bmp"));
             }
 
             if ((deviceStateCode & (uint)Modules.AllLED) == (uint)Modules.AllLED)
             {
-                btn_allLED.Background = new SolidColorBrush(Windows.UI.Colors.Orange);
+                //btn_allLED.Background = new SolidColorBrush(Windows.UI.Colors.Orange);
+                image_allLED.Source = new BitmapImage(new Uri("ms-appx:///Assets/device/gLCD.png"));
             }
             else
             {
-                btn_allLED.Background = new SolidColorBrush(Windows.UI.Colors.Transparent);
+                //btn_allLED.Background = new SolidColorBrush(Windows.UI.Colors.Transparent);
+                image_allLED.Source = new BitmapImage(new Uri("ms-appx:///Assets/device/wLCD.png"));
             }
 
             if ((deviceStateCode & (uint)Modules.Barcode) == (uint)Modules.Barcode)
@@ -183,15 +246,17 @@ namespace HotTab_Win10
 
             if ((deviceStateCode & (uint)Modules.GPSAntenna) == (uint)Modules.GPSAntenna)
             {
-                btn_GPSAntenna.Background = new SolidColorBrush(Windows.UI.Colors.Orange);
+                //btn_GPSAntenna.Background = new SolidColorBrush(Windows.UI.Colors.Orange);
+                image_GPSAntenna.Source = new BitmapImage(new Uri("ms-appx:///Assets/device/gANT_GPS.png"));
             }
             else
             {
-                btn_GPSAntenna.Background = new SolidColorBrush(Windows.UI.Colors.Transparent);
+                //btn_GPSAntenna.Background = new SolidColorBrush(Windows.UI.Colors.Transparent);
+                image_GPSAntenna.Source = new BitmapImage(new Uri("ms-appx:///Assets/device/wANT_GPS.png"));
             }
         }
 
-            private async void HasBeen_Click(uint moduleName)
+        private async void HasBeen_Click(uint moduleName)
         {
             ValueSet request = new ValueSet();
             request.Add("deviceConfig", moduleName);

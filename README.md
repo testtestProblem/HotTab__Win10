@@ -1,4 +1,4 @@
-# Reduse cpu usage rate 
+# Reduce cpu usage rate 
 * Using ```Application.Run();``` is batter than ```while (Console.ReadLine() != "0")```  
 
 # Restrict one instance

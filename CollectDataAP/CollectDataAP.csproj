@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AudioManager.cs" />
+    <Compile Include="BacklightControl.cs" />
     <Compile Include="Brightness.cs" />
     <Compile Include="Connect2UWP.cs" />
     <Compile Include="DeviceState.cs" />

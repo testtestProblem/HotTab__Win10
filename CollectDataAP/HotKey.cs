@@ -216,6 +216,7 @@ namespace CollectDataAP
                     else if (theKey.Contains("D7"))
                     {
                         Console.WriteLine("F3 Key Short Press");
+                        BacklightControl.SetBrightness(20);
                     }
                     else if (theKey.Contains("D8"))
                     {
@@ -224,6 +225,8 @@ namespace CollectDataAP
                     else if (theKey.Contains("D"))
                     {
                         Console.WriteLine("Home Key Short Press");
+                        BacklightControl.SetBrightness(100);
+
                     }
                     else if (theKey.Contains("M"))
                     {

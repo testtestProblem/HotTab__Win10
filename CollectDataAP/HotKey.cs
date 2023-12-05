@@ -6,6 +6,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VideoPlayerController;
 
 namespace CollectDataAP
 {
@@ -141,6 +142,16 @@ namespace CollectDataAP
                 {
                     System.Diagnostics.Process.Start("mspaint");
                 }
+                else if (theKey.Contains("K"))
+                {
+                    int vol = (int)AudioManager.GetMasterVolume();
+                    AudioManager.SetMasterVolume((vol + 2) <= 100 ? vol + 2 : 100);
+                }
+                else if (theKey.Contains("L"))
+                {
+                    int vol = (int)AudioManager.GetMasterVolume();
+                    AudioManager.SetMasterVolume((vol - 2) >= 0 ? vol - 2 : 0);
+                }
                 else if (theKey == "Escape")                           //If they press escape
                 {
                     UnhookWindowsHookEx(_hookID);                 //Release our hook
@@ -173,13 +184,16 @@ namespace CollectDataAP
                     if (theKey.Contains("D0"))
                     {
                         Console.WriteLine("Menu Key Pressed");
-                        SendMessageW(handle, WM_APPCOMMAND, HWND_BROADCAST, (IntPtr)APPCOMMAND_VOLUME_UP);
+
+
                     }
                     else if (theKey.Contains("D3"))
                     {
                         Console.WriteLine("F1 Key Short Press");
                         //SendMessageW(handle, WM_APPCOMMAND, IntPtr.Zero, (IntPtr)APPCOMMAND_VOLUME_UP); 
-                        System.Diagnostics.Process.Start("Taskmgr");
+                        //System.Diagnostics.Process.Start("Taskmgr");
+                        int vol = (int)AudioManager.GetMasterVolume();
+                        AudioManager.SetMasterVolume((vol + 2) <= 100 ? vol + 2 : 100);
                     }
                     else if (theKey.Contains("D4"))
                     {
@@ -190,7 +204,9 @@ namespace CollectDataAP
                     {
                         Console.WriteLine("F2 Key Short Press");
                         //SendMessageW(handle, WM_APPCOMMAND, IntPtr.Zero, (IntPtr)APPCOMMAND_VOLUME_DOWN);
-                        System.Diagnostics.Process.Start("mspaint");
+                        //System.Diagnostics.Process.Start("mspaint");
+                        int vol = (int)AudioManager.GetMasterVolume();
+                        AudioManager.SetMasterVolume((vol - 2) >= 0 ? vol - 2 : 0);
                     }
                     else if (theKey.Contains("D6"))
                     {

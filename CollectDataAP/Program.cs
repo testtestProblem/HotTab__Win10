@@ -21,7 +21,18 @@ namespace CollectDataAP
 
         static void Main(string[] args)
         {
-            MutexForConsole();
+            //MutexForConsole();
+            const string appName = "MyAppName";
+            bool createdNew;
+
+            Mutex mutex = new Mutex(true, appName, out createdNew);
+
+            if (!createdNew)
+            {
+                Console.WriteLine(appName + " is already running! Exiting the application.");
+                //Console.ReadKey();
+                return;
+            }
 
             handle = Process.GetCurrentProcess().Handle;
 
@@ -87,7 +98,7 @@ namespace CollectDataAP
             }*/
         }
 
-        //if have second console, colsed it
+        //if have second console, closed it
         static void MutexForConsole()
         {
             const string appName = "MyAppName";

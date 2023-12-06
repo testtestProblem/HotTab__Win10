@@ -19,19 +19,29 @@ namespace CollectDataAP
     {
         public static IntPtr handle;
 
+        public const string appName = "Hottab_win10_test";
+        public static bool createdNew;
+        public static Mutex mutex = new Mutex(true, appName, out createdNew);
+
         static void Main(string[] args)
         {
             //MutexForConsole();
-            const string appName = "MyAppName";
-            bool createdNew;
+            
+            
 
-            Mutex mutex = new Mutex(true, appName, out createdNew);
-
+            //Mutex mutex = new Mutex(true, appName, out createdNew);
+            
+            //Mutex.OpenExisting
             if (!createdNew)
             {
-                Console.WriteLine(appName + " is already running! Exiting the application.");
+                //MessageBox.Show(appName + " is already running! Exiting the application.");
+                MessageBox.Show("Hottab" + " is already running! Exiting the application.", "Hottab",MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 //Console.ReadKey();
                 return;
+            }
+            else
+            {
+                //MessageBox.Show(appName + "Start is running!");
             }
 
             handle = Process.GetCurrentProcess().Handle;

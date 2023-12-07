@@ -47,7 +47,8 @@ namespace HotTab_Win10
 
 
             //for inital UI
-            HasBeen_Click((uint)Modules.ExpandCOM);
+            //HasBeen_Click((uint)Modules.ExpandCOM);
+            HasBeen_Click((uint)Modules.initAll, Modules.initAll);
             //btn_allLED.Background = new SolidColorBrush(Windows.UI.Colors.Orange); //for test
 
             //image_wifi.Source = new BitmapImage(new Uri(@"C:\Users\WIN10\source\repos\HotTabWin10_3\HotTab_Win10\HotTab_Win10\Assets\device\_3G.png", UriKind.Absolute));
@@ -196,7 +197,7 @@ namespace HotTab_Win10
             if ((deviceStateCode & (uint)Modules.Bluetooth) == (uint)Modules.Bluetooth)
             {
                 //btn_bluetooth.Background = new SolidColorBrush(Windows.UI.Colors.Orange);
-                image_bluetooth.Source = new BitmapImage(new Uri("ms-appx:///Assets/device/G_blueTooth1.bmp"));
+                image_bluetooth.Source = new BitmapImage(new Uri("ms-appx:///Assets/device/G_blueTooth.bmp"));
             }
             else
             {

@@ -84,23 +84,32 @@ namespace CollectDataAP
                     
                     uint state = deviceState.GetDeviceStatePower();
                     deviceCode = args.Request.Message["deviceConfig"] as uint?;
-                    try
+
+                    if ((DeviceState.DeviceStatePower)deviceCode == DeviceState.DeviceStatePower.initAll)
                     {
-                        foreach (uint device in Enum.GetValues(typeof(DeviceState.DeviceStatePower)))
+                        //do nothing
+                    }
+                    else    
+                    {   //config device state
+                        try
                         {
-                            if ((deviceCode & device) == device)
+                            foreach (uint device in Enum.GetValues(typeof(DeviceState.DeviceStatePower)))
                             {
-                                state = state ^ (uint)deviceCode;
-                                deviceState.SetDeviceStatePower(state);
+                                if ((deviceCode & device) == device)
+                                {
+                                    state = state ^ (uint)deviceCode;
+                                    deviceState.SetDeviceStatePower(state);
+                                }
                             }
                         }
+                        catch (Exception e)
+                        {
+                            //TODO: not verify
+                            var dialog = new MessageDialog(e.Message);
+                            await dialog.ShowAsync();
+                        }
                     }
-                    catch (Exception e)
-                    {
-                        //TODO: not verify
-                        var dialog = new MessageDialog(e.Message);
-                        await dialog.ShowAsync();
-                    }
+
                     // compose the response as ValueSet
                     ValueSet response = new ValueSet();
 

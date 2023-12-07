@@ -37,7 +37,10 @@ namespace CollectDataAP
             RFID = 0x400,
             GPSAntenna = 0x800,
             ExpandUSB = 0x1000,
-            ExpandCOM = 0x2000
+            ExpandCOM = 0x2000,
+
+            //for initial all device state
+            initAll = 0x8000
         };
 
 

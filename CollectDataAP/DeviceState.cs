@@ -33,7 +33,7 @@ namespace CollectDataAP
             AllLED = 0x80,
 
             Barcode = 0x100,
-            WebCam = 0x200,
+            WebCamFront = 0x200,
             RFID = 0x400,
             GPSAntenna = 0x800,
             ExpandUSB = 0x1000,
@@ -44,10 +44,10 @@ namespace CollectDataAP
         //0: The device power off     1: The device power on
         //lowwer byte
         //Bit7      Bit6        Bit5        Bit4        Bit3        Bit2    Bit1            Bit0
-        //AllLED    WebCamRear  Bluetooth   -           -           GPS     Gobi3G          Wifi
+        //AllLED    -           WebCamRear  Bluetooth   -           GPS     Gobi3G          Wifi
         //upper byte
         //Bit7      Bit6        Bit5        Bit4        Bit3        Bit2    Bit1            Bit0
-        //-         -           Expand COM  Expand USB  GPS Antenna RFID    WebCam Front    Barcode
+        //-         -           Expand COM  Expand USB  GPS Antenna RFID    WebCamFront     Barcode
         public uint GetDeviceStatePower()
         {
             byte temp;
@@ -83,7 +83,6 @@ namespace CollectDataAP
             return s_temp;
         }
 
-        //TODO: do more personalize
         public bool SetDeviceStatePower(uint data)
         {
             byte data1 = (byte)data;

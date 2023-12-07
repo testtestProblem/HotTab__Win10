@@ -221,12 +221,11 @@ namespace CollectDataAP
                     else if (theKey.Contains("D8"))
                     {
                         Console.WriteLine("F3 Key Long Presss");
+                        BacklightControl.SetBrightness(100);
                     }
                     else if (theKey.Contains("D"))
                     {
                         Console.WriteLine("Home Key Short Press");
-                        BacklightControl.SetBrightness(100);
-
                     }
                     else if (theKey.Contains("M"))
                     {

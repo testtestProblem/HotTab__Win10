@@ -47,7 +47,7 @@ namespace HotTab_Win10
 
 
             //for inital UI
-            HasBeen_Click((uint)Modules.AllLED);
+            HasBeen_Click((uint)Modules.ExpandCOM);
             //btn_allLED.Background = new SolidColorBrush(Windows.UI.Colors.Orange); //for test
 
             //image_wifi.Source = new BitmapImage(new Uri(@"C:\Users\WIN10\source\repos\HotTabWin10_3\HotTab_Win10\HotTab_Win10\Assets\device\_3G.png", UriKind.Absolute));
@@ -258,7 +258,7 @@ namespace HotTab_Win10
 
         private void CheckDeviceState_Button(uint deviceStateCode, Modules modules)
         {
-            if (Modules.Wifi == modules) {
+            if (Modules.Wifi == modules || Modules.initAll== modules) {
                 if ((deviceStateCode & (uint)Modules.Wifi) == (uint)Modules.Wifi)
                 {
                     //btn_wifi.Background = new SolidColorBrush(Windows.UI.Colors.Orange);
@@ -272,7 +272,7 @@ namespace HotTab_Win10
                 }
             }
 
-            if (Modules.Gobi3G == modules) 
+            if (Modules.Gobi3G == modules || Modules.initAll == modules) 
             {
                 if ((deviceStateCode & (uint)Modules.Gobi3G) == (uint)Modules.Gobi3G )
                 {
@@ -286,7 +286,7 @@ namespace HotTab_Win10
                 }
             }
 
-            if (Modules.GPS == modules)
+            if (Modules.GPS == modules || Modules.initAll == modules)
             {
                 if ((deviceStateCode & (uint)Modules.GPS) == (uint)Modules.GPS)
                 {
@@ -300,7 +300,7 @@ namespace HotTab_Win10
                 }
             }
 
-            if (Modules.Bluetooth == modules)
+            if (Modules.Bluetooth == modules || Modules.initAll == modules)
             {
                 if ((deviceStateCode & (uint)Modules.Bluetooth) == (uint)Modules.Bluetooth)
                 {
@@ -314,7 +314,7 @@ namespace HotTab_Win10
                 }
             }
 
-            if (Modules.WebCamRear == modules)
+            if (Modules.WebCamRear == modules || Modules.initAll == modules)
             {
                 if ((deviceStateCode & (uint)Modules.WebCamRear) == (uint)Modules.WebCamRear)
                 {
@@ -328,7 +328,7 @@ namespace HotTab_Win10
                 }
             }
 
-            if (Modules.AllLED == modules)
+            if (Modules.AllLED == modules || Modules.initAll == modules)
             {
                 if ((deviceStateCode & (uint)Modules.AllLED) == (uint)Modules.AllLED)
                 {
@@ -342,7 +342,7 @@ namespace HotTab_Win10
                 }
             }
 
-            if (Modules.Barcode == modules)
+            if (Modules.Barcode == modules || Modules.initAll == modules)
             {
                 if ((deviceStateCode & (uint)Modules.Barcode) == (uint)Modules.Barcode)
                 {
@@ -354,7 +354,20 @@ namespace HotTab_Win10
                 }
             }
 
-            if (Modules.RFID == modules)
+            if (Modules.WebCamFront == modules || Modules.initAll == modules)
+            {
+                if ((deviceStateCode & (uint)Modules.WebCamFront) == (uint)Modules.WebCamFront)
+                {
+                    btn_webCamFront.Background = new SolidColorBrush(Windows.UI.Colors.Orange);
+                }
+                else
+                {
+                    btn_webCamFront.Background = new SolidColorBrush(Windows.UI.Colors.Transparent);
+                }
+            }
+
+
+            if (Modules.RFID == modules || Modules.initAll == modules)
             {
                 if ((deviceStateCode & (uint)Modules.RFID) == (uint)Modules.RFID)
                 {
@@ -366,7 +379,7 @@ namespace HotTab_Win10
                 }
             }
 
-            if (Modules.GPSAntenna == modules)
+            if (Modules.GPSAntenna == modules || Modules.initAll == modules)
             {
                 if ((deviceStateCode & (uint)Modules.GPSAntenna) == (uint)Modules.GPSAntenna)
                 {
@@ -377,6 +390,30 @@ namespace HotTab_Win10
                 {
                     //btn_GPSAntenna.Background = new SolidColorBrush(Windows.UI.Colors.Transparent);
                     image_GPSAntenna.Source = new BitmapImage(new Uri("ms-appx:///Assets/device/wANT_GPS.png"));
+                }
+            }
+
+            if (Modules.ExpandUSB == modules || Modules.initAll == modules)
+            {
+                if ((deviceStateCode & (uint)Modules.ExpandUSB) == (uint)Modules.ExpandUSB)
+                {
+                    btn_expandUSB.Background = new SolidColorBrush(Windows.UI.Colors.Orange);
+                }
+                else
+                {
+                    btn_expandUSB.Background = new SolidColorBrush(Windows.UI.Colors.Transparent);
+                }
+            }
+
+            if (Modules.ExpandCOM == modules || Modules.initAll == modules)
+            {
+                if ((deviceStateCode & (uint)Modules.ExpandCOM) == (uint)Modules.ExpandCOM)
+                {
+                    btn_expandCOM.Background = new SolidColorBrush(Windows.UI.Colors.Orange);
+                }
+                else
+                {
+                    btn_expandCOM.Background = new SolidColorBrush(Windows.UI.Colors.Transparent);
                 }
             }
         }
@@ -437,22 +474,22 @@ namespace HotTab_Win10
 
         private void btn_allLED_Click(object sender, RoutedEventArgs e)
         {
-
+            HasBeen_Click((uint)Modules.AllLED, Modules.AllLED);
         }
 
         private void btn_barcode_Click(object sender, RoutedEventArgs e)
         {
-
+            HasBeen_Click((uint)Modules.Barcode, Modules.Barcode);
         }
 
         private void btn_webCamFront_Click(object sender, RoutedEventArgs e)
         {
-
+            HasBeen_Click((uint)Modules.WebCamFront, Modules.WebCamFront);
         }
 
         private void btn_RFID_Click(object sender, RoutedEventArgs e)
         {
-
+            HasBeen_Click((uint)Modules.RFID, Modules.RFID);
         }
 
         private void btn_GPSAntenna_Click(object sender, RoutedEventArgs e)
@@ -462,12 +499,12 @@ namespace HotTab_Win10
 
         private void btn_expandUSB_Click(object sender, RoutedEventArgs e)
         {
-
+            HasBeen_Click((uint)Modules.ExpandUSB, Modules.ExpandUSB);
         }
 
         private void btn_expandCOM_Click(object sender, RoutedEventArgs e)
         {
-
+            HasBeen_Click((uint)Modules.ExpandCOM, Modules.ExpandCOM);
         }
     }
 }

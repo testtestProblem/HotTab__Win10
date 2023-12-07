@@ -62,9 +62,9 @@
         <Button x:Name="btn_barcode" GotFocus="OnGotFocusHandler"  LostFocus="OnLostFocusHandler"   Content="&#xe963;" FontFamily="{StaticResource ResourceKey=CustomIconFont}"  Margin="175,43,0,0" VerticalAlignment="Top" Width="40" Height="35" FontSize="20" Click="btn_barcode_Click">
         </Button>
 
-        <Button x:Name="btn_webCamFront" Content="WebCam Front" Margin="175,83,0,0" VerticalAlignment="Top" Click="btn_webCamFront_Click"/>
-        
-        <Button x:Name="btn_RFID" Content="&#xf004;" FontFamily="{StaticResource ResourceKey=CustomIconFont}" Margin="175,123,0,0" VerticalAlignment="Top" Width="40" Height="35" FontSize="25" Click="btn_RFID_Click">
+        <Button x:Name="btn_webCamFront" Content="Front &#xeecf;" FontFamily="{StaticResource ResourceKey=CustomIconFont}" Margin="175,83,0,0" VerticalAlignment="Top" Width="40" Height="35" FontSize="5" Click="btn_webCamFront_Click"/>
+
+        <Button x:Name="btn_RFID" Content="&#xec85;" FontFamily="{StaticResource ResourceKey=CustomIconFont}" Margin="175,123,0,0" VerticalAlignment="Top" Width="40" Height="35" FontSize="21" Click="btn_RFID_Click">
         </Button>
         
         <!--<Button x:Name="btn_GPSAntenna" Content="&#xea56;" FontFamily="{StaticResource ResourceKey=CustomIconFont}"  Margin="175,163,0,0" VerticalAlignment="Top" Width="40" Height="35" FontSize="21" Click="btn_GPSAntenna_Click">
@@ -73,8 +73,9 @@
         <Button x:Name="btn_GPSAntenna" Content=""  Margin="175,163,0,0" VerticalAlignment="Top" Width="40" Height="35" FontSize="21" Click="btn_GPSAntenna_Click">
         </Button>
 
-        <Button x:Name="btn_expandUSB" Content="Expand USB" Margin="175,203,0,0" VerticalAlignment="Top" Click="btn_expandUSB_Click"/>
-        <Button x:Name="btn_expandCOM" Content="Expand COM" Margin="175,243,0,0" VerticalAlignment="Top" Click="btn_expandCOM_Click"/>
+        <Button x:Name="btn_expandUSB" Content="&#xea2e;" FontFamily="{StaticResource ResourceKey=CustomIconFont}" Margin="175,203,0,0" Width="40" Height="35" FontSize="21" VerticalAlignment="Top" Click="btn_expandUSB_Click"/>
+
+        <Button x:Name="btn_expandCOM" Content="&#xf00a;" FontFamily="{StaticResource ResourceKey=CustomIconFont}" Margin="175,243,0,0" Width="40" Height="35" FontSize="21" VerticalAlignment="Top" Click="btn_expandCOM_Click"/>
 
         <Image x:Name="image_wifi"  Margin="55,43,0,0" Width="45" Height="35" HorizontalAlignment="Left"  VerticalAlignment="Top" AllowDrop="True" Canvas.ZIndex="-1">
             <Image.Source>

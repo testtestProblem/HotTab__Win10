@@ -32,7 +32,6 @@ namespace HotTab_Win10
         public static event EventHandler AppServiceDisconnected;
 
 
-
         private void App_LeavingBackground(object sender, LeavingBackgroundEventArgs e)
         {
             IsForeground = true;

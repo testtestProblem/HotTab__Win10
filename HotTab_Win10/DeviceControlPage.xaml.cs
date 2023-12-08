@@ -33,7 +33,7 @@ namespace HotTab_Win10
         public DeviceControlPage()
         {
             this.InitializeComponent();
-            ApplicationView.PreferredLaunchViewSize = new Size(200, 200);
+            ApplicationView.PreferredLaunchViewSize = new Size(400, 400);
             ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
 
         }
@@ -310,7 +310,7 @@ namespace HotTab_Win10
                 if ((deviceStateCode & (uint)Modules.Bluetooth) == (uint)Modules.Bluetooth)
                 {
                     //btn_bluetooth.Background = new SolidColorBrush(Windows.UI.Colors.Orange);
-                    image_bluetooth.Source = new BitmapImage(new Uri("ms-appx:///Assets/device/G_blueTooth1.bmp"));
+                    image_bluetooth.Source = new BitmapImage(new Uri("ms-appx:///Assets/device/G_blueTooth.bmp"));
                 }
                 else
                 {

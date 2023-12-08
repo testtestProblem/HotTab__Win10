@@ -35,7 +35,7 @@ namespace CollectDataAP
             if (!createdNew)
             {
                 //MessageBox.Show(appName + " is already running! Exiting the application.");
-                MessageBox.Show("Hottab" + " is already running! Exiting the application.", "Hottab",MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Hottab" + " is already running! Please exiting the application.", "Hottab",MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 //Console.ReadKey();
                 return;
             }

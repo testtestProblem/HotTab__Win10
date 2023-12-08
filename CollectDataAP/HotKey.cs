@@ -112,15 +112,18 @@ namespace CollectDataAP
                 }
                 else if (theKey.Contains("C"))
                 {
-                    Brightness.SetBrightness(126);
+                    //Brightness.SetBrightness(126);
+                    BacklightControl.SetBrightness(20);
                 }
                 else if (theKey.Contains("D"))
                 {
-                    Brightness.SetBrightness(256);
+                    //Brightness.SetBrightness(256);
+                    BacklightControl.SetBrightness(100);
                 }
                 else if (theKey.Contains("E"))
                 {
-                    Brightness.SetBrightness(10);
+                    //Brightness.SetBrightness(10);
+                    BacklightControl.SetBrightness(60);
                 }
                 else if (theKey.Contains("F"))
                 {

@@ -6,11 +6,14 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" >
 
-    <Grid>
-        <Button x:Name="return_btn" Content="&#xea5c;" FontFamily="{StaticResource ResourceKey=CustomIconFont}" VerticalAlignment="Top" Height="34" Width="36" Click="return_btn_Click"/>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Margin="37,55,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top"/>
+    <RelativePanel>
+        
+        <Button x:Name="return_btn" Content="&#xea5c;" FontFamily="{StaticResource ResourceKey=CustomIconFont}" Margin="0,0,0,0" VerticalAlignment="Top"  HorizontalAlignment="Left" Height="34" Width="36" Click="return_btn_Click"/>
+        <TextBlock x:Name="textBox"  RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" Text="" TextWrapping="Wrap" FontSize="23"/>
 
-    </Grid>
+        
+    </RelativePanel >
+    
 </Page>

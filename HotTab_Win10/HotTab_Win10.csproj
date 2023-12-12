@@ -133,6 +133,9 @@
       <DependentUpon>DeviceControlPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="DeviceState.cs" />
+    <Compile Include="HotkeyControlPage.xaml.cs">
+      <DependentUpon>HotkeyControlPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="InformationPage.xaml.cs">
       <DependentUpon>InformationPage.xaml</DependentUpon>
     </Compile>
@@ -185,6 +188,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="DeviceControlPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HotkeyControlPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

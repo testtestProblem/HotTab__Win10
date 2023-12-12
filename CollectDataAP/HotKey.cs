@@ -101,7 +101,7 @@ namespace CollectDataAP
                 int vkCode = Marshal.ReadInt32(lParam);           //Get the keycode
                 string theKey = ((Keys)vkCode).ToString();        //Name of the key
                 Console.WriteLine("Key make " + theKey);
-
+                /*
                 if (theKey.Contains("A"))
                 {
                     SendMessageW(handle, WM_APPCOMMAND, IntPtr.Zero, (IntPtr)APPCOMMAND_VOLUME_UP);
@@ -159,7 +159,7 @@ namespace CollectDataAP
                 {
                     UnhookWindowsHookEx(_hookID);                 //Release our hook
                     Environment.Exit(0);                          //Exit our program
-                }
+                }*/
             }
             else if (nCode >= 0 && wParam == (IntPtr)WM_KEYUP)    //KeyUP
             {
@@ -181,14 +181,12 @@ namespace CollectDataAP
                         shiftUp = false;
                     }
                 }
-
+                //
                 if (menuUp == true && controlUp == true && shiftUp == true)
                 {
                     if (theKey.Contains("D0"))
                     {
                         Console.WriteLine("Menu Key Pressed");
-
-
                     }
                     else if (theKey.Contains("D3"))
                     {

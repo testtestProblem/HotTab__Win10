@@ -12,7 +12,7 @@
   <Identity
     Name="747e73e9-556f-4468-8093-8c898243ee87"
     Publisher="CN=Tommy_WE1914"
-    Version="1.0.50.0" />
+    Version="1.0.54.0" />
 
   <Properties>
     <DisplayName>WapProj_HotTab_Win10</DisplayName>

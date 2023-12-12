@@ -33,9 +33,9 @@ namespace HotTab_Win10
         public MainPage()
         {
             this.InitializeComponent();
-
-           ApplicationView.PreferredLaunchViewSize = new Size(400, 400);
-           ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
+            
+            //ApplicationView.PreferredLaunchViewSize = new Size(400, 400);
+            //ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -162,6 +162,11 @@ namespace HotTab_Win10
             BasicInformation = response.Message["BasicInfo2UWP"] as string;
 
             this.Frame.Navigate(typeof(InformationPage));
+        }
+
+        private void hotkeyControl_btn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(HotkeyControlPage));
         }
     }
 }

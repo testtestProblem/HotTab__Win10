@@ -22,93 +22,95 @@
 
     <RelativePanel >
 
-        <Button x:Name="return_btn" Content="&#xea5c;" FontFamily="{StaticResource ResourceKey=CustomIconFont}" Margin="0,0,0,0" VerticalAlignment="Top" Height="34" Width="36" Click="return_btn_Click"/>
+        <Button x:Name="return_btn" Content="&#xea5c;" FontFamily="{StaticResource ResourceKey=CustomIconFont}" Margin="0,0,0,0" Height="50" Width="50" Click="return_btn_Click" FontSize="25"/>
 
         <!--<Button x:Name="btn_wifi" Content="&#xec96;" FontFamily="{StaticResource ResourceKey=CustomIconFont}" Margin="55,43,0,0"  VerticalAlignment="Top" Click="btn_wifi_Click" Width="45" Height="35" >
         </Button>-->
 
-        <Button x:Name="btn_wifi" Width="55" Height="55" Margin="106,23,0,0"  VerticalAlignment="Top" Click="btn_wifi_Click" >
+        <Button x:Name="btn_wifi" Width="70" Height="70" Margin="-100,-500,0,0"  RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" Click="btn_wifi_Click" >
         </Button>
 
         <!--<Button x:Name="btn_gobi3G" Content="WWAN" FontFamily="{StaticResource ResourceKey=CustomIconFont}"  Margin="55,83,0,0" VerticalAlignment="Top" Width="40" Height="35" FontSize="8" Click="btn_gobi3G_Click">
         </Button>-->
 
-        <Button x:Name="btn_gobi3G" Content="" Width="55" Height="55" Margin="106,83,0,0" VerticalAlignment="Top" FontSize="8" Click="btn_gobi3G_Click">
+        <Button x:Name="btn_gobi3G" Width="70" Height="70" Margin="-100,-300,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" FontSize="8" Click="btn_gobi3G_Click">
         </Button>
 
         <!--<Button x:Name="btn_GPS" Content="&#xef79;" FontFamily="{StaticResource ResourceKey=CustomIconFont}"  Margin="55,123,0,0" VerticalAlignment="Top" Width="40" Height="35" FontSize="20" AccessKey="0" Click="btn_GPS_Click">
         </Button>-->
 
-        <Button x:Name="btn_GPS" Content="" Width="55" Height="55"  Margin="106,143,0,0" VerticalAlignment="Top" FontSize="20" Click="btn_GPS_Click">
+        <Button x:Name="btn_GPS" Content="" Width="70" Height="70"  Margin="-100,-100,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" FontSize="20" Click="btn_GPS_Click">
         </Button>
 
         <!--<Button x:Name="btn_bluetooth" Content="&#xec42;" FontFamily="{StaticResource ResourceKey=CustomIconFont}" Margin="55,163,0,0" VerticalAlignment="Top" Width="40" Height="35" FontSize="20" Click="btn_bluetooth_Click">
         </Button>-->
 
-        <Button x:Name="btn_bluetooth" Content="" Width="55" Height="55" Margin="106,203,0,0" VerticalAlignment="Top" FontSize="20" Click="btn_bluetooth_Click">
+        <Button x:Name="btn_bluetooth" Content="" Width="70" Height="70" Margin="-100,100,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" FontSize="20" Click="btn_bluetooth_Click">
         </Button>
 
         <!--<Button x:Name="btn_webCamRear" Content="&#xeecf;" FontFamily="{StaticResource ResourceKey=CustomIconFont}" Margin="55,203,0,0" VerticalAlignment="Top" Width="40" Height="35" FontSize="25" Click="btn_webCamRear_Click">
         </Button>-->
 
-        <Button x:Name="btn_webCamRear" Content="" Width="55" Height="55" Margin="106,263,0,0" VerticalAlignment="Top" FontSize="35" Click="btn_webCamRear_Click">
+        <Button x:Name="btn_webCamRear" Content="" Width="70" Height="70" Margin="-100,300,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" FontSize="35" Click="btn_webCamRear_Click">
         </Button>
 
         <!--<Button x:Name="btn_allLED" Content="&#xec59;" FontFamily="{StaticResource ResourceKey=CustomIconFont}"  Margin="55,243,0,0" VerticalAlignment="Top" Width="40" Height="35" FontSize="21" Click="btn_allLED_Click">
         </Button>-->
 
-        <Button x:Name="btn_allLED" Content="" Width="55" Height="55" Margin="106,323,0,0" VerticalAlignment="Top" FontSize="35" Click="btn_allLED_Click">
+        <Button x:Name="btn_allLED" Content="" Width="70" Height="70" Margin="-100,500,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" FontSize="35" Click="btn_allLED_Click">
         </Button>
 
-        <Button x:Name="btn_barcode"  Content="&#xe963;" FontFamily="{StaticResource ResourceKey=CustomIconFont}" Width="55" Height="55" Margin="239,20,0,0" VerticalAlignment="Top" FontSize="35" Click="btn_barcode_Click" GotFocus="OnGotFocusHandler"  LostFocus="OnLostFocusHandler" >
+        <Button x:Name="btn_barcode"  Content="&#xe963;" FontFamily="{StaticResource ResourceKey=CustomIconFont}" Width="70" Height="70" Margin="100,-500,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" FontSize="35" Click="btn_barcode_Click" GotFocus="OnGotFocusHandler"  LostFocus="OnLostFocusHandler" >
         </Button>
 
-        <Button x:Name="btn_webCamFront" Content="Front &#xeecf;" FontFamily="{StaticResource ResourceKey=CustomIconFont}" Width="55" Height="55" Margin="239,80,0,0" VerticalAlignment="Top" FontSize="10" Click="btn_webCamFront_Click"/>
-
-        <Button x:Name="btn_RFID" Content="&#xec85;" FontFamily="{StaticResource ResourceKey=CustomIconFont}" Width="55" Height="55" Margin="239,140,0,0" VerticalAlignment="Top" FontSize="35" Click="btn_RFID_Click">
+        <Button x:Name="btn_webCamFront" Content="Front &#xeecf;" FontFamily="{StaticResource ResourceKey=CustomIconFont}" Width="70" Height="70" Margin="100,-300,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" FontSize="12" Click="btn_webCamFront_Click">
+            
+        </Button>
+        
+        <Button x:Name="btn_RFID" Content="&#xec85;" FontFamily="{StaticResource ResourceKey=CustomIconFont}" Width="70" Height="70" Margin="100,-100,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" FontSize="50" Click="btn_RFID_Click">
         </Button>
 
         <!--<Button x:Name="btn_GPSAntenna" Content="&#xea56;" FontFamily="{StaticResource ResourceKey=CustomIconFont}"  Margin="175,163,0,0" VerticalAlignment="Top" Width="40" Height="35" FontSize="21" Click="btn_GPSAntenna_Click">
         </Button>-->
 
-        <Button x:Name="btn_GPSAntenna" Content=""  Width="55" Height="55" Margin="239,200,0,0"  VerticalAlignment="Top" FontSize="21" Click="btn_GPSAntenna_Click">
+        <Button x:Name="btn_GPSAntenna" Content=""  Width="70" Height="70" Margin="100,100,0,0"  RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" FontSize="50" Click="btn_GPSAntenna_Click">
         </Button>
 
-        <Button x:Name="btn_expandUSB" Content="&#xea2e;" FontFamily="{StaticResource ResourceKey=CustomIconFont}"  Width="55" Height="55" Margin="239,260,0,0"  FontSize="35" VerticalAlignment="Top" Click="btn_expandUSB_Click"/>
+        <Button x:Name="btn_expandUSB" Content="&#xea2e;" FontFamily="{StaticResource ResourceKey=CustomIconFont}"  Width="70" Height="70" Margin="100,300,0,0"  FontSize="50" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" Click="btn_expandUSB_Click"/>
 
-        <Button x:Name="btn_expandCOM" Content="&#xf00a;" FontFamily="{StaticResource ResourceKey=CustomIconFont}"  Width="55" Height="55" Margin="239,320,0,0"  FontSize="35" VerticalAlignment="Top" Click="btn_expandCOM_Click"/>
+        <Button x:Name="btn_expandCOM" Content="&#xf00a;" FontFamily="{StaticResource ResourceKey=CustomIconFont}"  Width="70" Height="70" Margin="100,500,0,0"  FontSize="50" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" Click="btn_expandCOM_Click"/>
 
-        <Image x:Name="image_wifi"  Margin="106,23,0,0" Width="55" Height="55" HorizontalAlignment="Left"  VerticalAlignment="Top" AllowDrop="True" Canvas.ZIndex="-1">
+        <Image x:Name="image_wifi" Margin="-130,-500,0,0" Width="70" Height="70" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" AllowDrop="True" Canvas.ZIndex="-1">
             <Image.Source>
                 <BitmapImage DecodePixelWidth="200" UriSource="Assets/device/Wi-Fi.bmp" />
             </Image.Source>
         </Image>
 
-        <Image x:Name="image_gobi3G" HorizontalAlignment="Left"  Width="55" Height="55" Margin="106,83,0,0"  VerticalAlignment="Top"  AllowDrop="True" Canvas.ZIndex="-1">
+        <Image x:Name="image_gobi3G" Width="70" Height="70" Margin="-130,-300,0,0"  RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True"  AllowDrop="True" Canvas.ZIndex="-1">
             <Image.Source>
                 <BitmapImage DecodePixelWidth="200" UriSource="Assets/device/_3G.png" />
             </Image.Source>
         </Image>
 
-        <Image x:Name="image_GPS" HorizontalAlignment="Left"  Width="55" Height="55" Margin="106,143,0,0" VerticalAlignment="Top" AllowDrop="True" Canvas.ZIndex="-1">
+        <Image x:Name="image_GPS" Width="70" Height="70" Margin="-130,-100,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" AllowDrop="True" Canvas.ZIndex="-1">
             <Image.Source>
                 <BitmapImage DecodePixelWidth="200" UriSource="Assets/device/GPS.bmp" />
             </Image.Source>
         </Image>
 
-        <Image x:Name="image_bluetooth" HorizontalAlignment="Left"  Width="55" Height="55" Margin="106,203,0,0" VerticalAlignment="Top" AllowDrop="True" Canvas.ZIndex="-1">
+        <Image x:Name="image_bluetooth" Width="70" Height="70" Margin="-130,100,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" AllowDrop="True" Canvas.ZIndex="-1">
             <Image.Source>
                 <BitmapImage DecodePixelWidth="200" UriSource="Assets/device/blueTooth1.bmp" />
             </Image.Source>
         </Image>
 
-        <Image x:Name="image_webCamRear" HorizontalAlignment="Left"  Width="55" Height="55" Margin="106,263,0,0" VerticalAlignment="Top"  AllowDrop="True" Canvas.ZIndex="-1">
+        <Image x:Name="image_webCamRear" Width="70" Height="70" Margin="-130,300,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True"  AllowDrop="True" Canvas.ZIndex="-1">
             <Image.Source>
                 <BitmapImage DecodePixelWidth="200" UriSource="Assets/device/Camera1.bmp" />
             </Image.Source>
         </Image>
 
-        <Image x:Name="image_allLED" HorizontalAlignment="Left"  Width="55" Height="55" Margin="106,323,0,0" VerticalAlignment="Top" AllowDrop="True" Canvas.ZIndex="-1">
+        <Image x:Name="image_allLED" Width="70" Height="70" Margin="-130,500,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" AllowDrop="True" Canvas.ZIndex="-1">
             <Image.Source>
                 <BitmapImage DecodePixelWidth="200" UriSource="Assets/device/wLCD.png" />
             </Image.Source>
@@ -123,7 +125,7 @@
         <Image x:Name="image_RFID" Source="Assets/RFID.bmp" HorizontalAlignment="Left" Height="37" Margin="58,81,0,0" VerticalAlignment="Top" Width="37" AllowDrop="True" Canvas.ZIndex="-1">
 
         </Image>-->
-        <Image x:Name="image_GPSAntenna" HorizontalAlignment="Left"  Width="55" Height="55" Margin="239,200,0,0" VerticalAlignment="Top" AllowDrop="True" Canvas.ZIndex="-1">
+        <Image x:Name="image_GPSAntenna" HorizontalAlignment="Left"  Width="70" Height="70" Margin="100,100,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" AllowDrop="True" Canvas.ZIndex="-1">
             <Image.Source>
                 <BitmapImage DecodePixelWidth="200" UriSource="Assets/device/wANT_GPS.png" />
             </Image.Source>

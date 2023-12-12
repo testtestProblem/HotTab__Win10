@@ -33,9 +33,8 @@ namespace HotTab_Win10
         public DeviceControlPage()
         {
             this.InitializeComponent();
-            ApplicationView.PreferredLaunchViewSize = new Size(400, 400);
-            ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
-
+            //ApplicationView.PreferredLaunchViewSize = new Size(400, 400);
+            //ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
         }
 
         protected  override void OnNavigatedTo(NavigationEventArgs e)

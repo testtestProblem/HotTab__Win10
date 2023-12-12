@@ -1,3 +1,34 @@
+# Relative layout
+* Defines an area within which you can position and align child objects in relation to each other or the parent panel.  
+* this example show button always in centrol  
+```xml
+<Page
+    x:Class="HotTab_Win10.HotkeyControlPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:HotTab_Win10"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <RelativePanel>
+        <Button x:Name="information_btn" Content="Information" Margin="0,0,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" Height="70" Width="120" FontSize="15"/>
+    </RelativePanel>
+</Page>
+```  
+# Absolutely layout
+* This is the default layout. Here are call grib, align by row and colume.  
+  
+# Volume control
+* Reference: https://gist.github.com/sverrirs/d099b34b7f72bb4fb386  
+
+# Backlight control
+* Reference: https://github.com/JeroenvO/screen-brightness/blob/master/BrightnessConsoleJvO/Class1.cs  
+
+# Brightness control
+* Changing graam to control brightness.  
+
 # Reduce cpu usage rate 
 * Using ```Application.Run();``` is batter than ```while (Console.ReadLine() != "0")```  
 
@@ -108,16 +139,18 @@ There are two type message, one is SendMessage(......), the other is PostMessage
 The SendMessage function calls the window procedure for the specified window and does not return until the window procedure has processed the message
 PostMessage is that post a message to a thread's message queue and return immediately  
 
-An accessibility application can use SendMessage to send WM_APPCOMMAND messages to the shell to launch applications.
+* Disadvantage: Need a handle, but need a lot of CPU utilization
+
+* An accessibility application can use SendMessage to send WM_APPCOMMAND messages to the shell to launch applications.
 ```C#
         private const int WM_APPCOMMAND = 0x319;
 ```
-application command
+* application command
 ```C#
         private const int APPCOMMAND_VOLUME_UP = 0xA0000;
         private const int APPCOMMAND_VOLUME_DOWN = 0x90000;
 ```
-volume up example
+* volume up example
 ```C#
         SendMessageW(handle, WM_APPCOMMAND, IntPtr.Zero, (IntPtr)APPCOMMAND_VOLUME_UP);
 ```

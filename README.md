@@ -1,6 +1,6 @@
 # Relative layout
 * Defines an area within which you can position and align child objects in relation to each other or the parent panel.  
-* this example show button always in centrol  
+* This example show button always at central  
 ```xml
 <Page
     x:Class="HotTab_Win10.HotkeyControlPage"

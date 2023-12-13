@@ -7,6 +7,10 @@
     <Application.Resources>
         <FontFamily x:Key="CustomIconFont">Assets/icofont.ttf#icofont
         </FontFamily>
+
+        
+
+
     </Application.Resources>
 
 

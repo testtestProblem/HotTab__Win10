@@ -21,8 +21,8 @@
         <TextBox x:Name="ans_textBox" HorizontalAlignment="Left" Margin="1235,81,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="238" Height="100" Visibility="Collapsed"/>
         <TextBox x:Name="textBox" HorizontalAlignment="Left" Margin="1004,263,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Visibility="Collapsed"/>
 
-        <Button x:Name="deviceControl_btn" Content="Device control" Margin="140,110,0,0" VerticalAlignment="Top" Height="60" Width="120" Click="deviceControl_btn_Click"/>
-        <Button x:Name="button1" Content="Hotkey control" Margin="26,71,0,0" VerticalAlignment="Top" Height="50" Width="110" Visibility="Collapsed"/>
+        <Button x:Name="deviceControl_btn" Content="Device control" Margin="140,110,0,0" VerticalAlignment="Top" Height="60" Width="60" Click="deviceControl_btn_Click"/>
+        <Button x:Name="hotkeyControl_btn" Content="Hotkey control" Margin="26,71,0,0" VerticalAlignment="Top" Height="60" Width="60" Visibility="Collapsed"/>
         <Button x:Name="information_btn" Content="Information" Margin="140,230,0,0" VerticalAlignment="Top" Height="60" Width="120" Click="information_btn_Click"/>
     </Grid>
 </Page>

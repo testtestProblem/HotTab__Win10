@@ -65,7 +65,7 @@ namespace CollectDataAP
         {
             Brightness.InitializeClass();
 
-            ModeOpen(2);    //choose hotkey mode 2
+            //ModeOpen(2);    //choose hotkey mode 2
 
             //HotKey.handle = Process.GetCurrentProcess().Handle;
             //for sove package can not find handle problem
@@ -160,6 +160,33 @@ namespace CollectDataAP
                     UnhookWindowsHookEx(_hookID);                 //Release our hook
                     Environment.Exit(0);                          //Exit our program
                 }*/
+
+                if ( vkCode == 58)
+                {
+                    Console.WriteLine("F2 Key Short Press");
+                    //SendMessageW(handle, WM_APPCOMMAND, IntPtr.Zero, (IntPtr)APPCOMMAND_VOLUME_DOWN);
+                    //System.Diagnostics.Process.Start("mspaint");
+
+                    System.Diagnostics.Process.Start("calc");
+                }
+
+                if (theKey.Contains("F13"))
+                {
+                    Console.WriteLine("F2 Key Short Press");
+                    //SendMessageW(handle, WM_APPCOMMAND, IntPtr.Zero, (IntPtr)APPCOMMAND_VOLUME_DOWN);
+                    //System.Diagnostics.Process.Start("mspaint");
+
+                    System.Diagnostics.Process.Start("mspaint");
+                }
+                if (theKey.Contains("F14"))
+                {
+                    Console.WriteLine("F2 Key Long Presss");
+                    System.Diagnostics.Process.Start("cmd");
+                }
+
+
+
+
             }
             else if (nCode >= 0 && wParam == (IntPtr)WM_KEYUP)    //KeyUP
             {
@@ -167,10 +194,10 @@ namespace CollectDataAP
                 string theKey = ((Keys)vkCode).ToString();        //Get Key name
                 Console.WriteLine("Key break " + theKey);
 
-                if (menuUp == true)
+                if (shiftUp == true)
                 {
                     if (theKey.Contains("D0") || theKey.Contains("D3") || theKey.Contains("D4") || theKey.Contains("D5") || theKey.Contains("D6")
-                        || theKey.Contains("D7") || theKey.Contains("D") || theKey.Contains("M") || theKey.Contains("RShiftKey") || theKey.Contains("RControlKey"))
+                        || theKey.Contains("D7") || theKey.Contains("D") || theKey.Contains("M") || theKey.Contains("LMenu") || theKey.Contains("LControlKey"))
                     {
 
                     }
@@ -181,7 +208,21 @@ namespace CollectDataAP
                         shiftUp = false;
                     }
                 }
-                //
+
+                if (theKey.Contains("F13"))
+                {
+                    Console.WriteLine("F2 Key Short Press");
+                    //SendMessageW(handle, WM_APPCOMMAND, IntPtr.Zero, (IntPtr)APPCOMMAND_VOLUME_DOWN);
+                    //System.Diagnostics.Process.Start("mspaint");
+
+                    System.Diagnostics.Process.Start("calc");
+                }
+                if (theKey.Contains("F14"))
+                {
+                    Console.WriteLine("F2 Key Long Presss");
+                    System.Diagnostics.Process.Start("cmd");
+                }
+
                 if (menuUp == true && controlUp == true && shiftUp == true)
                 {
                     if (theKey.Contains("D0"))
@@ -199,17 +240,20 @@ namespace CollectDataAP
                     else if (theKey.Contains("D4"))
                     {
                         Console.WriteLine("F1 Key Long Press");
-                        System.Diagnostics.Process.Start("calc");
+                        
+
+                        int vol = (int)AudioManager.GetMasterVolume();
+                        AudioManager.SetMasterVolume((vol - 2) >= 0 ? vol - 2 : 0);
                     }
-                    else if (theKey.Contains("D5"))
+                    else if (theKey.Contains("F13"))
                     {
                         Console.WriteLine("F2 Key Short Press");
                         //SendMessageW(handle, WM_APPCOMMAND, IntPtr.Zero, (IntPtr)APPCOMMAND_VOLUME_DOWN);
                         //System.Diagnostics.Process.Start("mspaint");
-                        int vol = (int)AudioManager.GetMasterVolume();
-                        AudioManager.SetMasterVolume((vol - 2) >= 0 ? vol - 2 : 0);
+
+                        System.Diagnostics.Process.Start("calc");
                     }
-                    else if (theKey.Contains("D6"))
+                    else if (theKey.Contains("F14"))
                     {
                         Console.WriteLine("F2 Key Long Presss");
                         System.Diagnostics.Process.Start("cmd");

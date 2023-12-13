@@ -67,6 +67,7 @@
     <Compile Include="GetInformation.cs" />
     <Compile Include="GlobalVar.cs" />
     <Compile Include="HotKey.cs" />
+    <Compile Include="HotkeyFunc.cs" />
     <Compile Include="HotTabDLL.cs" />
     <Compile Include="HotTabRegistry.cs" />
     <Compile Include="HotTabWMIInformation.cs" />

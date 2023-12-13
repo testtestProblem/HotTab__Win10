@@ -91,13 +91,13 @@
         <Button x:Name="f1Long_btn" Content="Calc" Margin="250,-300,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" Height="70" Width="120" FontSize="15"/>
         <Button x:Name="f2Long_btn" Content="cmd" Margin="250,-100,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" Height="70" Width="120" FontSize="15"/>
         <Button x:Name="f3Long_btn" Content="BL 100" Margin="250,100,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" Height="70" Width="120" FontSize="15"/>
-        
-        <Button x:Name="func1_btn" Content="a" Margin="-260,300,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" Height="70" Width="120" FontSize="15"/>
-        <Button x:Name="func2_btn" Content="b" Margin="-100,300,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" Height="70" Width="120" FontSize="15"/>
-        <Button x:Name="func3_btn" Content="c" Margin="200,300,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" Height="70" Width="120" FontSize="15"/>
-        <Button x:Name="func4_btn" Content="d" Margin="500,300,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" Height="70" Width="120" FontSize="15"/>
-        <Button x:Name="func5_btn" Content="e" Margin="-260,500,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" Height="70" Width="120" FontSize="15"/>
-        <Button x:Name="func6_btn" Content="f" Margin="-100,500,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" Height="70" Width="120" FontSize="15"/>
+
+        <Button x:Name="func1_btn" Content="Volume up" Margin="-260,300,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" Height="70" Width="120" FontSize="15"/>
+        <Button x:Name="func2_btn" Content="Volume down" Margin="-100,300,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" Height="70" Width="120" FontSize="15" Click="func2_btn_Click"/>
+        <Button x:Name="func3_btn" Content="BL 20" Margin="200,300,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" Height="70" Width="120" FontSize="15"/>
+        <Button x:Name="func4_btn" Content="BL 100" Margin="500,300,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" Height="70" Width="120" FontSize="15"/>
+        <Button x:Name="func5_btn" Content="Calc" Margin="-260,500,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" Height="70" Width="120" FontSize="15"/>
+        <Button x:Name="func6_btn" Content="cmd" Margin="-100,500,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" Height="70" Width="120" FontSize="15"/>
         <Button x:Name="func7_btn" Content="g" Margin="200,500,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" Height="70" Width="120" FontSize="15"/>
         <Button x:Name="funcCustomize_btn" Content="Customize" Margin="500,500,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" Height="70" Width="120" FontSize="15"/>
 

@@ -22,6 +22,32 @@ namespace HotTab_Win10
     /// </summary>
     public sealed partial class HotkeyControlPage : Page
     {
+        HotkeyList hotkeyList;
+        FunctionList functionList;
+
+        public enum HotkeyList : uint
+        {
+            f1Short = 0x1,
+            f2Short = 0x2,
+            f3Short = 0x4,
+
+            f1Long = 0x8,
+            f2Long = 0x10,
+            f3Long = 0x20
+        };
+
+        public enum FunctionList : uint
+        {
+            volumeUp = 0x1,
+            volumeDown = 0x2,
+
+            backlight20 = 0x4,
+            backlight100 = 0x8,
+
+            Calc = 0x10,
+            cmd = 0x20
+        };
+
         public HotkeyControlPage()
         {
             this.InitializeComponent();
@@ -33,6 +59,11 @@ namespace HotTab_Win10
         }
 
         private void f1Short_btn_Click(object sender, RoutedEventArgs e)
+        {
+            hotkeyList = HotkeyList.f1Short;
+        }
+
+        private void func2_btn_Click(object sender, RoutedEventArgs e)
         {
 
         }

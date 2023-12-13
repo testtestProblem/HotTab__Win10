@@ -31,5 +31,10 @@ namespace HotTab_Win10
         {
             this.Frame.Navigate(typeof(MainPage));
         }
+
+        private void f1Short_btn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

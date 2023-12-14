@@ -139,7 +139,8 @@ There are two type message, one is SendMessage(......), the other is PostMessage
 The SendMessage function calls the window procedure for the specified window and does not return until the window procedure has processed the message
 PostMessage is that post a message to a thread's message queue and return immediately  
 
-* Disadvantage: Need a handle, but need a lot of CPU utilization
+> [!WARNING]  
+> Need a handle for this, but handl need a lot of CPU utilization
 
 * An accessibility application can use SendMessage to send WM_APPCOMMAND messages to the shell to launch applications.
 ```C#

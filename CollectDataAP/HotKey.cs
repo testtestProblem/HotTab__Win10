@@ -181,7 +181,6 @@ namespace CollectDataAP
                         shiftUp = false;
                     }
                 }
-                //
                 if (menuUp == true && controlUp == true && shiftUp == true)
                 {
                     if (theKey.Contains("D0"))

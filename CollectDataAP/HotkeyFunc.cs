@@ -39,7 +39,7 @@ namespace CollectDataAP
 
         public void cmdWin10()
         {
-            System.Diagnostics.Process.Start("calc");
+            System.Diagnostics.Process.Start("cmd");
         }
         
         public void customizeApp(string path)

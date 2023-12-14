@@ -27,7 +27,7 @@
 * Reference: https://github.com/JeroenvO/screen-brightness/blob/master/BrightnessConsoleJvO/Class1.cs  
 
 # Brightness control
-* Changing graam to control brightness.  
+* Changing gamma to control brightness.  
 
 # Reduce cpu usage rate 
 * Using ```Application.Run();``` is batter than ```while (Console.ReadLine() != "0")```  

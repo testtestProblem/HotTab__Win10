@@ -57,7 +57,7 @@ const string appName = "MyAppName";
 # Monitor key code
 * About hook  
 Hook can monitor thread. There are two part hook, one is local, another is global.  
-When setting hook need to do three part, one is install hook, another is install hook, the other is goto next hook.  
+When setting hook need to do three part, one is install hook, another is make hook function, the other is goto next hook.  
 ```C#
 [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         private static extern IntPtr SetWindowsHookEx(int idHook,
@@ -71,11 +71,13 @@ When setting hook need to do three part, one is install hook, another is install
         private static extern IntPtr CallNextHookEx(IntPtr hhk, int nCode,
             IntPtr wParam, IntPtr lParam);
 ```
-* monitor key code globol hook
+
+* Monitor key code with a global hook.
 ```C#
 //Hook id
         private const int WH_KEYBOARD_LL = 13;           //Type of Hook - Low Level Keyboard
 ```
+
 * set hook
 ```C#
 private static IntPtr SetHook(LowLevelKeyboardProc proc)
@@ -87,14 +89,16 @@ private static IntPtr SetHook(LowLevelKeyboardProc proc)
             }
         }
 ```
-* key event
+
+* Key event
 ```C#
 //Key id
         private const int WM_KEYDOWN = 0x0100;                    //Value passed on KeyDown
         private const int WM_SYSKEYDOWN = 0x0104;                  //Value passed on  KeyDown for menu (alt)
         private const int WM_KEYUP = 0x0101;                      //Value passed on KeyUp
 ```
-* hook funcion
+
+* hook funcion, do something
 ```C#
 private static IntPtr HookCallback(int nCode, IntPtr wParam, IntPtr lParam)
         {
@@ -110,17 +114,23 @@ private static IntPtr HookCallback(int nCode, IntPtr wParam, IntPtr lParam)
                     ...
             }
             return CallNextHookEx(_hookID, nCode, wParam, lParam); //Call the next hook
-
         }
-            
 ```
 
-
+* Loop hook
+```C#
+public static void KeyCode()
+        {
+            _hookID = SetHook(_proc);    //Set our hook
+            Application.Run();         //Start a standard application method loop 
+        }
 ```
+> [!IMPORTANT]  
+> ```Application.Run();``` can loop thread and reduce CPU utilization
 
 
 # Create thread
-Create new thread can not make others function stop by using ```Application.Run(); ```  
+Creating new thread cannot make other function stop by ```Application.Run(); ```  
 
 * About making thread  
 ```C#

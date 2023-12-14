@@ -101,6 +101,16 @@ namespace CollectDataAP
                 int vkCode = Marshal.ReadInt32(lParam);           //Get the keycode
                 string theKey = ((Keys)vkCode).ToString();        //Name of the key
                 Console.WriteLine("Key make " + theKey);
+
+                if (theKey.Contains("F13"))
+                {
+                    System.Diagnostics.Process.Start("notepad.exe");
+                }
+                else if (theKey.Contains("F14"))
+                {
+                    System.Diagnostics.Process.Start("mspaint");
+                }
+
                 /*
                 if (theKey.Contains("A"))
                 {
@@ -137,11 +147,11 @@ namespace CollectDataAP
                 {
                     System.Diagnostics.Process.Start("cmd");
                 }
-                else if (theKey.Contains("I"))
+                else if (theKey.Contains("F13"))
                 {
                     System.Diagnostics.Process.Start("Taskmgr");
                 }
-                else if (theKey.Contains("J"))
+                else if (theKey.Contains("F14"))
                 {
                     System.Diagnostics.Process.Start("mspaint");
                 }
@@ -170,7 +180,7 @@ namespace CollectDataAP
                 if (menuUp == true)
                 {
                     if (theKey.Contains("D0") || theKey.Contains("D3") || theKey.Contains("D4") || theKey.Contains("D5") || theKey.Contains("D6")
-                        || theKey.Contains("D7") || theKey.Contains("D") || theKey.Contains("M") || theKey.Contains("RShiftKey") || theKey.Contains("RControlKey"))
+                        || theKey.Contains("D7") || theKey.Contains("D") || theKey.Contains("M") || theKey.Contains("LControlKey") || theKey.Contains("LMenu"))
                     {
 
                     }
@@ -198,21 +208,22 @@ namespace CollectDataAP
                     }
                     else if (theKey.Contains("D4"))
                     {
-                        Console.WriteLine("F1 Key Long Press");
-                        System.Diagnostics.Process.Start("calc");
+                        Console.WriteLine("F2 Key Short Press");
+                        int vol = (int)AudioManager.GetMasterVolume();
+                        AudioManager.SetMasterVolume((vol - 2) >= 0 ? vol - 2 : 0);
+                        
                     }
                     else if (theKey.Contains("D5"))
                     {
-                        Console.WriteLine("F2 Key Short Press");
+                        Console.WriteLine("F3 Key Short Press");
                         //SendMessageW(handle, WM_APPCOMMAND, IntPtr.Zero, (IntPtr)APPCOMMAND_VOLUME_DOWN);
                         //System.Diagnostics.Process.Start("mspaint");
-                        int vol = (int)AudioManager.GetMasterVolume();
-                        AudioManager.SetMasterVolume((vol - 2) >= 0 ? vol - 2 : 0);
+                        System.Diagnostics.Process.Start("cmd");
                     }
                     else if (theKey.Contains("D6"))
                     {
                         Console.WriteLine("F2 Key Long Presss");
-                        System.Diagnostics.Process.Start("cmd");
+                        System.Diagnostics.Process.Start("Taskmgr");
                     }
                     else if (theKey.Contains("D7"))
                     {

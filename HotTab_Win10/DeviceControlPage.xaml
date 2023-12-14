@@ -152,7 +152,7 @@
             </Image.Source>
         </Image>
 
-        <Image x:Name="image_gobi3G" Width="70" Height="70" Margin="-130,-300,0,0"  RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True"  AllowDrop="True" Canvas.ZIndex="-1">
+        <Image x:Name="image_gobi3G" Width="70" Height="70" Margin="-130,-300,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True"  AllowDrop="True" Canvas.ZIndex="-1">
             <Image.Source>
                 <BitmapImage DecodePixelWidth="200" UriSource="Assets/device/_3G.png" />
             </Image.Source>

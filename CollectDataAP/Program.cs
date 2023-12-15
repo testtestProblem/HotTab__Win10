@@ -57,6 +57,7 @@ namespace CollectDataAP
 
             connect2UWP.InitializeAppServiceConnection();
 
+            Tommy.Tommy_Start();
 
             Console.WriteLine("Choose the number you want:\n" +
                 "[1] Get device state\n" +

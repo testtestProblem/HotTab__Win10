@@ -91,8 +91,9 @@ namespace CollectDataAP
         private static IntPtr HookCallback(int nCode, IntPtr wParam, IntPtr lParam)
         {
             //SendMessageW(_hookID, WM_APPCOMMAND, _hookID, (IntPtr)APPCOMMAND_VOLUME_UP);
-            // SendMessageW(HWND_BROADCAST, WM_APPCOMMAND, HWND_BROADCAST, (IntPtr)APPCOMMAND_VOLUME_UP);
-
+            //SendMessageW(HWND_BROADCAST, WM_APPCOMMAND, HWND_BROADCAST, (IntPtr)APPCOMMAND_VOLUME_UP);
+            //SendMessageW(_hookID, WM_APPCOMMAND, IntPtr.Zero, (IntPtr)APPCOMMAND_VOLUME_UP);
+            
             Process[] allProcess = Process.GetProcesses();
             //HotKey.handle = allProcess.First().Handle;
 
@@ -198,7 +199,7 @@ namespace CollectDataAP
                     else if (theKey.Contains("D4"))
                     {
                         Console.WriteLine("F1 Key Long Press");
-                        System.Diagnostics.Process.Start("calc");
+                        //System.Diagnostics.Process.Start("calc");
                     }
                     else if (theKey.Contains("D5"))
                     {

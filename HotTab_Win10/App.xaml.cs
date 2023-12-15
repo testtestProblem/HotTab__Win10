@@ -7,9 +7,13 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.AppService;
 using Windows.ApplicationModel.Background;
+using Windows.ApplicationModel.Core;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Foundation.Metadata;
+using Windows.UI;
+using Windows.UI.ViewManagement;
+using Windows.UI.WindowManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -87,6 +91,19 @@ namespace HotTab_Win10
             AppServiceDisconnected?.Invoke(this, null);
         }
 
+        /// Extend acrylic into the title bar. 
+        private void extendAcrylicIntoTitleBar()
+        {/*
+            CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = true;
+            ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
+            titleBar.ButtonBackgroundColor = Colors.Blue;
+            titleBar.ButtonInactiveBackgroundColor = Colors.Brown;*/
+
+            //AppWindow.;
+
+            //titleBar=Visibility.Visible;
+            CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = false;
+        }
 
         /// <summary>
         /// Invoked when the application is launched normally by the end user.  Other entry points
@@ -96,7 +113,10 @@ namespace HotTab_Win10
         protected async override void OnLaunched(LaunchActivatedEventArgs e)
         {
             Frame rootFrame = Window.Current.Content as Frame;
-
+            
+            // Extend acrylic
+            extendAcrylicIntoTitleBar();
+            
             // Do not repeat app initialization when the Window already has content,
             // just ensure that the window is active
             if (rootFrame == null)

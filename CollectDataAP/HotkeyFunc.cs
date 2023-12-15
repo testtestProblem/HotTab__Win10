@@ -10,39 +10,83 @@ namespace CollectDataAP
 {
     class HotkeyFunc
     {
-        public void volumeUp()
+        public delegate void HotkeyFuncList();
+        //public delegate void hotkeyFuncList2(string a);
+
+        //public HotkeyFuncList[] hotkeyFuncLists = new HotkeyFuncList[6];
+        //static public HotkeyFuncList[] hotkeyFuncLists = new HotkeyFuncList[]
+        //{
+        //    new hotkeyFuncLists=volumeUp();
+        //}
+
+        //TODO: Using delegate
+        public void funcList(string s)
+        {
+            switch (s)
+            {
+                case "volumeUp":
+                    volumeUp();
+                    break;
+
+                case "volumeDown":
+                    volumeDown();
+                    break;
+
+                case "backlight20":
+                    backlight20();
+                    break;
+
+                case "backlight100":
+                    backlight100();
+                    break;
+
+                case "calculatorWin10":
+                    calculatorWin10();
+                    break;
+
+                case "cmdWin10":
+                    cmdWin10();
+                    break;
+
+                default:
+                    customizeApp(s);
+                    break;
+            }
+        }
+
+        private void volumeUp()
         {
             int vol = (int)AudioManager.GetMasterVolume();
             AudioManager.SetMasterVolume((vol + 2) <= 100 ? vol + 2 : 100);
         }
 
-        public void volumeDown()
+        private void volumeDown()
         {
             int vol = (int)AudioManager.GetMasterVolume();
             AudioManager.SetMasterVolume((vol - 2) >= 0 ? vol - 2 : 0);
         }
 
-        public void backlight20()
+        private void backlight20()
         {
             BacklightControl.SetBrightness(20);
         }
 
-        public void backlight100()
+        private void backlight100()
         {
             BacklightControl.SetBrightness(100);
         }
 
-        public void calculatorWin10()
+        private void calculatorWin10()
         {
             System.Diagnostics.Process.Start("calc");
         }
 
-        public void cmdWin10()
+        private void cmdWin10()
         {
             System.Diagnostics.Process.Start("cmd");
         }
-        
-        public void customizeApp(string path)
+
+        private void customizeApp(string path)
         {
             Process.Start(path);
         }

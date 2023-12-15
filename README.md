@@ -1,3 +1,7 @@
+# delegate
+* delegate can't be overloaded  
+
+
 # Relative layout
 * Defines an area within which you can position and align child objects in relation to each other or the parent panel.  
 * This example show button always at central  

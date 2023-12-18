@@ -1,4 +1,17 @@
-# 
+# Brife express class
+```C#
+namespace abcd{     //using difference name space to avoid naming confict
+    class test{
+        public test(){    //constructor
+        }
+        public string test123(){get;set;}    //properties
+        private int test123123;              //field
+        public int GetTest(){                //method
+            return 1;
+        }
+    }
+}
+```
 
 
 # Array of Delegates

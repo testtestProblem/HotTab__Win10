@@ -57,12 +57,12 @@ namespace HotTab_Win10
             //tbResult.Text = "";
             foreach (string key in response.Message.Keys)
             {
-                if (key == "f1Short_btn") f1Short_btn.Content = response.Message[key];
-                else if (key == "f2Short_btn") f2Short_btn.Content = response.Message[key];
-                else if (key == "f3Short_btn") f3Short_btn.Content = response.Message[key];
-                else if (key == "f1Long_btn") f1Long_btn.Content = response.Message[key];
-                else if (key == "f2Short_btn") f2Short_btn.Content = response.Message[key];
-                else if (key == "f3Short_btn") f3Short_btn.Content = response.Message[key];
+                if (key == "f1Short_btn") f1Short_btn.Content = "Volume up";
+                else if (key == "f2Short_btn") f2Short_btn.Content = "Volume down";
+                else if (key == "f3Short_btn") f3Short_btn.Content = "BL 20";
+                else if (key == "f1Long_btn") f1Long_btn.Content = "Calc";
+                else if (key == "f2Short_btn") f2Short_btn.Content = "cmd";
+                else if (key == "f3Short_btn") f3Short_btn.Content = "BL 100";
             }
         }
 

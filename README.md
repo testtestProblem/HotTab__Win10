@@ -1,3 +1,78 @@
+# Brife express class
+```C#
+namespace abcd{     //using difference name space to avoid naming confict
+    class test{
+        public test(){    //constructor
+        }
+        public string test123(){get;set;}    //properties
+        private int test123123;              //field
+        public int GetTest(){                //method
+            return 1;
+        }
+    }
+}
+```
+
+
+# Array of Delegates
+* To create an array of delegates, declare a normal array as we have done so far. You can initialize each member using its index and calling the corresponding method. This can be done as follows:   
+```C#
+using System;
+
+delegate double Measure(double R);
+
+public class Circle
+{
+    const double PI = 3.14159;
+
+    public double Diameter(double Radius)
+    {
+        return Radius * 2;
+    }
+
+    public double Circumference(double Radius)
+    {
+        return Diameter(Radius) * PI;
+    }
+
+    public double Area(double Radius)
+    {
+        return Radius * Radius * PI;
+    }
+}
+
+public static class Program
+{
+    static int Main()
+    {
+        double R = 12.55;
+        Circle circ = new Circle();
+        Measure[] Calc = new Measure[3];
+
+        Calc[0] = new Measure(circ.Diameter);
+        double D = Calc[0](R);
+        Calc[1] = new Measure(circ.Circumference);
+        double C = Calc[1](R);
+        Calc[2] = new Measure(circ.Area);
+        double A = Calc[2](R);
+
+        Console.WriteLine("Circle Characteristics");
+        Console.WriteLine("Diameter:      {0}", D);
+        Console.WriteLine("Circumference: {0}", C);
+        Console.WriteLine("Area:          {0}\n", A);
+
+        return 0;
+    }
+}
+```
+This would produce:  
+
+Circle Characteristics  
+Diameter:      25.1  
+Circumference: 78.8539  
+Area:          494.808  
+
+
 # Reduce cpu usage rate 
 * Using ```Application.Run();``` is batter than ```while (Console.ReadLine() != "0")```  
 

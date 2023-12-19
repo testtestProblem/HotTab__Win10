@@ -9,18 +9,87 @@ using VideoPlayerController;
 namespace CollectDataAP
 {
     class HotkeyFunc
-    {
+    {   /*
         public delegate void HotkeyFuncList();
-        //public delegate void hotkeyFuncList2(string a);
+        public delegate void HotkeyFuncCustomiz(string a);
 
-        //public HotkeyFuncList[] hotkeyFuncLists = new HotkeyFuncList[6];
+        static public HotkeyFuncList[] hotkeyFuncLists = new HotkeyFuncList[6];
+        public HotkeyFuncCustomiz hotkeyFuncCustomiz;
+
+        public HotkeyFunc()
+        {
+            hotkeyFuncLists[0] = volumeUp;
+            hotkeyFuncLists[1] = volumeDown;
+            hotkeyFuncLists[2] = backlight20;
+            hotkeyFuncLists[3] = backlight100;
+            hotkeyFuncLists[4] = calculatorWin10;
+            hotkeyFuncLists[5] = cmdWin10;
+        }
+        */
         //static public HotkeyFuncList[] hotkeyFuncLists = new HotkeyFuncList[]
         //{
         //    new hotkeyFuncLists=volumeUp();
         //}
 
+        public enum HotkeyList : uint
+        {
+            f1Short = 0x01,
+            f2Short = 0x02,
+            f3Short = 0x04,
+
+            f1Long = 0x08,
+            f2Long = 0x10,
+            f3Long = 0x20,
+
+            noValue = 0x1000
+        };
+
+        public enum FunctionList : uint
+        {
+            volumeUp = 0x01,
+            volumeDown = 0x02,
+
+            backlight20 = 0x04,
+            backlight100 = 0x08,
+
+            Calc = 0x10,
+            cmd = 0x20,
+
+            noValue = 0x1000
+        };
+
+        static public string[] funcName = {
+            "volumeUp", "volumeDown", "backlight20",
+            "backlight100", "calculatorWin10", "cmdWin10" };
+
+        private string[] funcNameDefault = {
+            "volumeUp", "volumeDown", "backlight20",
+            "backlight100", "calculatorWin10", "cmdWin10" };
+
+        static public void changeFuncName(HotkeyList key, FunctionList func)
+        {
+            Dictionary<uint, string> funcNameDefault2 = new Dictionary<uint, string>();
+            funcNameDefault2.Add(0x01, "volumeUp");
+            funcNameDefault2.Add(0x02, "volumeDown");
+            funcNameDefault2.Add(0x04, "backlight20");
+            funcNameDefault2.Add(0x08, "backlight100");
+            funcNameDefault2.Add(0x10, "calculatorWin10");
+            funcNameDefault2.Add(0x20, "cmdWin10");
+            funcNameDefault2.Add(0x1000, "");
+
+            Dictionary<uint, uint> hotkeyState = new Dictionary<uint, uint>();
+            hotkeyState.Add(0x01, 0);   //f1Short
+            hotkeyState.Add(0x02, 1);   //f2Short
+            hotkeyState.Add(0x04, 2);   //f3Short
+            hotkeyState.Add(0x08, 4);   //f1Long
+            hotkeyState.Add(0x10, 5);   //f2Long
+            hotkeyState.Add(0x20, 3);   //f3Long
+
+            funcName[hotkeyState[(uint)key]] = funcNameDefault2[(uint)func];
+        }
+
         //TODO: Using delegate
-        public void funcList(string s)
+        static public void func(string s)
         {
             switch (s)
             {
@@ -48,48 +117,50 @@ namespace CollectDataAP
                     cmdWin10();
                     break;
 
+                case "":
+                    break;
+
                 default:
                     customizeApp(s);
                     break;
             }
         }
 
-        private void volumeUp()
+        static private void volumeUp()
         {
             int vol = (int)AudioManager.GetMasterVolume();
             AudioManager.SetMasterVolume((vol + 2) <= 100 ? vol + 2 : 100);
         }
 
-        private void volumeDown()
+        static private void volumeDown()
         {
             int vol = (int)AudioManager.GetMasterVolume();
             AudioManager.SetMasterVolume((vol - 2) >= 0 ? vol - 2 : 0);
         }
 
-        private void backlight20()
+        static private void backlight20()
         {
             BacklightControl.SetBrightness(20);
         }
 
-        private void backlight100()
+        static private void backlight100()
         {
             BacklightControl.SetBrightness(100);
         }
 
-        private void calculatorWin10()
+        static private void calculatorWin10()
         {
             System.Diagnostics.Process.Start("calc");
         }
 
-        private void cmdWin10()
+        static private void cmdWin10()
         {
             System.Diagnostics.Process.Start("cmd");
         }
 
-        private void customizeApp(string path)
+        static private void customizeApp(string path)
         {
             Process.Start(path);
-        }
-
+        } 
     }
 }

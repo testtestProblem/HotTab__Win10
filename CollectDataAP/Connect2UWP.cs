@@ -7,6 +7,7 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.AppService;
 using Windows.Foundation.Collections;
 using Windows.UI.Popups;
+using static CollectDataAP.HotkeyFunc;
 
 namespace CollectDataAP
 {
@@ -109,7 +110,6 @@ namespace CollectDataAP
                             await dialog.ShowAsync();
                         }
                     }
-
                     // compose the response as ValueSet
                     ValueSet response = new ValueSet();
 
@@ -118,6 +118,16 @@ namespace CollectDataAP
 
                     // send the response back to the UWP
                     await args.Request.SendResponseAsync(response);
+                }
+                else if ((string)key == "HotKeyFunc")
+                {
+                    uint? func = args.Request.Message["HotKeyFunc"] as uint?;
+                    uint? hotKeyState = args.Request.Message["HotKeyState"] as uint?;
+
+                    if (func != null && hotKeyState != null)
+                    {
+                        HotkeyFunc.changeFuncName((HotkeyList)hotKeyState, (FunctionList)func); 
+                    }
                 }
                 else if((string)key == "KEY1")
                 {

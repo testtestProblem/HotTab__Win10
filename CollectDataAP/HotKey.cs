@@ -63,7 +63,7 @@ namespace CollectDataAP
         //start monitor key code
         public static void KeyCode()
         {
-            Brightness.InitializeClass();
+            //Brightness.InitializeClass();
 
             ModeOpen(2);    //choose hotkey mode 2
 
@@ -193,36 +193,34 @@ namespace CollectDataAP
                         Console.WriteLine("F1 Key Short Press");
                         //SendMessageW(handle, WM_APPCOMMAND, IntPtr.Zero, (IntPtr)APPCOMMAND_VOLUME_UP); 
                         //System.Diagnostics.Process.Start("Taskmgr");
-                        int vol = (int)AudioManager.GetMasterVolume();
-                        AudioManager.SetMasterVolume((vol + 2) <= 100 ? vol + 2 : 100);
+                        HotkeyFunc.func(HotkeyFunc.funcName[0]);
                     }
                     else if (theKey.Contains("D4"))
                     {
                         Console.WriteLine("F1 Key Long Press");
-                        //System.Diagnostics.Process.Start("calc");
+                        HotkeyFunc.func(HotkeyFunc.funcName[4]);
                     }
                     else if (theKey.Contains("D5"))
                     {
                         Console.WriteLine("F2 Key Short Press");
                         //SendMessageW(handle, WM_APPCOMMAND, IntPtr.Zero, (IntPtr)APPCOMMAND_VOLUME_DOWN);
                         //System.Diagnostics.Process.Start("mspaint");
-                        int vol = (int)AudioManager.GetMasterVolume();
-                        AudioManager.SetMasterVolume((vol - 2) >= 0 ? vol - 2 : 0);
+                        HotkeyFunc.func(HotkeyFunc.funcName[1]);
                     }
                     else if (theKey.Contains("D6"))
                     {
                         Console.WriteLine("F2 Key Long Presss");
-                        System.Diagnostics.Process.Start("cmd");
+                        HotkeyFunc.func(HotkeyFunc.funcName[5]);
                     }
                     else if (theKey.Contains("D7"))
                     {
                         Console.WriteLine("F3 Key Short Press");
-                        BacklightControl.SetBrightness(20);
+                        HotkeyFunc.func(HotkeyFunc.funcName[2]);
                     }
                     else if (theKey.Contains("D8"))
                     {
                         Console.WriteLine("F3 Key Long Presss");
-                        BacklightControl.SetBrightness(100);
+                        HotkeyFunc.func(HotkeyFunc.funcName[3]);
                     }
                     else if (theKey.Contains("D"))
                     {

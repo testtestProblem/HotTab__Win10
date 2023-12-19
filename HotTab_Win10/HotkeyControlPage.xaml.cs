@@ -37,7 +37,7 @@ namespace HotTab_Win10
             this.InitializeComponent();
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
 
@@ -46,6 +46,23 @@ namespace HotTab_Win10
                 App.AppServiceConnected += MainPage_AppServiceConnected;
                 App.AppServiceDisconnected += MainPage_AppServiceDisconnected;
                 //await FullTrustProcessLauncher.LaunchFullTrustProcessForCurrentAppAsync();
+            }
+
+            //send value to sideloade app
+            ValueSet request = new ValueSet();
+            request.Add("HotKeyFuncNow", (uint)2312);
+            AppServiceResponse response = await App.Connection.SendMessageAsync(request);   //send data and get response 
+
+            //display the response key/value pairs
+            //tbResult.Text = "";
+            foreach (string key in response.Message.Keys)
+            {
+                if (key == "f1Short_btn") f1Short_btn.Content = response.Message[key];
+                else if (key == "f2Short_btn") f2Short_btn.Content = response.Message[key];
+                else if (key == "f3Short_btn") f3Short_btn.Content = response.Message[key];
+                else if (key == "f1Long_btn") f1Long_btn.Content = response.Message[key];
+                else if (key == "f2Short_btn") f2Short_btn.Content = response.Message[key];
+                else if (key == "f3Short_btn") f3Short_btn.Content = response.Message[key];
             }
         }
 
@@ -95,6 +112,10 @@ namespace HotTab_Win10
                 //enable UI to access the connection
                 //btnRegKey.IsEnabled = true;
             });
+
+            
+
+
         }
 
 
@@ -131,8 +152,25 @@ namespace HotTab_Win10
             Calc = 0x10,
             cmd = 0x20,
 
+            defaultSetting = 0x80,
+
             noValue = 0x1000
         };
+
+        private async void send2Console(HotkeyList hotkeyList, FunctionList functionList)
+        {
+            //send value to sideloade app
+            ValueSet request = new ValueSet();
+            request.Add("HotKeyState", (uint)hotkeyList);
+            request.Add("HotKeyFunc", (uint)functionList);
+            AppServiceResponse response = await App.Connection.SendMessageAsync(request);   //send data and get response 
+        }
+
+        private void clearDataList()
+        {
+            functionList = FunctionList.noValue;
+            hotkeyList = HotkeyList.noValue;
+        }
 
         private void return_btn_Click(object sender, RoutedEventArgs e)
         {
@@ -145,21 +183,143 @@ namespace HotTab_Win10
             button = this.f1Short_btn;
         }
 
-        private async void func2_btn_Click(object sender, RoutedEventArgs e)
+        private void f2Short_btn_Click(object sender, RoutedEventArgs e)
+        {
+            hotkeyList = HotkeyList.f2Short;
+            button = this.f2Short_btn;
+        }
+
+        private void f3Short_btn_Click(object sender, RoutedEventArgs e)
+        {
+            hotkeyList = HotkeyList.f3Short;
+            button = this.f3Short_btn;
+        }
+
+        private void f1Long_btn_Click(object sender, RoutedEventArgs e)
+        {
+            hotkeyList = HotkeyList.f1Long;
+            button = this.f1Long_btn;
+        }
+
+        private void f2Long_btn_Click(object sender, RoutedEventArgs e)
+        {
+            hotkeyList = HotkeyList.f2Long;
+            button = this.f2Long_btn;
+        }
+
+        private void f3Long_btn_Click(object sender, RoutedEventArgs e)
+        {
+            hotkeyList = HotkeyList.f3Long;
+            button = this.f3Long_btn;
+        }
+
+        private async void default_btn_Click(object sender, RoutedEventArgs e)
+        {
+            f1Short_btn.Content = func1_btn.Content;
+            f2Short_btn.Content = func2_btn.Content;
+            f3Short_btn.Content = func3_btn.Content;
+            f1Long_btn.Content = func5_btn.Content;
+            f2Long_btn.Content = func6_btn.Content;
+            f3Long_btn.Content = func4_btn.Content;
+
+            ValueSet request = new ValueSet();
+            request.Add("HotKeyFuncDefault", (uint)123);
+            AppServiceResponse response = await App.Connection.SendMessageAsync(request);   //send data and get response 
+        }
+
+        private void func1_btn_Click(object sender, RoutedEventArgs e)
+        {
+            if (hotkeyList != HotkeyList.noValue)
+            {
+                button.Content = func1_btn.Content;
+                functionList = FunctionList.volumeUp;
+
+                send2Console(hotkeyList, functionList);
+
+                clearDataList();
+            }
+        }
+
+        private void func2_btn_Click(object sender, RoutedEventArgs e)
         {
             if (hotkeyList != HotkeyList.noValue)
             {
                 button.Content = func2_btn.Content;
                 functionList = FunctionList.volumeDown;
 
-                //send value to sideloade app
-                ValueSet request = new ValueSet();
-                request.Add("HotKeyState", (uint)hotkeyList);
-                request.Add("HotKeyFunc", (uint)functionList);
-                AppServiceResponse response = await App.Connection.SendMessageAsync(request);   //send data and get response 
+                send2Console(hotkeyList, functionList);
 
-                hotkeyList = HotkeyList.noValue;
+                clearDataList();
             }
         }
+
+        private void func3_btn_Click(object sender, RoutedEventArgs e)
+        {
+            if (hotkeyList != HotkeyList.noValue)
+            {
+                button.Content = func3_btn.Content;
+                functionList = FunctionList.backlight20;
+
+                send2Console(hotkeyList, functionList);
+
+                clearDataList();
+            }
+        }
+
+        private void func4_btn_Click(object sender, RoutedEventArgs e)
+        {
+            if (hotkeyList != HotkeyList.noValue)
+            {
+                button.Content = func4_btn.Content;
+                functionList = FunctionList.backlight100;
+
+                send2Console(hotkeyList, functionList);
+
+                clearDataList();
+            }
+        }
+
+        private void func5_btn_Click(object sender, RoutedEventArgs e)
+        {
+            if (hotkeyList != HotkeyList.noValue)
+            {
+                button.Content = func5_btn.Content;
+                functionList = FunctionList.Calc;
+
+                send2Console(hotkeyList, functionList);
+
+                clearDataList();
+            }
+        }
+
+        private void func6_btn_Click(object sender, RoutedEventArgs e)
+        {
+            if (hotkeyList != HotkeyList.noValue)
+            {
+                button.Content = func6_btn.Content;
+                functionList = FunctionList.cmd;
+
+                send2Console(hotkeyList, functionList);
+
+                clearDataList();
+            }
+        }
+
+        private void func7_btn_Click(object sender, RoutedEventArgs e)
+        {
+            if (hotkeyList != HotkeyList.noValue)
+            {
+                button.Content = func7_btn.Content;
+                functionList = FunctionList.noValue;
+
+                send2Console(hotkeyList, functionList);
+
+                clearDataList();
+            }
+        }
+
+        
+
+        
     }
 }

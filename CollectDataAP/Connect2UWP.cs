@@ -129,6 +129,35 @@ namespace CollectDataAP
                         HotkeyFunc.changeFuncName((HotkeyList)hotKeyState, (FunctionList)func); 
                     }
                 }
+                //TODO: using index??
+                else if ((string)key == "HotKeyFuncNow")
+                {
+                    uint? now = args.Request.Message["HotKeyFuncNow"] as uint?;
+
+                    if (now != null)
+                    {
+                        // compose the response as ValueSet
+                        ValueSet response = new ValueSet();
+                        response.Add("f1Short_btn", HotkeyFunc.funcName[0]);
+                        response.Add("f2Short_btn", HotkeyFunc.funcName[1]);
+                        response.Add("f3Short_btn", HotkeyFunc.funcName[2]);
+                        response.Add("f1Long_btn", HotkeyFunc.funcName[4]);
+                        response.Add("f2Long_btn", HotkeyFunc.funcName[5]);
+                        response.Add("f3Long_btn", HotkeyFunc.funcName[3]);
+
+                        // send the response back to the UWP
+                        await args.Request.SendResponseAsync(response);
+                    }
+                }
+                else if ((string)key == "HotKeyFuncDefault")
+                {
+                    uint? now = args.Request.Message["HotKeyFuncDefault"] as uint?;
+
+                    if (now != null)
+                    {
+                        HotkeyFunc.defaultHotketFunc();
+                    }
+                }
                 else if((string)key == "KEY1")
                 {
                     int? key1 = args.Request.Message["KEY1"] as int?;

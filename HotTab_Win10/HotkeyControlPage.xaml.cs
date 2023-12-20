@@ -64,6 +64,8 @@ namespace HotTab_Win10
                 else if (key == "f2Short_btn") f2Short_btn.Content = "cmd";
                 else if (key == "f3Short_btn") f3Short_btn.Content = "BL 100";
             }
+
+            disableAllFuncKey();
         }
 
         /// <summary>
@@ -112,9 +114,6 @@ namespace HotTab_Win10
                 //enable UI to access the connection
                 //btnRegKey.IsEnabled = true;
             });
-
-            
-
 
         }
 
@@ -177,38 +176,109 @@ namespace HotTab_Win10
             this.Frame.Navigate(typeof(MainPage));
         }
 
+        private void btnOrange(HotkeyList hotkeyList)
+        {
+            /*
+            if (hotkeyList == HotkeyList.noValue) {
+                f1Short_btn.Background = new SolidColorBrush(Windows.UI.Colors.Gray);
+            }
+            else if (hotkeyList == HotkeyList.f1Short) { f1Short_btn.Background = new SolidColorBrush(Windows.UI.Colors.LightGray); }
+            else if (hotkeyList == HotkeyList.f2Short) { f2Short_btn.Background = new SolidColorBrush(Windows.UI.Colors.Orange); }
+            else if (hotkeyList == HotkeyList.f3Short) { f3Short_btn.Background = new SolidColorBrush(Windows.UI.Colors.Orange); }
+            else if (hotkeyList == HotkeyList.f1Long) { f1Long_btn.Background = new SolidColorBrush(Windows.UI.Colors.Orange); }
+            else if (hotkeyList == HotkeyList.f2Long) { f2Long_btn.Background = new SolidColorBrush(Windows.UI.Colors.Orange); }
+            else if (hotkeyList == HotkeyList.f3Long) { f3Long_btn.Background = new SolidColorBrush(Windows.UI.Colors.Orange); }
+            */
+            
+            enableAllFuncKey();
+        }
+
+        private void disableAllFuncKey()
+        {
+            func1_btn.IsEnabled = false;
+            func2_btn.IsEnabled = false;
+            func3_btn.IsEnabled = false;
+            func4_btn.IsEnabled = false;
+            func5_btn.IsEnabled = false;
+            func6_btn.IsEnabled = false;
+            func7_btn.IsEnabled = false;
+            funcCustomize_btn.IsEnabled = false;
+
+            func1_btn.Opacity = 10;
+            func2_btn.Opacity = 10;
+            func3_btn.Opacity = 10;
+            func4_btn.Opacity = 10;
+            func5_btn.Opacity = 10;
+            func6_btn.Opacity = 10;
+            func7_btn.Opacity = 10;
+            funcCustomize_btn.Opacity = 20;
+        }
+
+        private void enableAllFuncKey()
+        {
+            func1_btn.IsEnabled = true;
+            func2_btn.IsEnabled = true;
+            func3_btn.IsEnabled = true;
+            func4_btn.IsEnabled = true;
+            func5_btn.IsEnabled = true;
+            func6_btn.IsEnabled = true;
+            func7_btn.IsEnabled = true;
+            funcCustomize_btn.IsEnabled = true;
+
+            func1_btn.Opacity = 100;
+            func2_btn.Opacity = 100;
+            func3_btn.Opacity = 100;
+            func4_btn.Opacity = 100;
+            func5_btn.Opacity = 100;
+            func6_btn.Opacity = 100;
+            func7_btn.Opacity = 100;
+            funcCustomize_btn.Opacity = 100;
+        }
+
         private void f1Short_btn_Click(object sender, RoutedEventArgs e)
         {
+            btnOrange(HotkeyList.f1Short);
+
             hotkeyList = HotkeyList.f1Short;
             button = this.f1Short_btn;
         }
 
         private void f2Short_btn_Click(object sender, RoutedEventArgs e)
         {
+            btnOrange(HotkeyList.f2Short);
+
             hotkeyList = HotkeyList.f2Short;
             button = this.f2Short_btn;
         }
 
         private void f3Short_btn_Click(object sender, RoutedEventArgs e)
         {
+            btnOrange(HotkeyList.f3Short);
+
             hotkeyList = HotkeyList.f3Short;
             button = this.f3Short_btn;
         }
 
         private void f1Long_btn_Click(object sender, RoutedEventArgs e)
         {
+            btnOrange(HotkeyList.f1Long);
+
             hotkeyList = HotkeyList.f1Long;
             button = this.f1Long_btn;
         }
 
         private void f2Long_btn_Click(object sender, RoutedEventArgs e)
         {
+            btnOrange(HotkeyList.f2Long);
+
             hotkeyList = HotkeyList.f2Long;
             button = this.f2Long_btn;
         }
 
         private void f3Long_btn_Click(object sender, RoutedEventArgs e)
         {
+            btnOrange(HotkeyList.f3Long);
+
             hotkeyList = HotkeyList.f3Long;
             button = this.f3Long_btn;
         }
@@ -222,9 +292,19 @@ namespace HotTab_Win10
             f2Long_btn.Content = func6_btn.Content;
             f3Long_btn.Content = func4_btn.Content;
 
+            hotkeyList = HotkeyList.noValue;
+
+            disableAllFuncKey();
+
             ValueSet request = new ValueSet();
             request.Add("HotKeyFuncDefault", (uint)123);
             AppServiceResponse response = await App.Connection.SendMessageAsync(request);   //send data and get response 
+        }
+
+        private void cancel_btn_Click(object sender, RoutedEventArgs e)
+        {
+            hotkeyList = HotkeyList.noValue;
+            disableAllFuncKey();
         }
 
         private void func1_btn_Click(object sender, RoutedEventArgs e)
@@ -238,6 +318,7 @@ namespace HotTab_Win10
 
                 clearDataList();
             }
+            disableAllFuncKey();
         }
 
         private void func2_btn_Click(object sender, RoutedEventArgs e)
@@ -251,6 +332,7 @@ namespace HotTab_Win10
 
                 clearDataList();
             }
+            disableAllFuncKey();
         }
 
         private void func3_btn_Click(object sender, RoutedEventArgs e)
@@ -264,6 +346,7 @@ namespace HotTab_Win10
 
                 clearDataList();
             }
+            disableAllFuncKey();
         }
 
         private void func4_btn_Click(object sender, RoutedEventArgs e)
@@ -277,6 +360,7 @@ namespace HotTab_Win10
 
                 clearDataList();
             }
+            disableAllFuncKey();
         }
 
         private void func5_btn_Click(object sender, RoutedEventArgs e)
@@ -290,6 +374,7 @@ namespace HotTab_Win10
 
                 clearDataList();
             }
+            disableAllFuncKey();
         }
 
         private void func6_btn_Click(object sender, RoutedEventArgs e)
@@ -303,6 +388,7 @@ namespace HotTab_Win10
 
                 clearDataList();
             }
+            disableAllFuncKey();
         }
 
         private void func7_btn_Click(object sender, RoutedEventArgs e)
@@ -316,9 +402,8 @@ namespace HotTab_Win10
 
                 clearDataList();
             }
+            disableAllFuncKey();
         }
-
-        
 
         
     }

@@ -39,7 +39,6 @@ namespace CollectDataAP
             }
         }
 
-
         /// <summary>
         /// Handles the event when the desktop process receives a request from the UWP app
         /// </summary>
@@ -56,7 +55,7 @@ namespace CollectDataAP
                     GetInformation getInformation = new GetInformation();
                     getInformation.InitializeWMIHandler();
 
-                    if (getInformation.InitGlobalVariable() == 0)   //have errpr
+                    if (getInformation.InitGlobalVariable() == 0)   //have error
                     {
                         // compose the response as ValueSet
                         ValueSet response = new ValueSet();
@@ -127,6 +126,16 @@ namespace CollectDataAP
                     if (func != null && hotKeyState != null)
                     {
                         HotkeyFunc.changeFuncName((HotkeyList)hotKeyState, (FunctionList)func); 
+                    }
+                }
+                else if ((string)key == "HotKeyFuncCustomiz")
+                {
+                    string func = args.Request.Message["HotKeyFuncCustomiz"] as string;
+                    uint? hotKeyState = args.Request.Message["HotKeyState"] as uint?;
+                    
+                    if (func != null && hotKeyState != null)
+                    {
+                        HotkeyFunc.changeFuncName((HotkeyList)hotKeyState, (string)func);
                     }
                 }
                 //TODO: using index??

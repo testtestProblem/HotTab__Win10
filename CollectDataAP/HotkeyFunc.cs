@@ -97,6 +97,27 @@ namespace CollectDataAP
 
             funcName[hotkeyState[(uint)key]] = funcNameDefault2[(uint)func];
         }
+        static public void changeFuncName(HotkeyList key, string func)
+        {
+            Dictionary<uint, string> funcNameDefault2 = new Dictionary<uint, string>();
+            funcNameDefault2.Add(0x01, "volumeUp");
+            funcNameDefault2.Add(0x02, "volumeDown");
+            funcNameDefault2.Add(0x04, "backlight20");
+            funcNameDefault2.Add(0x08, "backlight100");
+            funcNameDefault2.Add(0x10, "calculatorWin10");
+            funcNameDefault2.Add(0x20, "cmdWin10");
+            funcNameDefault2.Add(0x1000, "");
+
+            Dictionary<uint, uint> hotkeyState = new Dictionary<uint, uint>();
+            hotkeyState.Add(0x01, 0);   //f1Short
+            hotkeyState.Add(0x02, 1);   //f2Short
+            hotkeyState.Add(0x04, 2);   //f3Short
+            hotkeyState.Add(0x08, 4);   //f1Long
+            hotkeyState.Add(0x10, 5);   //f2Long
+            hotkeyState.Add(0x20, 3);   //f3Long
+
+            funcName[hotkeyState[(uint)key]] = func;
+        }
 
         //TODO: Using delegate
         static public void func(string s)

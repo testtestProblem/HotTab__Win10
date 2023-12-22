@@ -405,6 +405,50 @@ namespace HotTab_Win10
             disableAllFuncKey();
         }
 
-        
+        private async void funcCustomize_btn_Click(object sender, RoutedEventArgs e)
+        {
+            // Clear previous returned file name, if it exists, between iterations of this scenario
+            //PickAPhotoOutputTextBlock.Text = "";
+
+            // Create a file picker
+            var openPicker = new Windows.Storage.Pickers.FileOpenPicker();
+            
+            // Retrieve the window handle (HWND) of the current WinUI 3 window.
+            //var window = WindowHelper.GetWindowForElement(this);
+            //var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(window);
+
+            // Initialize the file picker with the window handle (HWND).
+            //WinRT.Interop.InitializeWithWindow.Initialize(openPicker, hWnd);
+
+            // Set options for your file picker
+            //openPicker.ViewMode = PickerViewMode.Thumbnail;
+            //openPicker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
+            openPicker.FileTypeFilter.Add(".exe");
+
+            // Open the picker for the user to pick a file
+            var file = await openPicker.PickSingleFileAsync();
+
+            if (hotkeyList != HotkeyList.noValue)
+            {
+                if (file != null)
+                {
+                    button.Content = file.Name;
+
+                    ValueSet request = new ValueSet();
+                    request.Add("HotKeyFuncCustomiz", (string)file.Path);
+                    request.Add("HotKeyState", (uint)hotkeyList);
+                    AppServiceResponse response = await App.Connection.SendMessageAsync(request);   //send data and get response 
+                }
+                else
+                {
+                    funcCustomize_btn.Content = "Operation cancelled.";
+                }
+
+                functionList = FunctionList.noValue;
+                clearDataList();
+            }
+
+            disableAllFuncKey();
+        }
     }
 }

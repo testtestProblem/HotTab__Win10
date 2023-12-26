@@ -71,9 +71,9 @@ namespace CollectDataAP
             funcName[0] = funcNameDefault[0];
             funcName[1] = funcNameDefault[1];
             funcName[2] = funcNameDefault[2];
-            funcName[3] = funcNameDefault[4];
-            funcName[4] = funcNameDefault[5];
-            funcName[5] = funcNameDefault[3];
+            funcName[3] = funcNameDefault[3];
+            funcName[4] = funcNameDefault[4];
+            funcName[5] = funcNameDefault[5];
         }
 
         static public void changeFuncName(HotkeyList key, FunctionList func)

@@ -57,12 +57,12 @@ namespace HotTab_Win10
             //tbResult.Text = "";
             foreach (string key in response.Message.Keys)
             {
-                if (key == "f1Short_btn") f1Short_btn.Content = "Volume up";
-                else if (key == "f2Short_btn") f2Short_btn.Content = "Volume down";
-                else if (key == "f3Short_btn") f3Short_btn.Content = "BL 20";
-                else if (key == "f1Long_btn") f1Long_btn.Content = "Calc";
-                else if (key == "f2Short_btn") f2Short_btn.Content = "cmd";
-                else if (key == "f3Short_btn") f3Short_btn.Content = "BL 100";
+                if (key == "f1Short_btn") f1Short_btn.Content = response.Message[key];
+                else if (key == "f2Short_btn") f2Short_btn.Content = response.Message[key];
+                else if (key == "f3Short_btn") f3Short_btn.Content = response.Message[key];
+                else if (key == "f1Long_btn") f1Long_btn.Content = response.Message[key];
+                else if (key == "f2Long_btn") f2Long_btn.Content = response.Message[key];
+                else if (key == "f3Long_btn") f3Long_btn.Content = response.Message[key];
             }
 
             disableAllFuncKey();
@@ -435,7 +435,7 @@ namespace HotTab_Win10
                     button.Content = file.Name;
 
                     ValueSet request = new ValueSet();
-                    request.Add("HotKeyFuncCustomiz", (string)file.Path);
+                    request.Add("HotKeyFuncCustomize", (string)file.Path);
                     request.Add("HotKeyState", (uint)hotkeyList);
                     AppServiceResponse response = await App.Connection.SendMessageAsync(request);   //send data and get response 
                 }

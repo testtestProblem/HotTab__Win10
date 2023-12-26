@@ -128,9 +128,9 @@ namespace CollectDataAP
                         HotkeyFunc.changeFuncName((HotkeyList)hotKeyState, (FunctionList)func); 
                     }
                 }
-                else if ((string)key == "HotKeyFuncCustomiz")
+                else if ((string)key == "HotKeyFuncCustomize")
                 {
-                    string func = args.Request.Message["HotKeyFuncCustomiz"] as string;
+                    string func = args.Request.Message["HotKeyFuncCustomize"] as string;
                     uint? hotKeyState = args.Request.Message["HotKeyState"] as uint?;
                     
                     if (func != null && hotKeyState != null)

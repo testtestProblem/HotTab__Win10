@@ -1,3 +1,6 @@
+# Startup
+refrence: https://learn.microsoft.com/en-us/uwp/api/windows.applicationmodel.startuptask?view=winrt-22621
+
 # Brife express class
 ```C#
 namespace abcd{     //using difference name space to avoid naming confict
@@ -12,7 +15,6 @@ namespace abcd{     //using difference name space to avoid naming confict
     }
 }
 ```
-
 
 # Array of Delegates
 * To create an array of delegates, declare a normal array as we have done so far. You can initialize each member using its index and calling the corresponding method. This can be done as follows:   

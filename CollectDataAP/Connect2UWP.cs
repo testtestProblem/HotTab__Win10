@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GlobalVar;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -125,7 +126,11 @@ namespace CollectDataAP
 
                     if (func != null && hotKeyState != null)
                     {
-                        HotkeyFunc.changeFuncName((HotkeyList)hotKeyState, (FunctionList)func); 
+                        HotkeyFunc.changeFuncName((HotkeyList)hotKeyState, (FunctionList)func);
+                        
+                        IniFile inifile = new IniFile();
+                        inifile.path = "C:\\HottabCfg.ini";
+                        inifile.IniWriteValue("FunctionKey", ((HotkeyList2)hotKeyState).ToString(), ((FunctionList)func).ToString());
                     }
                 }
                 else if ((string)key == "HotKeyFuncCustomize")
@@ -235,7 +240,9 @@ namespace CollectDataAP
             //In console, connection to the UWP lost, so we shut down the desktop process
             Console.WriteLine("UWP Disconnect! Please restart APP!");
             //Console.ReadLine();
-            Environment.Exit(0);
+
+            //Due to should always run in background
+            //Environment.Exit(0);
 
             //In app, connection to the UWP lost, so we shut down the desktop process
             //Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>

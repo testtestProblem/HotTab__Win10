@@ -55,7 +55,6 @@ namespace HotTab_Win10
             }
         }
 
-
         /// <summary>
         /// When the desktop process is connected, get ready to send/receive requests
         /// </summary>

@@ -7,7 +7,6 @@ using System.Diagnostics;
  
 namespace GlobalVar
 {
-
     public class GlobalVariable
     {
         #region Const Declare 
@@ -125,7 +124,6 @@ namespace GlobalVar
             //OEM
             OemSpecialVersion = IniReadUIntValue("OEM", "OemSpecialVersion");
 
-
             return true;
         }
 
@@ -143,8 +141,7 @@ namespace GlobalVar
             dest = src.Replace("0X", "");
             dest = dest.Replace("0x", "");
 
-            if (dest == "")
-                return 0;
+            if (dest == "") return 0;
 
             value = Convert.ToUInt16(dest);
 

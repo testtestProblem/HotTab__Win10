@@ -44,6 +44,19 @@ namespace CollectDataAP
             noValue = 0x1000
         };
 
+        public enum HotkeyList2 : uint
+        {
+            F1S = 0x01,
+            F2S = 0x02,
+            F3S = 0x04,
+
+            F1L = 0x08,
+            F2L = 0x10,
+            F3L = 0x20,
+
+            noValue = 0x1000
+        };
+
         public enum FunctionList : uint
         {
             volumeUp = 0x01,
@@ -97,6 +110,7 @@ namespace CollectDataAP
 
             funcName[hotkeyState[(uint)key]] = funcNameDefault2[(uint)func];
         }
+
         static public void changeFuncName(HotkeyList key, string func)
         {
             Dictionary<uint, string> funcNameDefault2 = new Dictionary<uint, string>();

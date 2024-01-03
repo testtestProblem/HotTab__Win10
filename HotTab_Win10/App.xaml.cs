@@ -65,6 +65,7 @@ namespace HotTab_Win10
         {
             base.OnBackgroundActivated(args);
 
+            //The "is" operator checks if the result of an expression is compatible with a given type.
             if (args.TaskInstance.TriggerDetails is AppServiceTriggerDetails details)
             {
                 // only accept connections from callers in the same package

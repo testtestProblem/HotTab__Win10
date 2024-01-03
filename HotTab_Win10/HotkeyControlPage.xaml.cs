@@ -114,10 +114,7 @@ namespace HotTab_Win10
                 //enable UI to access the connection
                 //btnRegKey.IsEnabled = true;
             });
-
         }
-
-
 
         private async void AppServiceConnection_RequestReceived(AppServiceConnection sender, AppServiceRequestReceivedEventArgs args)
         {

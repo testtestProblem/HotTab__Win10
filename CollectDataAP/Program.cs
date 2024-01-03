@@ -1,7 +1,10 @@
-﻿using System;
+﻿using GlobalVar;
+using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -21,21 +24,19 @@ namespace CollectDataAP
 
         public const string appName = "Hottab_win10_test";
         public static bool createdNew;
+        //should use grobleo ver
         public static Mutex mutex = new Mutex(true, appName, out createdNew);
 
         static void Main(string[] args)
         {
             //MutexForConsole();
             
-            
-
             //Mutex mutex = new Mutex(true, appName, out createdNew);
             
             //Mutex.OpenExisting
             if (!createdNew)
             {
-                //MessageBox.Show(appName + " is already running! Exiting the application.");
-                MessageBox.Show("Hottab" + " is already running! Please exiting the application.", "Hottab",MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Hottab" + " is already running! Please exiting the application.", "Hottab", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 //Console.ReadKey();
                 return;
             }
@@ -43,12 +44,27 @@ namespace CollectDataAP
             {
                 //MessageBox.Show(appName + "Start is running!");
             }
+            IniFile inifile = new IniFile();
+            string patch = System.Windows.Forms.Application.StartupPath;
+            //string patch = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            
+            inifile.path = "C:\\HottabCfg.ini";
+
+            if (!File.Exists(inifile.path)) return;
+
+            HotkeyFunc.funcName[0] = inifile.IniReadValue("FunctionKey", "F1S");
+            HotkeyFunc.funcName[4] = inifile.IniReadValue("FunctionKey", "F1L");
+            HotkeyFunc.funcName[1] = inifile.IniReadValue("FunctionKey", "F2S");
+            HotkeyFunc.funcName[5] = inifile.IniReadValue("FunctionKey", "F2L");
+            HotkeyFunc.funcName[2] = inifile.IniReadValue("FunctionKey", "F3S");
+            HotkeyFunc.funcName[3] = inifile.IniReadValue("FunctionKey", "F3L");
+            
+            SystemEvents.PowerModeChanged += new PowerModeChangedEventHandler(SystemEvents_PowerModeChanged);
 
             handle = Process.GetCurrentProcess().Handle;
 
             //add thread for hotkey
             new Thread(() => t_KeyCode()).Start();
-
 
             Connect2UWP connect2UWP = new Connect2UWP();
             DeviceState deviceState = new DeviceState();
@@ -149,6 +165,14 @@ namespace CollectDataAP
         private static void t_KeyCode()
         {
             HotKey.KeyCode();
+        }
+
+        static public void SystemEvents_PowerModeChanged(object sender, EventArgs e)
+        {
+            Trace.WriteLine("SimpleService.PowerModeChanged", "Power mode changed; time: " +
+                DateTime.Now.ToLongTimeString());
+
+            HotKey.ModeOpen(2);    //choose hotkey mode 2
         }
     }
 }

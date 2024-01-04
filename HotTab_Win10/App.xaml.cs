@@ -116,7 +116,7 @@ namespace HotTab_Win10
             Frame rootFrame = Window.Current.Content as Frame;
             
             // Extend acrylic
-            extendAcrylicIntoTitleBar();
+            //extendAcrylicIntoTitleBar();
             
             // Do not repeat app initialization when the Window already has content,
             // just ensure that the window is active

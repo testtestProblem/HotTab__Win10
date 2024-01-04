@@ -32,7 +32,7 @@ namespace CollectDataAP
             //MutexForConsole();
             
             //Mutex mutex = new Mutex(true, appName, out createdNew);
-            /*
+            
             //Mutex.OpenExisting
             if (!createdNew)
             {
@@ -43,8 +43,8 @@ namespace CollectDataAP
             else
             {
                 //MessageBox.Show(appName + "Start is running!");
-            }*/
-            /*
+            }
+            
             IniFile inifile = new IniFile();
             string patch = System.Windows.Forms.Application.StartupPath;
             //string patch = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
@@ -59,7 +59,7 @@ namespace CollectDataAP
             HotkeyFunc.funcName[5] = inifile.IniReadValue("FunctionKey", "F2L");
             HotkeyFunc.funcName[2] = inifile.IniReadValue("FunctionKey", "F3S");
             HotkeyFunc.funcName[3] = inifile.IniReadValue("FunctionKey", "F3L");
-            */
+            
             SystemEvents.PowerModeChanged += new PowerModeChangedEventHandler(SystemEvents_PowerModeChanged);
             
             handle = Process.GetCurrentProcess().Handle;

@@ -1,3 +1,9 @@
+# Unsafe code config
+* CS0227:只有在編譯時指定了 /unsafe，才會出現 unsafe 程式碼  
+* choose configuration >> Release; choose: Allow unsafe code  
+![image](https://github.com/testtestProblem/HotTab_Win10/assets/107662393/86ed2877-f3f8-4eda-af25-be58ec5d15a2)
+
+
 # Brightness control
 * By changing gamma rate to adjust Win10 brightness
 * Reference: https://www.codeproject.com/Articles/47355/Setting-Screen-Brightness-in-C  

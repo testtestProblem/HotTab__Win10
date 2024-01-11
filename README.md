@@ -1,3 +1,7 @@
+# Brightness control
+* By changing gamma rate to adjust Win10 brightness
+* Reference: https://www.codeproject.com/Articles/47355/Setting-Screen-Brightness-in-C  
+
 # Backlight control
 * Reference: https://github.com/JeroenvO/screen-brightness/blob/master/BrightnessConsoleJvO/Class1.cs  
 * Add System.Management in Reference  

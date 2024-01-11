@@ -1,3 +1,8 @@
+# Backlight control
+* Reference: https://github.com/JeroenvO/screen-brightness/blob/master/BrightnessConsoleJvO/Class1.cs  
+* Add system.management in Reference
+![image](https://github.com/testtestProblem/HotTab_Win10/assets/107662393/095fc4c0-fd4a-4396-8c70-73c02c2ed826)  
+
 # Startup
 refrence: https://learn.microsoft.com/en-us/uwp/api/windows.applicationmodel.startuptask?view=winrt-22621
 

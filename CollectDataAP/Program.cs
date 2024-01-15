@@ -38,7 +38,9 @@ namespace CollectDataAP
             {
                 MessageBox.Show("Hottab" + " is already running! Please exiting the application.", "Hottab", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 //Console.ReadKey();
-                return;
+                //return;
+
+                KillAllNotepadProcesses();
             }
             else
             {
@@ -174,6 +176,13 @@ namespace CollectDataAP
                 DateTime.Now.ToLongTimeString());
 
             HotKey.ModeOpen(2);    //choose hotkey mode 2
+        }
+
+        static void KillAllNotepadProcesses()
+        {
+            System.Diagnostics.Process[] procs = System.Diagnostics.Process.GetProcessesByName("CollectDataAP", "."); // use "." for this machine
+            foreach (var proc in procs)
+                if (proc.Id != Process.GetCurrentProcess().Id) proc.Kill();
         }
     }
 }

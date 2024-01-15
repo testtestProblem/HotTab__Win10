@@ -1,6 +1,6 @@
 # Kill process
 * Because while close UWP and open UWP can not re-connect console, the older console will become zombie. I don't know how to reconnect it, therefore should terminate older console.
-* The example show terminate older console
+* The example show how to terminate older console
 ```C#
 static void KillAllNotepadProcesses()
         {

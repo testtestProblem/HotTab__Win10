@@ -1,3 +1,30 @@
+# Kill process
+* Because while close UWP and open UWP can not re-connect console, the older console will become zombie. I don't know how to reconnect it, therefore should terminate older console.
+* The example show how to terminate older console
+```C#
+static void KillAllNotepadProcesses()
+        {
+            System.Diagnostics.Process[] procs = System.Diagnostics.Process.GetProcessesByName("CollectDataAP", "."); // use "." for this machine
+            foreach (var proc in procs)
+                if(proc.Id != Process.GetCurrentProcess().Id) proc.Kill();
+        }
+```
+
+# Unsafe code config
+* CS0227:只有在編譯時指定了 /unsafe，才會出現 unsafe 程式碼  
+* In console, choose configuration >> Release; choose: Allow unsafe code  
+![image](https://github.com/testtestProblem/HotTab_Win10/assets/107662393/86ed2877-f3f8-4eda-af25-be58ec5d15a2)
+
+
+# Brightness control
+* By changing gamma rate to adjust Win10 brightness
+* Reference: https://www.codeproject.com/Articles/47355/Setting-Screen-Brightness-in-C  
+
+# Backlight control
+* Reference: https://github.com/JeroenvO/screen-brightness/blob/master/BrightnessConsoleJvO/Class1.cs  
+* Add System.Management in Reference  
+![image](https://github.com/testtestProblem/HotTab_Win10/assets/107662393/095fc4c0-fd4a-4396-8c70-73c02c2ed826)  
+
 # Startup
 refrence: https://learn.microsoft.com/en-us/uwp/api/windows.applicationmodel.startuptask?view=winrt-22621
 
@@ -160,12 +187,10 @@ private static IntPtr HookCallback(int nCode, IntPtr wParam, IntPtr lParam)
         }
             
 ```
+> [!CAUTION]
+> Do not use administrator to install or start app, it will get unexpectedly problem 
 
-
-```
-
-
-# Create thread
+# Create thread  
 Create new thread can not make others function stop by using ```Application.Run(); ```  
 
 * About making thread  

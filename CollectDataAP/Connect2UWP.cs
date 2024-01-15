@@ -130,7 +130,7 @@ namespace CollectDataAP
                         
                         IniFile inifile = new IniFile();
                         inifile.path = "C:\\HottabCfg.ini";
-                        inifile.IniWriteValue("FunctionKey", ((HotkeyList2)hotKeyState).ToString(), ((FunctionList)func).ToString());
+                        inifile.IniWriteValue("SETTING", ((HotkeyList2)hotKeyState).ToString(), ((FunctionList)func).ToString());
                     }
                 }
                 else if ((string)key == "HotKeyFuncCustomize")

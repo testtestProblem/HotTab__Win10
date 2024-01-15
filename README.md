@@ -175,12 +175,10 @@ private static IntPtr HookCallback(int nCode, IntPtr wParam, IntPtr lParam)
         }
             
 ```
+> [!CAUTION]
+> Do not use administrator to install or start app, it will get unexpectedly problem 
 
-
-```
-
-
-# Create thread
+# Create thread  
 Create new thread can not make others function stop by using ```Application.Run(); ```  
 
 * About making thread  

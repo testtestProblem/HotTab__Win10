@@ -1,3 +1,14 @@
+# Kill process
+* Because while close UWP and open UWP can not re-connect console, the older console will make zombie. I don't know how to reconnect it, therefore should terminate older console.  
+```C#
+static void KillAllNotepadProcesses()
+        {
+            System.Diagnostics.Process[] procs = System.Diagnostics.Process.GetProcessesByName("CollectDataAP", "."); // use "." for this machine
+            foreach (var proc in procs)
+                if(proc.Id != Process.GetCurrentProcess().Id) proc.Kill();
+        }
+```
+
 # Unsafe code config
 * CS0227:只有在編譯時指定了 /unsafe，才會出現 unsafe 程式碼  
 * In console, choose configuration >> Release; choose: Allow unsafe code  

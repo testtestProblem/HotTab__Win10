@@ -1,3 +1,5 @@
+
+
 # Kill process
 * Because while close UWP and open UWP can not re-connect console, the older console will become zombie. I don't know how to reconnect it, therefore should terminate older console.
 * The example show how to terminate older console
@@ -107,12 +109,14 @@ Area:          494.808
 
 # Restrict one instance
 * UWP have restricted one process in default  
+> [!IMPORTANT]  
+> Relative variable should be static, public, and domain in groble
 * Console must use ```Mutex``` to restricted one process  
 ```C#
+//should be groble verable
 const string appName = "MyAppName";
-            bool createdNew;
-
-            Mutex mutex = new Mutex(true, appName, out createdNew);
+bool createdNew;
+Mutex mutex = new Mutex(true, appName, out createdNew);
 
             if (!createdNew)
             {

@@ -37,6 +37,21 @@ namespace HotTab_Win10
             this.InitializeComponent();
         }
 
+        private string string2UIstring(string data)
+        {
+            if (data == "volumeUp") return "Volume up";
+            else if (data == "volumeDown") return "Volume down";
+            else if (data == "backlight20") return "BL 20";
+            else if (data == "backlight100") return "BL 100";
+            else if (data == "calculatorWin10" || data == "Calc") return "Calc";
+            else if (data == "cmdWin10" || data == "cmd") return "cmd";
+            else if (data == "" || data == "noValue") return "Null";
+            else {
+                string[] dataS = data.Split('\\');
+                return dataS.Last();
+            } 
+        }
+
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
@@ -57,12 +72,12 @@ namespace HotTab_Win10
             //tbResult.Text = "";
             foreach (string key in response.Message.Keys)
             {
-                if (key == "f1Short_btn") f1Short_btn.Content = response.Message[key];
-                else if (key == "f2Short_btn") f2Short_btn.Content = response.Message[key];
-                else if (key == "f3Short_btn") f3Short_btn.Content = response.Message[key];
-                else if (key == "f1Long_btn") f1Long_btn.Content = response.Message[key];
-                else if (key == "f2Long_btn") f2Long_btn.Content = response.Message[key];
-                else if (key == "f3Long_btn") f3Long_btn.Content = response.Message[key];
+                if (key == "f1Short_btn") f1Short_btn.Content = string2UIstring((string)response.Message[key]);
+                else if (key == "f2Short_btn") f2Short_btn.Content = string2UIstring((string)response.Message[key]);
+                else if (key == "f3Short_btn") f3Short_btn.Content = string2UIstring((string)response.Message[key]);
+                else if (key == "f1Long_btn") f1Long_btn.Content = string2UIstring((string)response.Message[key]);
+                else if (key == "f2Long_btn") f2Long_btn.Content = string2UIstring((string)response.Message[key]);
+                else if (key == "f3Long_btn") f3Long_btn.Content = string2UIstring((string)response.Message[key]);
             }
 
             disableAllFuncKey();

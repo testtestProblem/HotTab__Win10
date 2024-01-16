@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.AppService;
 using Windows.Foundation;
@@ -30,6 +31,7 @@ namespace HotTab_Win10
     {
         static public string BasicInformation;
 
+
         public MainPage()
         {
             this.InitializeComponent();
@@ -38,7 +40,7 @@ namespace HotTab_Win10
             //ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
 
@@ -52,6 +54,38 @@ namespace HotTab_Win10
 
                 //for sideload app
                 //await FullTrustProcessLauncher.LaunchFullTrustProcessForCurrentAppAsync();
+
+                //for sideload app
+                if (App.fulltrustIsRun == 0)
+                {
+                    App.fulltrustIsRun = 1;
+                    MessageDialog dlg;
+                    //Mutex.OpenExisting
+                    //if (!App.createdNew)
+                    //{
+                        //MessageBox.Show(appName + " is already running! Exiting the application.");
+                    //    dlg = new MessageDialog("appName" + " is already running!Exiting the application.");
+                        //Console.ReadKey();
+                    //    return;
+                    //}
+                    //else
+                    //{
+                        //MessageBox.Show(appName + "Start is running!");
+                    //    dlg = new MessageDialog("appName" + "Start is running!");
+                        await FullTrustProcessLauncher.LaunchFullTrustProcessForCurrentAppAsync();
+                    //}
+                    //await FullTrustProcessLauncher.LaunchFullTrustProcessForCurrentAppAsync();
+                    /*
+                    UICommand yesCommand = new UICommand("Yes", async (r) =>
+                    {
+                    });
+                    dlg.Commands.Add(yesCommand);
+                    UICommand noCommand = new UICommand("No", (r) => { });
+                    dlg.Commands.Add(noCommand);
+                    await dlg.ShowAsync();*/
+
+                }
+
             }
         }
 

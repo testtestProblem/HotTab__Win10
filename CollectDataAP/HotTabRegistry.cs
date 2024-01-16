@@ -10,11 +10,11 @@ namespace Win8Hottab_unknow
 {
     public class HotTabRegistry
     {
-        [DllImport("kernel32")]
-        private static extern long WritePrivateProfileString(string section,
+        [DllImport("kernel32", CharSet = CharSet.Unicode)]
+        public static extern long WritePrivateProfileString(string section,
           string key, string val, string filePath);
 
-        [DllImport("kernel32")]
+        [DllImport("kernel32", CharSet = CharSet.Unicode)]
         private static extern int GetPrivateProfileString(string section,
           string key, string def, StringBuilder retVal,
           int size, string filePath);

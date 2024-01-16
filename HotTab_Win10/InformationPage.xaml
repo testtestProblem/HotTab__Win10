@@ -20,7 +20,7 @@
 
 
     <RelativePanel>
-        
+
         <Button x:Name="return_btn" Content="&#xea5c;" FontFamily="{StaticResource ResourceKey=CustomIconFont}" Margin="0,0,0,0" VerticalAlignment="Top"  HorizontalAlignment="Left" Height="50" Width="50" Click="return_btn_Click" FontSize="25"/>
         <TextBlock x:Name="textBox" Margin="0,200,0,0"  RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" Text="" TextWrapping="Wrap" FontSize="23" VerticalAlignment="Top"/>
 
@@ -29,5 +29,5 @@
         <Button x:Name="disableStartup_btn" Content="Disable&#xD;&#xA;Startup" Margin="150,-250,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" Height="70" Width="70" Click="disableStartup_btn_Click" FontSize="15" HorizontalAlignment="Center"/>
 
     </RelativePanel >
-    
+
 </Page>

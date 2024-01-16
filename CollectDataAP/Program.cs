@@ -36,7 +36,7 @@ namespace CollectDataAP
             //Mutex.OpenExisting
             if (!createdNew)
             {
-                MessageBox.Show("Hottab" + " is already running! Please exiting the application.", "Hottab", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //MessageBox.Show("Hottab" + " is already running! Please exiting the application.", "Hottab", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 //Console.ReadKey();
                 //return;
 

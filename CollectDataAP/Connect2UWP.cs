@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Win8Hottab_unknow;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.AppService;
 using Windows.Foundation.Collections;
@@ -130,7 +131,11 @@ namespace CollectDataAP
                         
                         IniFile inifile = new IniFile();
                         inifile.path = "C:\\HottabCfg.ini";
-                        inifile.IniWriteValue("SETTING", ((HotkeyList2)hotKeyState).ToString(), ((FunctionList)func).ToString());
+                        //inifile.IniWriteValue("FunctionKey", ((HotkeyList2)hotKeyState).ToString(), ((FunctionList)func).ToString());
+                        //inifile.IniWriteValue("SETTING", ((HotkeyList2)hotKeyState).ToString(), ((FunctionList)func).ToString());
+                        HotTabRegistry.WritePrivateProfileString("FunctionKey", ((HotkeyList2)hotKeyState).ToString(), ((FunctionList)func).ToString(), inifile.path);
+
+                        Console.WriteLine("Hottey change function  "+ ((HotkeyList2)hotKeyState).ToString()+"  "+ ((FunctionList)func).ToString()); 
                     }
                 }
                 else if ((string)key == "HotKeyFuncCustomize")
@@ -141,6 +146,11 @@ namespace CollectDataAP
                     if (func != null && hotKeyState != null)
                     {
                         HotkeyFunc.changeFuncName((HotkeyList)hotKeyState, (string)func);
+
+                        IniFile inifile = new IniFile();
+                        inifile.path = "C:\\HottabCfg.ini";
+                        HotTabRegistry.WritePrivateProfileString("FunctionKey", ((HotkeyList2)hotKeyState).ToString(), (string)func, inifile.path);
+
                     }
                 }
                 //TODO: using index??
@@ -170,6 +180,15 @@ namespace CollectDataAP
                     if (now != null)
                     {
                         HotkeyFunc.defaultHotketFunc();
+
+                        IniFile inifile = new IniFile();
+                        inifile.path = "C:\\HottabCfg.ini";
+                        HotTabRegistry.WritePrivateProfileString("FunctionKey", (HotkeyList2.F1S).ToString(), (FunctionList.volumeUp).ToString(), inifile.path);
+                        HotTabRegistry.WritePrivateProfileString("FunctionKey", (HotkeyList2.F2S).ToString(), (FunctionList.volumeDown).ToString(), inifile.path);
+                        HotTabRegistry.WritePrivateProfileString("FunctionKey", (HotkeyList2.F3S).ToString(), (FunctionList.backlight20).ToString(), inifile.path);
+                        HotTabRegistry.WritePrivateProfileString("FunctionKey", (HotkeyList2.F1L).ToString(), (FunctionList.Calc).ToString(), inifile.path);
+                        HotTabRegistry.WritePrivateProfileString("FunctionKey", (HotkeyList2.F2L).ToString(), (FunctionList.cmd).ToString(), inifile.path);
+                        HotTabRegistry.WritePrivateProfileString("FunctionKey", (HotkeyList2.F3L).ToString(), (FunctionList.backlight100).ToString(), inifile.path);
                     }
                 }
                 else if((string)key == "KEY1")

@@ -106,6 +106,7 @@ Area:          494.808
 
 # Reduce cpu usage rate 
 * Using ```Application.Run();``` is batter than ```while (Console.ReadLine() != "0")```  
+* It's usually use in hook  
 
 # Restrict one instance
 * UWP have restricted one process in default  

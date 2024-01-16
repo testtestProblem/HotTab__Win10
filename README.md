@@ -1,4 +1,27 @@
+# Read write ini
+* The format of ini is often used in Windows  
+> [!IMPORTANT]  
+> If not get administrator, do not put file in C:\xxxxx.ini that need supervisor permission
+* Read write function
+```C#
+[DllImport("kernel32", CharSet = CharSet.Unicode)]
+        private static extern long WritePrivateProfileString(string section,
+          string key, string val, string filePath);
 
+[DllImport("kernel32", CharSet = CharSet.Unicode)]
+        private static extern int GetPrivateProfileString(string section,
+          string key, string def, StringBuilder retVal,
+          int size, string filePath);
+```
+* Data should continue in one section. Can not use new line to seperate it
+* Example format of ini
+```
+[section]
+key=value
+key2=value
+
+[section2]
+```
 
 # Kill process
 * Because while close UWP and open UWP can not re-connect console, the older console will become zombie. I don't know how to reconnect it, therefore should terminate older console.

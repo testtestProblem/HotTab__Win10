@@ -150,7 +150,6 @@ namespace CollectDataAP
                         IniFile inifile = new IniFile();
                         inifile.path = "C:\\HottabCfg.ini";
                         HotTabRegistry.WritePrivateProfileString("FunctionKey", ((HotkeyList2)hotKeyState).ToString(), (string)func, inifile.path);
-
                     }
                 }
                 //TODO: using index??

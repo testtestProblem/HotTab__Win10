@@ -154,14 +154,17 @@ namespace CollectDataAP
                     backlight100();
                     break;
 
+                case "Calc":
                 case "calculatorWin10":
                     calculatorWin10();
                     break;
 
+                case "cmd":
                 case "cmdWin10":
                     cmdWin10();
                     break;
 
+                case "noValue":
                 case "":
                     break;
 

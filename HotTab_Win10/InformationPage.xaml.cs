@@ -36,7 +36,7 @@ namespace HotTab_Win10
             //ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
         }
 
-        protected  override void OnNavigatedTo(NavigationEventArgs e)
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
 
@@ -53,6 +53,31 @@ namespace HotTab_Win10
             }
             textBox.Text = "";
             textBox.Text = MainPage.BasicInformation;
+
+            StartupTask startupTask = await StartupTask.GetAsync("MyStartupId"); // Pass the task ID you specified in the appxmanifest file
+            switch (startupTask.State)
+            {
+                case StartupTaskState.Disabled:
+                    // Task is disabled but can be enabled.
+                    StartupTaskState newState = await startupTask.RequestEnableAsync(); // ensure that you are on a UI thread when you call RequestEnableAsync()
+                   // textBox.Text = "Request to enable startup, result = " + newState;
+                    break;
+                case StartupTaskState.DisabledByUser:
+                    // Task is disabled and user must enable it manually.
+                    MessageDialog dialog = new MessageDialog(
+                        "You have disabled this app's ability to run " +
+                        "as soon as you sign in, but if you change your mind, " +
+                        "you can enable this in the Startup tab in Task Manager.",
+                        "TestStartup");
+                    await dialog.ShowAsync();
+                    break;
+                case StartupTaskState.DisabledByPolicy:
+                    TextBlock.Text = "Startup disabled by group policy, or not supported on this device";
+                    break;
+                case StartupTaskState.Enabled:
+                    //textBox.Text = "Startup is enabled.";
+                    break;
+            }
         }
 
         /// <summary>
@@ -126,6 +151,16 @@ namespace HotTab_Win10
         private void return_btn_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(MainPage));
+            /*
+            MainPage.startupHindCount++;
+            if (MainPage.startupHindCount==3) MainPage.startupHindCount=10;
+            else if (MainPage.startupHindCount == 7)
+            {
+                disableStartup_btn.Visibility = Visibility.Collapsed;
+                enableStartup_btn.Visibility = Visibility.Collapsed;
+                hindStartup_btn.Visibility = Visibility.Collapsed;
+            }*/
+
         }
 
         private async void enableStartup_btn_Click(object sender, RoutedEventArgs e)
@@ -183,6 +218,13 @@ namespace HotTab_Win10
                     textBox.Text = "Startup is disabled.";
                     break;
             }
+        }
+
+        private void hindStartup_btn_Click(object sender, RoutedEventArgs e)
+        {
+            disableStartup_btn.Visibility = Visibility.Collapsed;
+            enableStartup_btn.Visibility = Visibility.Collapsed;
+            hindStartup_btn.Visibility = Visibility.Collapsed;
         }
     }
 }

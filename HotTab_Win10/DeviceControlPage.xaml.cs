@@ -454,11 +454,15 @@ namespace HotTab_Win10
         private void btn_wifi_Click(object sender, RoutedEventArgs e)
         {
             HasBeen_Click((uint)Modules.Wifi, Modules.Wifi);
+
+           // if (MainPage.startupHindCount >= 2) MainPage.startupHindCount += 2;
         }
 
         private void btn_gobi3G_Click(object sender, RoutedEventArgs e)
         {
             HasBeen_Click((uint)Modules.Gobi3G, Modules.Gobi3G);
+            //if (MainPage.startupHindCount == 4) MainPage.startupHindCount = 6;
+            //else MainPage.startupHindCount = 10;
         }
 
         private void btn_GPS_Click(object sender, RoutedEventArgs e)

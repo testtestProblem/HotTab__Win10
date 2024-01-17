@@ -30,6 +30,7 @@ namespace HotTab_Win10
     public sealed partial class MainPage : Page
     {
         static public string BasicInformation;
+        //static public int startupHindCount=0;
 
 
         public MainPage()

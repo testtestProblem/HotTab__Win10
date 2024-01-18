@@ -189,13 +189,13 @@ namespace CollectDataAP
         static private void backlight20()
         {
             int b = BacklightControl.GetBrightness();
-            BacklightControl.SetBrightness((byte)((b - 6) >= 0 ? b - 6 : 0));
+            BacklightControl.SetBrightness((byte)((b - 1) >= 0 ? b - 1 : 0));
         }
 
         static private void backlight100()
         {
             int b = BacklightControl.GetBrightness();
-            BacklightControl.SetBrightness((byte)((b + 6) <= 127 ? b + 6 : 127));
+            BacklightControl.SetBrightness((byte)((b + 1) <= 15 ? b + 1 : 15));
         }
 
         static private void calculatorWin10()

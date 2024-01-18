@@ -8,27 +8,22 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" >
 
-
-    <Page.Resources>
+    <!--<Page.Resources>
         <StaticResource x:Key="ButtonBackground" ResourceKey= "SystemControlBackgroundTransparentRevealBorderBrush" />
         <StaticResource x:Key="ButtonBackgroundPointerOver" ResourceKey="SystemControlBackgroundTransparentRevealBorderBrush" />
         <StaticResource x:Key="ButtonBackgroundPressed" ResourceKey="SystemControlBackgroundTransparentRevealBorderBrush" />
         <ImageBrush x:Key="MyMyImageBrush" ImageSource="ms-appx:///assets/RFID.bmp" />
         <StaticResource x:Key="ButtonFousVisual"  ResourceKey="SystemControlBackgroundTransparentRevealBorderBrush"/>
-    </Page.Resources>
-
-
+    </Page.Resources>-->
 
     <RelativePanel>
-
-        <Button x:Name="return_btn" Content="&#xea5c;" FontFamily="{StaticResource ResourceKey=CustomIconFont}" Margin="0,0,0,0" VerticalAlignment="Top"  HorizontalAlignment="Left" Height="50" Width="50" Click="return_btn_Click" FontSize="25"/>
+        <Button x:Name="return_btn" Content="&#xea5c;" FontFamily="{StaticResource ResourceKey=CustomIconFont}" Margin="0,0,0,0" VerticalAlignment="Top"  HorizontalAlignment="Left" Height="75" Width="75" Click="return_btn_Click" FontSize="50"/>
         <TextBlock x:Name="textBox" Margin="0,0,0,0"  RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" Text="" TextWrapping="Wrap" FontSize="23" VerticalAlignment="Top"/>
 
         <TextBlock x:Name="TextBlock" Margin="250,-140,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" Text="" TextWrapping="Wrap" FontSize="23" VerticalAlignment="Top" HorizontalAlignment="Left" Visibility="Collapsed"/>
         <Button x:Name="enableStartup_btn" Content="Enable&#xD;&#xA;Startup" Margin="-150,-250,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" Height="70" Width="70" Click="enableStartup_btn_Click" FontSize="15" HorizontalAlignment="Center" Visibility="Collapsed"/>
         <Button x:Name="disableStartup_btn" Content="Disable&#xD;&#xA;Startup" Margin="150,-250,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" Height="70" Width="70" Click="disableStartup_btn_Click" FontSize="15" HorizontalAlignment="Center" Visibility="Collapsed"/>
         <Button x:Name="hindStartup_btn" Content="Hind startup UI" Margin="0,-400,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" Click="hindStartup_btn_Click" Visibility="Collapsed" />
-
     </RelativePanel >
 
 </Page>

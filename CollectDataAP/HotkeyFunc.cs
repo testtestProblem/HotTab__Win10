@@ -177,23 +177,25 @@ namespace CollectDataAP
         static private void volumeUp()
         {
             int vol = (int)AudioManager.GetMasterVolume();
-            AudioManager.SetMasterVolume((vol + 2) <= 100 ? vol + 2 : 100);
+            AudioManager.SetMasterVolume((vol + 5) <= 100 ? vol + 5 : 100);
         }
 
         static private void volumeDown()
         {
             int vol = (int)AudioManager.GetMasterVolume();
-            AudioManager.SetMasterVolume((vol - 2) >= 0 ? vol - 2 : 0);
+            AudioManager.SetMasterVolume((vol - 5) >= 0 ? vol - 5 : 0);
         }
 
         static private void backlight20()
         {
-            BacklightControl.SetBrightness(20);
+            int b = BacklightControl.GetBrightness();
+            BacklightControl.SetBrightness((byte)((b - 6) >= 0 ? b - 6 : 0));
         }
 
         static private void backlight100()
         {
-            BacklightControl.SetBrightness(100);
+            int b = BacklightControl.GetBrightness();
+            BacklightControl.SetBrightness((byte)((b + 6) <= 127 ? b + 6 : 127));
         }
 
         static private void calculatorWin10()

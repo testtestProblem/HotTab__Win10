@@ -41,8 +41,8 @@ namespace HotTab_Win10
         {
             if (data == "volumeUp") return "Volume up";
             else if (data == "volumeDown") return "Volume down";
-            else if (data == "backlight20") return "BL 20";
-            else if (data == "backlight100") return "BL 100";
+            else if (data == "backlight20") return "BL down";
+            else if (data == "backlight100") return "BL up";
             else if (data == "calculatorWin10" || data == "Calc") return "Calc";
             else if (data == "cmdWin10" || data == "cmd") return "cmd";
             else if (data == "" || data == "noValue") return "Null";

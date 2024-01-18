@@ -88,7 +88,7 @@
 
     <RelativePanel >
 
-        <Button x:Name="return_btn" Content="&#xea5c;" FontFamily="{StaticResource ResourceKey=CustomIconFont}" Margin="0,0,0,0" Height="50" Width="50" Click="return_btn_Click" FontSize="25"/>
+        <Button x:Name="return_btn" Content="&#xea5c;" FontFamily="{StaticResource ResourceKey=CustomIconFont}" Margin="0,0,0,0" Height="75" Width="75" Click="return_btn_Click" FontSize="50"/>
 
         <!--<Button x:Name="btn_wifi" Content="&#xec96;" FontFamily="{StaticResource ResourceKey=CustomIconFont}" Margin="55,43,0,0"  VerticalAlignment="Top" Click="btn_wifi_Click" Width="45" Height="35" >
         </Button>-->

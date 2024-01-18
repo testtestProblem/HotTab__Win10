@@ -22,8 +22,8 @@
         <TextBox x:Name="ans_textBox" HorizontalAlignment="Left" Margin="1235,81,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="238" Height="100" Visibility="Collapsed"/>
         <TextBox x:Name="textBox" HorizontalAlignment="Left" Margin="1004,263,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Visibility="Collapsed"/>
 
-        <Button x:Name="deviceControl_btn" Content="Device control" Margin="0,-200,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" Height="70" Width="120" Click="deviceControl_btn_Click" FontSize="15"/>
-        <Button x:Name="hotkeyControl_btn" Content="Hotkey control" Margin="0,0,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" Height="70" Width="120" Click="hotkeyControl_btn_Click" FontSize="15"/>
-        <Button x:Name="information_btn" Content="Information" Margin="0,200,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" Height="70" Width="120" Click="information_btn_Click" FontSize="15"/>
+        <Button x:Name="deviceControl_btn" Content="Device control" Margin="0,-370,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" Height="135" Width="240" Click="deviceControl_btn_Click" FontSize="20"/>
+        <Button x:Name="hotkeyControl_btn" Content="Hotkey control" Margin="0,0,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" Height="135" Width="240" Click="hotkeyControl_btn_Click" FontSize="20"/>
+        <Button x:Name="information_btn" Content="Information" Margin="0,370,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" Height="135" Width="240" Click="information_btn_Click" FontSize="20"/>
     </RelativePanel>
 </Page>

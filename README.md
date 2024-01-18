@@ -1,3 +1,14 @@
+# SplashScreen UWP (UWP startup picture)
+* To turn off full screen while starting UWP.
+* Package.appxmanifest file from UWP and add ```a:Optional="true"```
+```XML
+<uap:SplashScreen Image="Assets\SplashScreen.png" a:Optional="true" xmlns:a="http://schemas.microsoft.com/appx/manifest/uap/windows10/5" />
+```
+> [!TIP]
+> If Optional set true, the splash screen will not be shown if the app can launch fast enough.
+> If there is a delay in the app launch time, the splash screen will be shown.
+> If false, the splash screen will always be shown.
+
 # Read write ini
 * The format of ini is often used in Windows  
 > [!IMPORTANT]  

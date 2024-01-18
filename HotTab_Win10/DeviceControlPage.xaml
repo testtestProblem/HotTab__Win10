@@ -197,5 +197,21 @@
             </Image.Source>
         </Image>
 
+
+        <TextBlock x:Name="textBlock_wifi" Text="WIFI" Width="70" Height="30" Margin="-100,-400,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Center" CharacterSpacing="1" TextAlignment="Center"/>
+        <TextBlock x:Name="textBlock_gobi3G" Text="WWAN" Width="70" Height="30" Margin="-100,-200,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Center" CharacterSpacing="1" TextAlignment="Center"/>
+        <TextBlock x:Name="textBlock_GPS" Text="GPS" Width="70" Height="30" Margin="-100,0,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Center" CharacterSpacing="1" TextAlignment="Center"/>
+        <TextBlock x:Name="textBlock_bluetooth" Text="BT" Width="70" Height="30" Margin="-100,200,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Center" CharacterSpacing="1" TextAlignment="Center"/>
+        <TextBlock x:Name="textBlock_webCamRear" Text="R Camera" Width="70" Height="30" Margin="-100,400,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Center" CharacterSpacing="1" TextAlignment="Center"/>
+        <TextBlock x:Name="textBlock_allLED" Text="LED" Width="70" Height="30" Margin="-100,600,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Center" CharacterSpacing="1" TextAlignment="Center"/>
+
+        <TextBlock x:Name="textBlock_barcode" Text="Barcode" Width="70" Height="30" Margin="100, -400,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Center" CharacterSpacing="1" TextAlignment="Center"/>
+        <TextBlock x:Name="textBlock_webCamFront" Text="F Camera" Width="70" Height="30" Margin="100, -200,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Center" CharacterSpacing="1" TextAlignment="Center"/>
+        <TextBlock x:Name="textBlock_RFID" Text="RFID" Width="70" Height="30" Margin="100, 0,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Center" CharacterSpacing="1" TextAlignment="Center"/>
+        <TextBlock x:Name="textBlock_GPSAntenna" Text="GPS Antenna" Width="100" Height="30" Margin="100, 200,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Center" CharacterSpacing="1" TextAlignment="Center"/>
+        <TextBlock x:Name="textBlock_expandUSB" Text="USB" Width="70" Height="30" Margin="100, 400,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Center" CharacterSpacing="1" TextAlignment="Center"/>
+        <TextBlock x:Name="textBlock_expandCOM" Text="COM" Width="70" Height="30" Margin="100, 600,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Center" CharacterSpacing="1" TextAlignment="Center"/>
+
+
     </RelativePanel>
 </Page>

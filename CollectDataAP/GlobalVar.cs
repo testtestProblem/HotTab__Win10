@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using System.Text;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
- 
+using Win8Hottab_unknow;
+
 namespace GlobalVar
 {
     public class GlobalVariable
@@ -99,7 +100,25 @@ namespace GlobalVar
         public static bool rotationFlag = false;
         public static bool RotationFlagFormCamera = false;
 
-       
+        public static uint GPSLoadDefaultSupport = 0;                 //0:not support 1: support
+
+        //Camera >>
+        public static uint CameraRotateSupport = 0;                 //0:Disable, 1: Enable
+        public static uint FixedCameraRotate = 0;                   //0:Disable, 1: Enable
+        public static string CameraBackVideoInput = "none";
+        public static string CameraFrontVideoInput = "none";
+        public static uint NewCameraSupport = 0;                    //0:Disable 1: Enable
+        //public static DEVICE_STATUS_STRUCT Device;
+        //public static DEVICE_SUPPORT_STRUCT DeviceSupport;
+
+        public static uint FKeyCount = 2;
+       // public static FUNCTION_KEY_STATUS_STRUCT FnKey;
+
+        public static byte Device1AlwaysOnBits = 0x00;
+        public static byte Device2AlwaysOnBits = 0x00;
+
+        public static uint TouchLockKeySupport = 0;
+
         //HOttabCfg.ini <<
         public static int[] DeviceOrder = { DEV_WIFI, DEV_3G, DEV_GPS, DEV_BLUETOOTH, DEV_CAMERA, DEV_NULL, DEV_NULL, DEV_NULL };
         public static int[] DeviceOrder2 = { DEV_BARCODE, DEV_RFID, DEV_RFID_CONFIG, DEV_COMPORT, DEV_USB, DEV_ANT_GPS, DEV_Ant_WWAN, DEV_KEYBOARD, DEV_TOUCH_SET };
@@ -123,6 +142,67 @@ namespace GlobalVar
 
             //OEM
             OemSpecialVersion = IniReadUIntValue("OEM", "OemSpecialVersion");
+
+
+            //OEM
+            OemSpecialVersion = IniReadUIntValue("OEM", "OemSpecialVersion");
+
+            //Function
+            bDebug = Convert.ToUInt16(IniReadHexValue("Function", "DebugMessage"));
+            FlashControlType = Convert.ToUInt16(IniReadHexValue("Function", "FlashType"));
+            StartOrientation = Convert.ToUInt16(IniReadHexValue("Function", "StartOrientation"));
+            CameraForceOrientation = Convert.ToUInt16(IniReadHexValue("Function", "CameraForceOrientation"));
+            CameraRotateSupport = Convert.ToUInt16(IniReadHexValue("Function", "CameraRotateSupport"));
+            FixedCameraRotate = Convert.ToUInt16(IniReadHexValue("Function", "FixedCameraRotate"));
+            BatteryType = Convert.ToUInt16(IniReadHexValue("Function", "BatteryType"));
+
+            SmallBatteryUseAtoD = Convert.ToUInt16(IniReadHexValue("SmallBatterySetting", "SmallBatteryUseAtoD"));
+            SmallBatteryPowerSettingBrightnessLimit = IniReadUIntValue("SmallBatterySetting", "SmallBatteryPowerSettingBrightnessLimit");
+            SmallBatteryPowerSettingProcessorLimit = IniReadUIntValue("SmallBatterySetting", "SmallBatteryPowerSettingProcessorLimit");
+            SmallBatteryDisplay = Convert.ToUInt16(IniReadHexValue("SmallBatterySetting", "SmallBatteryDisplay"));
+
+            AutoBrightnessSupport = Convert.ToUInt16(IniReadHexValue("Function", "AutoBrightnessSupport"));
+            AutoRotationSupport = Convert.ToUInt16(IniReadHexValue("Function", "AutoRotationSupport"));
+            NewCameraSupport = Convert.ToUInt16(IniReadHexValue("Function", "NewCameraSupport"));
+
+            TouchSetSupport = Convert.ToUInt16(IniReadHexValue("Function", "TouchSetSupport"));
+            TouchModeDefault = Convert.ToUInt16(IniReadHexValue("Function", "TouchModeDefault"));
+
+            if (AutoRotationSupport == 0)
+                autoRotationFlag = false;
+
+            if (NewCameraSupport == 1)
+                CameraRotateSupport = 0;
+
+            SensorHubExist = Convert.ToUInt16(IniReadHexValue("Function", "SensorHubExist"));
+
+            UserPermissionLock = Convert.ToUInt16(IniReadHexValue("Function", "UserPermissionLock"));
+
+            //Camera
+            CameraBackVideoInput = inifile.IniReadValue("Function", "CameraBackVideoInput");
+            CameraFrontVideoInput = inifile.IniReadValue("Function", "CameraFrontVideoInput");
+
+            GPSLoadDefaultSupport = Convert.ToUInt16(IniReadHexValue("Function", "GPSLoadDefaultSupport"));
+
+            //Barcode
+            BarcodeType = IniReadUIntValue("Function", "BarcodeType");
+            BarcodeCOMLocation = inifile.IniReadValue("Function", "BarcodeCOMLocation");
+            if (BarcodeCOMLocation.ToUpper().IndexOf("COM") == -1) BarcodeCOMLocation = "COM15";
+
+
+            SoftwareHotSwapSupport = Convert.ToUInt16(IniReadHexValue("Function", "SoftwareHotSwapSupport"));
+
+            if ((GlobalVariable.sECVersion[0] == '0') || (GlobalVariable.sECVersion[0] == '1'))
+            {
+                //For IB10X-1XX
+                TouchLockKeySupport = 0;
+            }
+            else
+            {
+                //For IB10X-2XX
+                TouchLockKeySupport = 1;
+            }
+
 
             return true;
         }
@@ -148,6 +228,27 @@ namespace GlobalVar
             return value;
         }
 
+        public static byte IniReadHexValue(string Section, string Key)
+        {
+            IniFile inifile = new IniFile();
+            string patch = System.Windows.Forms.Application.StartupPath;
+            string src;
+            string dest;
+            byte value;
+
+            inifile.path = patch + "\\HottabCfg.ini";
+            src = inifile.IniReadValue(Section, Key);
+
+            dest = src.Replace("0X", "");
+            dest = dest.Replace("0x", "");
+
+            if (dest == "")
+                return 0;
+
+            value = byte.Parse(dest, System.Globalization.NumberStyles.AllowHexSpecifier);
+
+            return value;
+        }
 
         public static void DebugMessage(string token, string msg, uint en)
         {

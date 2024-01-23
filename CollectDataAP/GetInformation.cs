@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using Win8Hottab;
@@ -12,6 +13,9 @@ namespace CollectDataAP
 {
     class GetInformation
     {
+        [DllImport(@"WMIO2.dll")]
+        public static extern bool GetSMBIOSInfo(string name, byte[] data);
+
         public void InitializeWMIHandler()
         {
             HotTabWMIInformation wmiHandler = new HotTabWMIInformation();
@@ -30,7 +34,7 @@ namespace CollectDataAP
                 GlobalVariable.sMainBoardVersion = wmiHandler.GetWMI_BIOSMainBoard();
 
                 //OS Version
-                //HotTabRegistry.RegistryRead("SOFTWARE", "OSVersion", ref GlobalVariable.OSVersion);
+                Win8Hottab_unknow.HotTabRegistry.RegistryRead("SOFTWARE", "OSVersion", ref GlobalVariable.OSVersion);
 
                 if (GlobalVariable.sBIOSVersion == "")
                 {
@@ -41,13 +45,15 @@ namespace CollectDataAP
 
                 HotTabDLL.WinIO_GetECMBVersion(out GlobalVariable.sECMBVersion);
                 HotTabDLL.WinIO_GetECVersion(out GlobalVariable.sECVersion);
+
+                Console.WriteLine("HotTabDLL.WinIO_GetECMBVersion(out GlobalVariable.sECMBVersion);  "+ GlobalVariable.sECMBVersion);
+                Console.WriteLine("HotTabDLL.WinIO_GetECVersion(out GlobalVariable.sECVersion);  " + GlobalVariable.sECVersion);
             }
             catch
             {
                 //Do Nothing
             }  
         }
-
 
         //if return 0 is error
         //if return 1 is good
@@ -125,11 +131,30 @@ namespace CollectDataAP
             Console.WriteLine(tempForOutput = ("Units Ver.: " + GlobalVariable.sUnitsSN));
             tempForUWP += tempForOutput + "\n";
 
+            byte[] value = new byte[20];
+            if (GetSMBIOSInfo("/SP", value))
+                tempForUWP += "Model name = " + System.Text.ASCIIEncoding.ASCII.GetString(value, 0, GetByteLen(value)) + "\r\n";
+            tempForUWP += "Battery 1 remain power: " + GetInfoBattery.getBatRelativeCharge(1).ToString() + "\r\n";
+            tempForUWP += "Battery 2 remain power: " + GetInfoBattery.getBatRelativeCharge(2).ToString() + "\r\n";
             Console.WriteLine("");
             
             return tempForUWP;
         }
+        private int GetByteLen(byte[] array)
+        {
+            int i = 0;
+            int len = 0;
 
+            for (i = 0; i < array.Length; i++)
+            {
+                if (array[i] == 0)
+                    return len;
+                else
+                    len++;
 
+            }
+
+            return len;
+        }
     }
 }

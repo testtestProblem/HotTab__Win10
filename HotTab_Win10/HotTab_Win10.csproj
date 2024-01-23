@@ -150,6 +150,13 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\battery\Rbat.bmp" />
+    <Content Include="Assets\battery\Rbat0.BMP" />
+    <Content Include="Assets\battery\Rbat100.bmp" />
+    <Content Include="Assets\battery\Rbat25.BMP" />
+    <Content Include="Assets\battery\Rbat50.BMP" />
+    <Content Include="Assets\battery\Rbat75.BMP" />
+    <Content Include="Assets\battery\Redbat.bmp" />
     <Content Include="Assets\device\5V-B.bmp" />
     <Content Include="Assets\device\5V-O.bmp" />
     <Content Include="Assets\device\BarCode Reader1.bmp" />

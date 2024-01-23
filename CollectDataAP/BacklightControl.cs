@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Management;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,6 +21,21 @@ namespace CollectDataAP
             this.args = args;
             startFunction(args);
         }
+        /*
+        public static int Get()
+        {
+            var mclass = new ManagementClass("WmiMonitorBrightness")
+            {
+                Scope = new ManagementScope(@"\\.\root\wmi")
+            };
+            var instances = mclass.GetInstances();
+            foreach (ManagementObject instance in instances)
+            {
+                return (byte)instance.GetPropertyValue("CurrentBrightness");
+            }
+            return 0;
+        }*/
+
         /*
          * Check the arguments and call the functions
          * * */
@@ -86,6 +102,8 @@ namespace CollectDataAP
         }
         /*
          * Returns the current brightness setting
+         * This have some bug.
+         * Don't use this function
          * */
         static public int GetBrightness()
         {
@@ -133,8 +151,6 @@ namespace CollectDataAP
                 System.Management.ManagementObjectCollection moc = mos.Get();
 
                 //store result
-
-
                 foreach (System.Management.ManagementObject o in moc)
                 {
                     BrightnessLevels = (byte[])o.GetPropertyValue("Level");
@@ -143,7 +159,6 @@ namespace CollectDataAP
 
                 moc.Dispose();
                 mos.Dispose();
-
             }
             catch (Exception)
             {
@@ -177,8 +192,5 @@ namespace CollectDataAP
             moc.Dispose();
             mos.Dispose();
         }
-
-
-
     }
 }

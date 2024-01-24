@@ -1,3 +1,39 @@
+# SplashScreen UWP (UWP startup picture)
+* To turn off full screen while starting UWP.
+* Package.appxmanifest file from UWP and add ```a:Optional="true"```
+```XML
+<uap:SplashScreen Image="Assets\SplashScreen.png" a:Optional="true" xmlns:a="http://schemas.microsoft.com/appx/manifest/uap/windows10/5" />
+```
+> [!TIP]
+> If Optional set true, the splash screen will not be shown if the app can launch fast enough.
+> If there is a delay in the app launch time, the splash screen will be shown.
+> If false, the splash screen will always be shown.
+
+# Read write ini
+* The format of ini is often used in Windows  
+> [!IMPORTANT]  
+> If not get administrator, do not put file in C:\xxxxx.ini that need supervisor permission
+* Read write function
+```C#
+[DllImport("kernel32", CharSet = CharSet.Unicode)]
+        private static extern long WritePrivateProfileString(string section,
+          string key, string val, string filePath);
+
+[DllImport("kernel32", CharSet = CharSet.Unicode)]
+        private static extern int GetPrivateProfileString(string section,
+          string key, string def, StringBuilder retVal,
+          int size, string filePath);
+```
+* Data should continue in one section. Can not use new line to seperate it
+* Example format of ini
+```
+[section]
+key=value
+key2=value
+
+[section2]
+```
+
 # Kill process
 * Because while close UWP and open UWP can not re-connect console, the older console will become zombie. I don't know how to reconnect it, therefore should terminate older console.
 * The example show how to terminate older console
@@ -104,15 +140,18 @@ Area:          494.808
 
 # Reduce cpu usage rate 
 * Using ```Application.Run();``` is batter than ```while (Console.ReadLine() != "0")```  
+* It's usually use in hook  
 
 # Restrict one instance
 * UWP have restricted one process in default  
+> [!IMPORTANT]  
+> Relative variable should be static, public, and domain in groble
 * Console must use ```Mutex``` to restricted one process  
 ```C#
+//should be groble verable
 const string appName = "MyAppName";
-            bool createdNew;
-
-            Mutex mutex = new Mutex(true, appName, out createdNew);
+bool createdNew;
+Mutex mutex = new Mutex(true, appName, out createdNew);
 
             if (!createdNew)
             {

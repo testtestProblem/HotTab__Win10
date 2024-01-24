@@ -187,19 +187,24 @@ namespace CollectDataAP
         }
 
         static private void backlight20()
-        {/*
+        {
+            //string[] a = { "1", "-" };
+            //BacklightControl bl = new BacklightControl(a);
+            /*
             byte[] b = BacklightControl.GetBrightnessLevels();
             BacklightControl.SetBrightness((byte)((b[0] - 2) >= 0 ? b[0] - 2 : 0));
 
             Console.WriteLine("BacklightControl.GetBrightness() -> "+ b[0]);
-        */
+            */
             BacklightControl.SetBrightness(20);
         }
 
         static private void backlight100()
         {
-            /*BacklightControl bl;
-            byte[] b = BacklightControl.GetBrightnessLevels();
+            //string[] a = { "1", "+" };
+            //BacklightControl bl = new BacklightControl(a);
+            
+            /*byte[] b = BacklightControl.GetBrightnessLevels();
             BacklightControl.SetBrightness((byte)((b[0] + 2) <= 1000 ? b[0] + 2 : 1000));
           
             Console.WriteLine("BacklightControl.GetBrightness() -> " + b[0]);

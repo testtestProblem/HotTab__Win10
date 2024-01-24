@@ -30,6 +30,7 @@ namespace HotTab_Win10
     public sealed partial class MainPage : Page
     {
         static public string BasicInformation;
+        static public uint? BatteryInformation;
         //static public int startupHindCount=0;
 
         public MainPage()
@@ -193,6 +194,11 @@ namespace HotTab_Win10
             AppServiceResponse response = await App.Connection.SendMessageAsync(request);
 
             BasicInformation = response.Message["BasicInfo2UWP"] as string;
+
+            ValueSet request2 = new ValueSet();
+            request2.Add("Battery", (int)1357);
+            AppServiceResponse response2 = await App.Connection.SendMessageAsync(request2);
+            BatteryInformation = response2.Message["bat1"] as uint?;
 
             this.Frame.Navigate(typeof(InformationPage));
         }

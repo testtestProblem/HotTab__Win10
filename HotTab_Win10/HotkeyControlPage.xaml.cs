@@ -216,14 +216,14 @@ namespace HotTab_Win10
             func7_btn.IsEnabled = false;
             funcCustomize_btn.IsEnabled = false;
 
-            func1_btn.Opacity = 10;
-            func2_btn.Opacity = 10;
-            func3_btn.Opacity = 10;
-            func4_btn.Opacity = 10;
-            func5_btn.Opacity = 10;
-            func6_btn.Opacity = 10;
-            func7_btn.Opacity = 10;
-            funcCustomize_btn.Opacity = 20;
+            func1_btn.Opacity = 0;
+            func2_btn.Opacity = 0;
+            func3_btn.Opacity = 0;
+            func4_btn.Opacity = 0;
+            func5_btn.Opacity = 0;
+            func6_btn.Opacity = 0;
+            func7_btn.Opacity = 0;
+            funcCustomize_btn.Opacity = 0;
         }
 
         private void enableAllFuncKey()
@@ -245,6 +245,8 @@ namespace HotTab_Win10
             func6_btn.Opacity = 100;
             func7_btn.Opacity = 100;
             funcCustomize_btn.Opacity = 100;
+
+            //func1_btn.Background=tr
         }
 
         private void f1Short_btn_Click(object sender, RoutedEventArgs e)

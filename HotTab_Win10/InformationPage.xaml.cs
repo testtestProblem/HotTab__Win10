@@ -17,6 +17,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -53,6 +54,23 @@ namespace HotTab_Win10
             }
             textBox.Text = "";
             textBox.Text = MainPage.BasicInformation;
+
+            /*
+
+            if (MainPage.BatteryInformation >= 100)
+                image_battery.Source = new BitmapImage(new Uri("ms-appx:///Assets/battery/Rbat100.bmp"));
+            else if (MainPage.BatteryInformation >= 75)
+                image_battery.Source = new BitmapImage(new Uri("ms-appx:///Assets/battery/Rbat75.BMP"));
+            else if (MainPage.BatteryInformation >= 50)
+                image_battery.Source = new BitmapImage(new Uri("ms-appx:///Assets/battery/Rbat50.BMP"));
+            else if (MainPage.BatteryInformation >= 25)
+                image_battery.Source = new BitmapImage(new Uri("ms-appx:///Assets/battery/Rbat25.BMP"));
+            else if (MainPage.BatteryInformation >= 10)
+                image_battery.Source = new BitmapImage(new Uri("ms-appx:///Assets/battery/Rbat0.BMP"));
+            else
+                image_battery.Source = new BitmapImage(new Uri("ms-appx:///Assets/battery/Rbat.bmp"));
+            */
+
 
             StartupTask startupTask = await StartupTask.GetAsync("MyStartupId"); // Pass the task ID you specified in the appxmanifest file
             switch (startupTask.State)

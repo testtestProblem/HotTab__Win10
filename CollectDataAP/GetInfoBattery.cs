@@ -10,13 +10,13 @@ namespace CollectDataAP
     class GetInfoBattery
     {
         [DllImport(@"WMIO2.dll")]
-        public static extern bool GetBattery1SpecificInfo(uint uiCommand, out uint uiValue);
+        private static extern bool GetBattery1SpecificInfo(uint uiCommand, out uint uiValue);
 
         [DllImport(@"WMIO2.dll")]
-        public static extern bool GetBattery2SpecificInfo(uint uiCommand, out uint uiValue);
+        private static extern bool GetBattery2SpecificInfo(uint uiCommand, out uint uiValue);
 
         [DllImport(@"WMIO2.dll")]
-        public static extern bool GetBackupBatteryStatus(out uint uiValue);
+        private static extern bool GetBackupBatteryStatus(out uint uiValue);
 
         static public uint getBatRelativeCharge(int batIndex) 
         {

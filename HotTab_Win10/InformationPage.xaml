@@ -24,11 +24,11 @@
         <Button x:Name="enableStartup_btn" Content="Enable&#xD;&#xA;Startup" Margin="-150,-250,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" Height="70" Width="70" Click="enableStartup_btn_Click" FontSize="15" HorizontalAlignment="Center" Visibility="Collapsed"/>
         <Button x:Name="disableStartup_btn" Content="Disable&#xD;&#xA;Startup" Margin="150,-250,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" Height="70" Width="70" Click="disableStartup_btn_Click" FontSize="15" HorizontalAlignment="Center" Visibility="Collapsed"/>
         <Button x:Name="hindStartup_btn" Content="Hind startup UI" Margin="0,-400,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" Click="hindStartup_btn_Click" Visibility="Collapsed" />
-        <Image x:Name="image_wifi" Margin="-130,-500,0,0" Width="70" Height="70" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" AllowDrop="True" Canvas.ZIndex="-1">
+        <!--<Image x:Name="image_battery" Margin="-500,125,0,0" Width="70" Height="70" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" AllowDrop="True" Canvas.ZIndex="-1">
             <Image.Source>
-                <BitmapImage DecodePixelWidth="200" UriSource="Assets/device/Wi-Fi.bmp" />
+                <BitmapImage DecodePixelWidth="200" UriSource="Assets/battery/Rbat0.BMP" />
             </Image.Source>
-        </Image>
+        </Image>-->
     </RelativePanel >
 
 </Page>

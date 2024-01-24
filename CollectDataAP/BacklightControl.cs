@@ -19,6 +19,7 @@ namespace CollectDataAP
         public BacklightControl(string[] args)
         {
             this.args = args;
+            Console.WriteLine("BL constructor");
             startFunction(args);
         }
         /*
@@ -48,42 +49,54 @@ namespace CollectDataAP
             }
             else
             {
-                if (Array.FindIndex(args, item => item.Contains("%")) > -1)
+                //if (Array.FindIndex(args, item => item.Contains("%")) > -1)
+                if(args[1]=="%")
                 {  //set brightness to level from args
                     string sPercent = args[Array.FindIndex(args, item => item.Contains("%"))];
                     if (sPercent.Length > 1)
                     {
                         int iPercent = Convert.ToInt16(sPercent.Split('%').ElementAt(0));
-                        startup_brightness(iPercent); ;
+                        startup_brightness(iPercent);
+
+                        Console.WriteLine("startup_brightness(iPercent); "+iPercent);
                     }
                 }
-                if (Array.FindIndex(args, item => item.Contains("+")) > -1)
+                //if (Array.FindIndex(args, item => item.Contains("+")) > -1)
+                if (args[1] == "+")
                 { //increase brightess with a number
-                    string sIncreasePercent = args[Array.FindIndex(args, item => item.Contains("+"))];
-                    if (sIncreasePercent.Length > 1)
-                    {
-                        int iIncreaesePercent = Convert.ToInt16(sIncreasePercent.Split('+').ElementAt(0));
-                        int curBrightness = GetBrightness();
+                    //string sIncreasePercent = args[Array.FindIndex(args, item => item.Contains("+"))];
+                    //if (sIncreasePercent.Length > 1)
+                    //{
+                    //    int iIncreaesePercent = Convert.ToInt16(sIncreasePercent.Split('+').ElementAt(0));
+                    int iIncreaesePercent = Convert.ToInt16(args[0]);    
+                    int curBrightness = GetBrightness();
                         // iIncreaesePercent = 10;
                         startup_brightness(curBrightness + iIncreaesePercent);
-                    }
+
+                        Console.WriteLine("startup_brightness(curBrightness + iIncreaesePercent); " + (curBrightness + iIncreaesePercent));
+                    //}
                 }
-                if (Array.FindIndex(args, item => item.Contains("-")) > -1)
+                //if (Array.FindIndex(args, item => item.Contains("-")) > -1)
+                if (args[1] == "-")
                 { //decrease brightness with a number
-                    string sDecreasePercent = args[Array.FindIndex(args, item => item.Contains("-"))];
-                    if (sDecreasePercent.Length > 1)
-                    {
-                        int iDecreasePercent = Convert.ToInt16(sDecreasePercent.Split('-').ElementAt(0));
-                        int curBrightness = GetBrightness();
-                        startup_brightness(curBrightness - iDecreasePercent);
-                    }
+                  //string sDecreasePercent = args[Array.FindIndex(args, item => item.Contains("-"))];
+
+                    //if (sDecreasePercent.Length > 1)
+                    //{
+                    // int iDecreasePercent = Convert.ToInt16(sDecreasePercent.Split('-').ElementAt(0));
+                    int iDecreasePercent = Convert.ToInt16(args[0]);
+                    int curBrightness = GetBrightness();
+                    startup_brightness(curBrightness - iDecreasePercent);
+
+                    Console.WriteLine("startup_brightness(curBrightness - iDecreasePercent); " + (curBrightness + iDecreasePercent));
+                    //}
                 }
             }
         }
         /*
          * Convert the brightness percentage to a byte and set the brightness using setBrightness
          * */
-        private void startup_brightness(int iPercent)
+        private byte startup_brightness(int iPercent)
         {
             if (iPercent >= 0 && iPercent <= bLevels[bLevels.Count() - 1])
             {
@@ -97,8 +110,10 @@ namespace CollectDataAP
                     }
                 }
                 SetBrightness(level);
+                return level;
                 //check_brightness();
             }
+            return 0;
         }
         /*
          * Returns the current brightness setting

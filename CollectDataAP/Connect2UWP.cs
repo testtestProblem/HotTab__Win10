@@ -79,6 +79,23 @@ namespace CollectDataAP
                         await args.Request.SendResponseAsync(response);
                     }
                 }
+                else if ((string)key == "Battery")
+                {
+                    int? key1 = args.Request.Message["Battery"] as int?;
+
+                    if (key1 != null )
+                    {
+                        Console.WriteLine((int)key1);
+
+                        // compose the response as ValueSet
+                        ValueSet response = new ValueSet();
+                        response.Add("bat1", (uint)GetInfoBattery.getBatRelativeCharge(1));
+                        response.Add("bat2", (uint)GetInfoBattery.getBatRelativeCharge(2));
+
+                        // send the response back to the UWP
+                        await args.Request.SendResponseAsync(response);
+                    }
+                }
                 else if((string)key == "deviceConfig")
                 {
                     DeviceState deviceState = new DeviceState();

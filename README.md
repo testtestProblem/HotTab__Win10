@@ -9,7 +9,7 @@
     <ImageBrush x:Key="MyMyImageBrush" ImageSource="ms-appx:///assets/Button.png" />
 </Page.Resources>
 ```
-* Solution 2: Disable mounce fouce
+* Solution 2: Disable mounce fouce event
 ```xml
     <Page.Resources>
         <Style TargetType="Button">

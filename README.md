@@ -1,3 +1,91 @@
+# XAML UWP button background while focuing will disappear 
+* Qustion: While using mounce fouce button, the background picture will disappear.
+* Soultion 1: This have a problem. It will apply all button. 
+```xml
+<Page.Resources>
+    <StaticResource x:Key="ButtonBackground" ResourceKey="MyMyImageBrush" />
+    <StaticResource x:Key="ButtonBackgroundPointerOver" ResourceKey="MyMyImageBrush" />
+    <StaticResource x:Key="ButtonBackgroundPressed" ResourceKey="SystemControlBackgroundBaseMediumLowBrush" />
+    <ImageBrush x:Key="MyMyImageBrush" ImageSource="ms-appx:///assets/Button.png" />
+</Page.Resources>
+```
+* Solution 2: Disable mounce fouce
+```xml
+    <Page.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <ContentPresenter x:Name="ContentPresenter"
+                                              Padding="{TemplateBinding Padding}"
+                                              HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              AutomationProperties.AccessibilityView="Raw"
+                                              Background="{TemplateBinding Background}"
+                                              BorderBrush="{TemplateBinding BorderBrush}"
+                                              BorderThickness="{TemplateBinding BorderThickness}"
+                                              Content="{TemplateBinding Content}"
+                                              ContentTemplate="{TemplateBinding ContentTemplate}"
+                                              ContentTransitions="{TemplateBinding ContentTransitions}"
+                                              CornerRadius="{TemplateBinding CornerRadius}">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal">
+                                        <Storyboard>
+                                            <PointerUpThemeAnimation Storyboard.TargetName="ContentPresenter" />
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Opacity">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="1" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="PointerOver">
+                                        <Storyboard>
+                                            <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonForeground}" />
+                                            </ObjectAnimationUsingKeyFrames>-->
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonForeground}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonForeground}" />
+                                            </ObjectAnimationUsingKeyFrames>-->
+                                            <PointerUpThemeAnimation Storyboard.TargetName="ContentPresenter" />
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Pressed">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBackgroundPressed}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBorderBrushPressed}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonForegroundPressed}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <PointerDownThemeAnimation Storyboard.TargetName="ContentPresenter" />
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Disabled">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Opacity">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="0.65" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBorderBrushDisabled}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </ContentPresenter>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+```
+
 
 
 # Relative xmal layout

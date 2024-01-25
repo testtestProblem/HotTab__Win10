@@ -1,3 +1,19 @@
+# Relative xmal layout
+* RelativePanel: Elements are arranged in relation to the edge or center of the panel, and in relation to each other.  
+* Relative xmal layout example
+```C#
+<RelativePanel >
+        <Button x:Name="return_btn" Content="&#xea5c;" FontFamily="{StaticResource ResourceKey=CustomIconFont}" Margin="0,0,0,0" Height="75" Width="75" Click="return_btn_Click" FontSize="50"/>
+
+        <Button x:Name="btn_wifi" Width="70" Height="70" Margin="-100,-500,0,0"  RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" Click="btn_wifi_Click" >
+        </Button>
+</RelativePanel>
+```  
+
+# Absoluty xmal layout
+* Grid: Elements are arranged in rows and columns using Grid.Row and Grid.Column attached properties.
+* This is default layout
+
 # SplashScreen UWP (UWP startup picture)
 * To turn off full screen while starting UWP.
 * Package.appxmanifest file from UWP and add ```a:Optional="true"```

@@ -1,7 +1,7 @@
 # Relative xmal layout
 * RelativePanel: Elements are arranged in relation to the edge or center of the panel, and in relation to each other.  
 * Relative xmal layout example
-```C#
+```xml
 <RelativePanel >
         <Button x:Name="return_btn" Content="&#xea5c;" FontFamily="{StaticResource ResourceKey=CustomIconFont}" Margin="0,0,0,0" Height="75" Width="75" Click="return_btn_Click" FontSize="50"/>
 

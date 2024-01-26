@@ -1,7 +1,7 @@
 # Windows register
 * The class Register is static
 * I can not find any register key path in windows reg programe
-* ```Registry.GetValue(keyPath, key, "noValue")``` When first run app, because the path not exit, it will get null and create path. If have path exit but no value, will get "noValue". 
+* ```Registry.GetValue(keyPath, key, "noValue")``` When first run app, because the path not exit, it will get null and create path. If have path exist but no value, will get "noValue". 
 * ```Registry.SetValue(keyPath, key, value);``` If no path or value, it will create it.
 ```C#
 class RegistryWindows
@@ -21,7 +21,10 @@ class RegistryWindows
             return (string)Registry.GetValue(keyPath, key, "noValue");
         }
     }
-```  
+```
+> [!WARNING]
+> If restart app, the value not exist,the path maybe exist.
+
 * RegisterKey represents a key-level node in the Windows registry. 
 
 # XAML UWP button background while focuing will disappear 

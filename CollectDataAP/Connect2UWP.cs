@@ -152,7 +152,12 @@ namespace CollectDataAP
                         //inifile.IniWriteValue("SETTING", ((HotkeyList2)hotKeyState).ToString(), ((FunctionList)func).ToString());
                         HotTabRegistry.WritePrivateProfileString("FunctionKey", ((HotkeyList2)hotKeyState).ToString(), ((FunctionList)func).ToString(), inifile.path);
 
-                        Console.WriteLine("Hottey change function  "+ ((HotkeyList2)hotKeyState).ToString()+"  "+ ((FunctionList)func).ToString()); 
+                        Console.WriteLine("Hottey change function  "+ ((HotkeyList2)hotKeyState).ToString()+"  "+ ((FunctionList)func).ToString());
+
+                        //test registry
+                        Console.WriteLine("RegistryWindows.getValue(\"noThisValue\") " + RegistryWindows.getValue("noThisValue"));
+                        RegistryWindows.setValue("test1", "register test");
+                        Console.WriteLine("RegistryWindows.getValue(\"test1\") " + RegistryWindows.getValue("test1"));
                     }
                 }
                 else if ((string)key == "HotKeyFuncCustomize")

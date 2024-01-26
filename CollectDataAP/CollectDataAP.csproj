@@ -90,6 +90,7 @@
     <Compile Include="HotTabWMIInformation.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegistryWindows.cs" />
     <Compile Include="Tommy.cs" />
   </ItemGroup>
   <ItemGroup>

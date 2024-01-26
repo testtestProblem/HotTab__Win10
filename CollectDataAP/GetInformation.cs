@@ -134,8 +134,8 @@ namespace CollectDataAP
             byte[] value = new byte[20];
             if (GetSMBIOSInfo("/SP", value))
                 tempForUWP += "Model name = " + System.Text.ASCIIEncoding.ASCII.GetString(value, 0, GetByteLen(value)) + "\r\n";
-            tempForUWP += "Battery 1 remain power: " + GetInfoBattery.getBatRelativeCharge(1).ToString() + "\r\n";
-            tempForUWP += "Battery 2 remain power: " + GetInfoBattery.getBatRelativeCharge(2).ToString() + "\r\n";
+            tempForUWP += "Battery 1 remain power: " + GetInfoBattery.getBatRelativeCharge(1).ToString() + "%" + "\r\n";
+            tempForUWP += "Battery 2 remain power: " + GetInfoBattery.getBatRelativeCharge(2).ToString() + "%" + "\r\n";
             Console.WriteLine("");
             
             return tempForUWP;

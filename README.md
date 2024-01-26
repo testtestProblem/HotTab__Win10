@@ -23,7 +23,7 @@ class RegistryWindows
     }
 ```
 > [!WARNING]
-> If restart app, the value not exist,the path maybe exist.
+> If restart app, the value not exist, the path maybe exist.
 
 * RegisterKey represents a key-level node in the Windows registry. 
 

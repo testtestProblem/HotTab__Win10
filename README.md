@@ -1,3 +1,29 @@
+# Windows register
+* The class Register is static
+* I can not find any register key path in windows reg programe
+* ```Registry.GetValue(keyPath, key, "noValue")``` When first run app, because the path not exit, it will get null and create path. if have path exit but no value, will get "noValue". 
+* ```Registry.SetValue(keyPath, key, value);``` If no path or value, it will create it.
+```C#
+class RegistryWindows
+    {
+        //private Registry registryKey;
+        private const string userRoot = "HKEY_CURRENT_USER";
+        private const string subkey = @"SOFTWARE\HotTabTest1";
+        private static string keyPath = userRoot + "\\" + subkey;
+
+        public static void setValue(string key, object value)
+        {
+            Registry.SetValue(keyPath, key, value);
+        }
+
+        public static string getValue(string key)
+        {
+            return (string)Registry.GetValue(keyPath, key, "noValue");
+        }
+    }
+```  
+* RegisterKey represents a key-level node in the Windows registry. 
+
 # XAML UWP button background while focuing will disappear 
 * Qustion: While using mounce fouce button, the background picture will disappear.
 * Soultion 1: This have a problem. It will apply all button. 

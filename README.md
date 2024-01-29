@@ -5,19 +5,19 @@
 -- Main  
 <img width="601" alt="hottabMain" src="https://github.com/testtestProblem/HotTab_Win10/assets/107662393/a1445ed4-4a2b-4803-bb50-83c7652c6f7c">
 
-Device state  
+-- Device state  
 <img width="601" alt="hottabDevice" src="https://github.com/testtestProblem/HotTab_Win10/assets/107662393/715e8763-b49b-4a55-aa8e-383f0a449fae">  
 
-Hotkey no change function  
+-- Hotkey no change function  
 <img width="601" alt="hottabHotkeyNoChoose" src="https://github.com/testtestProblem/HotTab_Win10/assets/107662393/21fde1ec-dd6d-4b51-b08c-0e97701a5182">  
 
-Hotkey change function  
+-- Hotkey change function  
 <img width="601" alt="hottabHotkeyChoose" src="https://github.com/testtestProblem/HotTab_Win10/assets/107662393/c91c3a68-f4ad-44e9-a98e-05d3fac46e34">  
 
-Startup  
+-- Startup  
 <img width="511" alt="enableStartup" src="https://github.com/testtestProblem/HotTab_Win10/assets/107662393/29951430-991a-4e7d-a807-aabc3b479cb9">  
 
-Information  
+-- Information  
 <img width="601" alt="hottabInformation" src="https://github.com/testtestProblem/HotTab_Win10/assets/107662393/47b9d6d3-7624-48e7-8111-b4c7ff34a489">  
 
 # Windows register

@@ -2,7 +2,7 @@
 * Function description: HotTab can turn on/off device power, can show hotkey function also can change it, can show battery remain power and others information.
 * Requirement: Above windows10 version 1809, X64 architecture
 * UI illustration  
-Main  
+** Main  
 <img width="601" alt="hottabMain" src="https://github.com/testtestProblem/HotTab_Win10/assets/107662393/a1445ed4-4a2b-4803-bb50-83c7652c6f7c">
 
 Device state  

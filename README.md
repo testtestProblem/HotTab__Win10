@@ -23,9 +23,37 @@
 
 # Detect S3 and sign in/out
 * This class provides access to system event notifications. This class cannot be inherited.
+* Because this is a static event, you must detach your event handlers when your application is disposed, or memory leaks will result.
 * Reference: https://learn.microsoft.com/en-us/dotnet/api/microsoft.win32.systemevents?view=dotnet-plat-ext-8.0
 
+* Detect sleep mode  
+Add event  
+```C#
+SystemEvents.PowerModeChanged += new PowerModeChangedEventHandler(SystemEvents_PowerModeChanged);
+```
+```C#
+static public void SystemEvents_PowerModeChanged(object sender, EventArgs e)
+        {
+            Trace.WriteLine("SimpleService.PowerModeChanged", "Power mode changed; time: " +
+                DateTime.Now.ToLongTimeString());
 
+            HotKey.ModeOpen(2);    //choose hotkey mode 2
+        }
+```
+
+* Detect sign in/out  
+```C#
+SystemEvents.SessionSwitch += new SessionSwitchEventHandler(SystemEvents_SessionSwitch);
+```
+```C#
+static public void SystemEvents_SessionSwitch(object sender, EventArgs e)
+        {
+           // Trace.WriteLine("SimpleService.PowerModeChanged", "Power mode changed; time: " +
+            //    DateTime.Now.ToLongTimeString());
+
+            HotKey.ModeOpen(2);    //choose hotkey mode 2
+        }
+```
 
 
 # Windows register

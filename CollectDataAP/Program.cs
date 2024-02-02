@@ -46,35 +46,44 @@ namespace CollectDataAP
             {
                 //MessageBox.Show(appName + "Start is running!");
             }
-            
-            IniFile inifile = new IniFile();
-            string patch = System.Windows.Forms.Application.StartupPath;
+
+            //string patch = System.Windows.Forms.Application.StartupPath;
             //string patch = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            
-            inifile.path = "C:\\HottabCfg.ini";
+            if (RegistryWindows.getValue("F1S") == "nothing" || RegistryWindows.getValue("F1S") == "noValue")
+            {
+                IniFile inifile = new IniFile();
+                inifile.path = "C:\\Program Files\\HotTab\\HottabCfg.ini";
 
-            if (!File.Exists(inifile.path)) return;
+                if (!File.Exists(inifile.path)) return;
 
-            HotkeyFunc.funcName[0] = inifile.IniReadValue("FunctionKey", "F1S");
-            HotkeyFunc.funcName[4] = inifile.IniReadValue("FunctionKey", "F1L");
-            HotkeyFunc.funcName[1] = inifile.IniReadValue("FunctionKey", "F2S");
-            HotkeyFunc.funcName[5] = inifile.IniReadValue("FunctionKey", "F2L");
-            HotkeyFunc.funcName[2] = inifile.IniReadValue("FunctionKey", "F3S");
-            HotkeyFunc.funcName[3] = inifile.IniReadValue("FunctionKey", "F3L");
-            
+                HotkeyFunc.funcName[0] = inifile.IniReadValue("FunctionKey", "F1S");
+                HotkeyFunc.funcName[4] = inifile.IniReadValue("FunctionKey", "F1L");
+                HotkeyFunc.funcName[1] = inifile.IniReadValue("FunctionKey", "F2S");
+                HotkeyFunc.funcName[5] = inifile.IniReadValue("FunctionKey", "F2L");
+                HotkeyFunc.funcName[2] = inifile.IniReadValue("FunctionKey", "F3S");
+                HotkeyFunc.funcName[3] = inifile.IniReadValue("FunctionKey", "F3L");
+
+                RegistryWindows.setValue("F1S", HotkeyFunc.funcName[0]);
+                RegistryWindows.setValue("F1L", HotkeyFunc.funcName[4]);
+                RegistryWindows.setValue("F2S", HotkeyFunc.funcName[1]);
+                RegistryWindows.setValue("F2L", HotkeyFunc.funcName[5]);
+                RegistryWindows.setValue("F3S", HotkeyFunc.funcName[2]);
+                RegistryWindows.setValue("F3L", HotkeyFunc.funcName[3]);
+            }
+
             SystemEvents.PowerModeChanged += new PowerModeChangedEventHandler(SystemEvents_PowerModeChanged);
             
             handle = Process.GetCurrentProcess().Handle;
 
             //add thread for hotkey
-            new Thread(() => t_KeyCode()).Start();
+            //new Thread(() => t_KeyCode()).Start();
 
-            Connect2UWP connect2UWP = new Connect2UWP();
-            DeviceState deviceState = new DeviceState();
+           // Connect2UWP connect2UWP = new Connect2UWP();
+            //DeviceState deviceState = new DeviceState();
 
             string choice = "";
 
-            connect2UWP.InitializeAppServiceConnection();
+            //connect2UWP.InitializeAppServiceConnection();
 
             Tommy.Tommy_Start();
 
@@ -86,16 +95,16 @@ namespace CollectDataAP
                 "[5] Send data to UWP for test\n" +
                 "[0] Exit");
 
-            uint deviceStateCode = deviceState.GetDeviceStatePower();
-            Console.WriteLine("\nDevice state code: " + deviceStateCode.ToString());
-            Console.WriteLine(deviceState.ParseDeviceStatePowerCode());
+            //uint deviceStateCode = deviceState.GetDeviceStatePower();
+            //Console.WriteLine("\nDevice state code: " + deviceStateCode.ToString());
+            //Console.WriteLine(deviceState.ParseDeviceStatePowerCode());
 
             //reduce cpu usage rate
-            Application.Run();
+            //Application.Run();
 
-            /*
+            
             while ((choice = Console.ReadLine()) != "0")
-            {
+            {/*
                 if (choice == "1")
                 {
                     deviceStateCode = deviceState.GetDeviceStatePower();
@@ -124,8 +133,8 @@ namespace CollectDataAP
                 else if (choice == "5")
                 {
                     connect2UWP.Send2UWP_2("Hi!", "UWP");
-                }
-            }*/
+                }*/
+            }
         }
 
         //if have second console, closed it
@@ -175,7 +184,7 @@ namespace CollectDataAP
             Trace.WriteLine("SimpleService.PowerModeChanged", "Power mode changed; time: " +
                 DateTime.Now.ToLongTimeString());
 
-            HotKey.ModeOpen(2);    //choose hotkey mode 2
+            //HotKey.ModeOpen(2);    //choose hotkey mode 2
         }
 
         static void KillAllNotepadProcesses()

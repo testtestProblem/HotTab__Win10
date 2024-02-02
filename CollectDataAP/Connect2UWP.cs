@@ -147,17 +147,24 @@ namespace CollectDataAP
                         HotkeyFunc.changeFuncName((HotkeyList)hotKeyState, (FunctionList)func);
                         
                         IniFile inifile = new IniFile();
-                        inifile.path = "C:\\HottabCfg.ini";
+                        inifile.path = "C:\\Program Files\\HotTab\\HottabCfg.ini";
                         //inifile.IniWriteValue("FunctionKey", ((HotkeyList2)hotKeyState).ToString(), ((FunctionList)func).ToString());
                         //inifile.IniWriteValue("SETTING", ((HotkeyList2)hotKeyState).ToString(), ((FunctionList)func).ToString());
-                        HotTabRegistry.WritePrivateProfileString("FunctionKey", ((HotkeyList2)hotKeyState).ToString(), ((FunctionList)func).ToString(), inifile.path);
+                        //HotTabRegistry.WritePrivateProfileString("FunctionKey", ((HotkeyList2)hotKeyState).ToString(), ((FunctionList)func).ToString(), inifile.path);
+                        RegistryWindows.setValue(((HotkeyList2)hotKeyState).ToString(), ((FunctionList)func).ToString());
 
-                        Console.WriteLine("Hottey change function  "+ ((HotkeyList2)hotKeyState).ToString()+"  "+ ((FunctionList)func).ToString());
-
+                        Console.WriteLine("Hottey change function  " + ((HotkeyList2)hotKeyState).ToString() + "  " + ((FunctionList)func).ToString());
+                        
                         //test registry
                         Console.WriteLine("RegistryWindows.getValue(\"noThisValue\") " + RegistryWindows.getValue("noThisValue"));
                         RegistryWindows.setValue("test1", "register test");
+                        RegistryWindows.setValue("test123456", "register123456 test");
+                        RegistryWindows.setValue("testtest123", "register testtest123456");
                         Console.WriteLine("RegistryWindows.getValue(\"test1\") " + RegistryWindows.getValue("test1"));
+                        
+                        Console.WriteLine("RegistryWindows.getValue(\"test123456\") " + RegistryWindows.getValue("test123456"));
+                        Console.WriteLine("RegistryWindows.getValue(\"testtest123\") " + RegistryWindows.getValue("testtest123"));
+
                     }
                 }
                 else if ((string)key == "HotKeyFuncCustomize")
@@ -170,8 +177,9 @@ namespace CollectDataAP
                         HotkeyFunc.changeFuncName((HotkeyList)hotKeyState, (string)func);
 
                         IniFile inifile = new IniFile();
-                        inifile.path = "C:\\HottabCfg.ini";
-                        HotTabRegistry.WritePrivateProfileString("FunctionKey", ((HotkeyList2)hotKeyState).ToString(), (string)func, inifile.path);
+                        inifile.path = "C:\\Program Files\\HotTab\\HottabCfg.ini";
+                        //HotTabRegistry.WritePrivateProfileString("FunctionKey", ((HotkeyList2)hotKeyState).ToString(), (string)func, inifile.path);
+                        RegistryWindows.setValue(((HotkeyList2)hotKeyState).ToString(), (string)func);
                     }
                 }
                 //TODO: using index??
@@ -203,13 +211,22 @@ namespace CollectDataAP
                         HotkeyFunc.defaultHotketFunc();
 
                         IniFile inifile = new IniFile();
-                        inifile.path = "C:\\HottabCfg.ini";
-                        HotTabRegistry.WritePrivateProfileString("FunctionKey", (HotkeyList2.F1S).ToString(), (FunctionList.volumeUp).ToString(), inifile.path);
-                        HotTabRegistry.WritePrivateProfileString("FunctionKey", (HotkeyList2.F2S).ToString(), (FunctionList.volumeDown).ToString(), inifile.path);
-                        HotTabRegistry.WritePrivateProfileString("FunctionKey", (HotkeyList2.F3S).ToString(), (FunctionList.backlight20).ToString(), inifile.path);
-                        HotTabRegistry.WritePrivateProfileString("FunctionKey", (HotkeyList2.F1L).ToString(), (FunctionList.Calc).ToString(), inifile.path);
-                        HotTabRegistry.WritePrivateProfileString("FunctionKey", (HotkeyList2.F2L).ToString(), (FunctionList.cmd).ToString(), inifile.path);
-                        HotTabRegistry.WritePrivateProfileString("FunctionKey", (HotkeyList2.F3L).ToString(), (FunctionList.backlight100).ToString(), inifile.path);
+                        inifile.path = "C:\\Program Files\\HotTab\\HottabCfg.ini";
+                        //HotTabRegistry.WritePrivateProfileString("FunctionKey", (HotkeyList2.F1S).ToString(), (FunctionList.volumeUp).ToString(), inifile.path);
+                        //HotTabRegistry.WritePrivateProfileString("FunctionKey", (HotkeyList2.F2S).ToString(), (FunctionList.volumeDown).ToString(), inifile.path);
+                        //HotTabRegistry.WritePrivateProfileString("FunctionKey", (HotkeyList2.F3S).ToString(), (FunctionList.backlight20).ToString(), inifile.path);
+                        //HotTabRegistry.WritePrivateProfileString("FunctionKey", (HotkeyList2.F1L).ToString(), (FunctionList.Calc).ToString(), inifile.path);
+                        //HotTabRegistry.WritePrivateProfileString("FunctionKey", (HotkeyList2.F2L).ToString(), (FunctionList.cmd).ToString(), inifile.path);
+                        // HotTabRegistry.WritePrivateProfileString("FunctionKey", (HotkeyList2.F3L).ToString(), (FunctionList.backlight100).ToString(), inifile.path);
+
+                        RegistryWindows.setValue((HotkeyList2.F1S).ToString(), (FunctionList.volumeUp).ToString());
+                        RegistryWindows.setValue((HotkeyList2.F2S).ToString(), (FunctionList.volumeDown).ToString());
+                        RegistryWindows.setValue((HotkeyList2.F3S).ToString(), (FunctionList.backlight20).ToString());
+                        RegistryWindows.setValue((HotkeyList2.F1L).ToString(), (FunctionList.Calc).ToString());
+                        RegistryWindows.setValue((HotkeyList2.F2L).ToString(), (FunctionList.cmd).ToString());
+                        RegistryWindows.setValue((HotkeyList2.F3L).ToString(), (FunctionList.backlight100).ToString());
+
+
                     }
                 }
                 else if((string)key == "KEY1")

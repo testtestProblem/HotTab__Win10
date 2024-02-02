@@ -131,7 +131,7 @@ namespace GlobalVar
             //string patch = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 
             //inifile.path = patch + "\\HottabCfg.ini";
-            inifile.path = "C:\\HottabCfg.ini";
+            inifile.path = "C:\\Program Files\\HotTab\\HottabCfg.ini"; ;
 
             if (!File.Exists(inifile.path))
                 return false;
@@ -215,7 +215,7 @@ namespace GlobalVar
             string dest;
             uint value;
 
-            inifile.path = "C:\\HottabCfg.ini";
+            inifile.path = "C:\\Program Files\\HotTab\\HottabCfg.ini";
             src = inifile.IniReadValue(Section, Key);
 
             dest = src.Replace("0X", "");
@@ -236,7 +236,7 @@ namespace GlobalVar
             string dest;
             byte value;
 
-            inifile.path = patch + "\\HottabCfg.ini";
+            inifile.path = "C:\\Program Files\\HotTab\\HottabCfg.ini";
             src = inifile.IniReadValue(Section, Key);
 
             dest = src.Replace("0X", "");

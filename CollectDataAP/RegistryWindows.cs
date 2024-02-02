@@ -9,24 +9,55 @@ namespace CollectDataAP
 {
     class RegistryWindows
     {
-        //private Registry registryKey;
         private const string userRoot = "HKEY_CURRENT_USER";
-        private const string subkey = @"SOFTWARE\HotTabTest1";
-        private static string keyPath = userRoot + "\\" + subkey;
+        private static string subkey = @"SOFTWARE\HotTabTest1";        
+        //private static string subkey = @"SOFTWARE\HotTab10";
+        private static string subkey1 = "abcd";
+        private static string subkey2 = "efgh";
+        //private static string keyPath = userRoot + "\\" + subkey;
+
+
+        //private static RegistryKey registryKey = Registry.CurrentUser.CreateSubKey(subkey);
+        //Registry.CurrentUser.CreateSubKey(subkey);
 
         /*private string keyName(string name)
         {
             return keyPath += "\\" + name;
         }*/
 
-        public static void setValue(string key, object value)
-        {
-            Registry.SetValue(keyPath, key, value);
+        public static void setValue(string key, string value)
+        {/*
+            RegistryKey registryKey = Registry.CurrentUser.CreateSubKey(subkey1, true);
+            RegistryKey registryKey2 =registryKey.CreateSubKey(subkey2, true);
+            //registryKey.SetValue(key, (string)value);
+            registryKey2.SetValue(key, (string)value);
+            registryKey2.Close();
+            registryKey.Close();
+            registryKey2.Dispose();
+            registryKey.Dispose();*/
+
+            RegistryKey registryKey = Registry.CurrentUser.CreateSubKey(subkey);
+            registryKey.SetValue(key, (string)value, RegistryValueKind.String);
+            registryKey.Close();
         }
 
         public static string getValue(string key)
-        {
-            return (string)Registry.GetValue(keyPath, key, "noValue");
+        {/*
+            //RegistryKey registryKey = Registry.CurrentUser.CreateSubKey(subkey);
+            RegistryKey registryKey = Registry.CurrentUser.CreateSubKey(subkey1);
+            RegistryKey registryKey2 = registryKey.CreateSubKey(subkey2);
+            string data = registryKey2.GetValue(key, "") as string;
+            registryKey2.Close();
+            registryKey.Close();
+            registryKey2.Dispose();
+            registryKey.Dispose();*/
+
+            RegistryKey registryKey = Registry.CurrentUser.CreateSubKey(subkey);
+            string data = registryKey.GetValue(key, "") as string;
+            registryKey.Close();
+
+            if (data == "" || data == null) return "nothing";
+            else return data;
         }
     }
 }

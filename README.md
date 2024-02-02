@@ -53,7 +53,7 @@ class RegistryWindows
     }
 ```
 > [!WARNING]
-> If restart app, the value not exist, the path maybe exist. Due to UWP sideload permission not enough.
+> If restart app, the value not exist, the path maybe exist. Because of UWP sideload, the permission is not enough.
 
 * RegisterKey represents a key-level node in the Windows registry. 
 

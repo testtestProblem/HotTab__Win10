@@ -21,6 +21,13 @@
 -- Information  
 <img width="601" alt="hottabInformation" src="https://github.com/testtestProblem/HotTab_Win10/assets/107662393/47b9d6d3-7624-48e7-8111-b4c7ff34a489">  
 
+# Detect S3 and sign in/out
+* This class provides access to system event notifications. This class cannot be inherited.
+* Reference: https://learn.microsoft.com/en-us/dotnet/api/microsoft.win32.systemevents?view=dotnet-plat-ext-8.0
+
+
+
+
 # Windows register
 * The class Register is static
 * I can not find any register key path in windows reg programe
@@ -46,7 +53,7 @@ class RegistryWindows
     }
 ```
 > [!WARNING]
-> If restart app, the value not exist, the path maybe exist.
+> If restart app, the value not exist, the path maybe exist. Due to UWP sideload permission not enough.
 
 * RegisterKey represents a key-level node in the Windows registry. 
 

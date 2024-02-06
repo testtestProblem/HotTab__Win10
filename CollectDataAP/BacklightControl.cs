@@ -207,5 +207,46 @@ namespace CollectDataAP
             moc.Dispose();
             mos.Dispose();
         }
+
+        /// <summary>
+        /// Get bacllight brightness
+        /// </summary>
+        /// <returns> int 0 ~ 100; error is -1 </returns>
+        static public int getBrighness2()
+        {
+            ManagementScope scope;
+            SelectQuery query;
+
+            int data = -1;
+
+            scope = new ManagementScope("root\\WMI");
+            query = new SelectQuery("SELECT * FROM WmiMonitorBrightness");
+
+            using (ManagementObjectSearcher searcher = new ManagementObjectSearcher(scope, query))
+            {
+                using (ManagementObjectCollection objectCollection = searcher.Get())
+                {
+                    foreach (ManagementObject mObj in objectCollection)
+                    {
+                        Console.WriteLine(mObj.ClassPath);
+                        foreach (var item in mObj.Properties)
+                        {
+                            Console.WriteLine(item.Name + " " + item.Value.ToString());
+                            if (item.Name == "CurrentBrightness")
+                            {
+                                //Do something with CurrentBrightness
+                                data = (Convert.ToInt32(item.Value));
+                                //if (data > 50) data = 100;
+                                //else data = data * 2;
+                                //return data <= 100 ? data : 100;
+                            }
+                        }
+                    }
+                }
+               // return -1;
+            }
+
+            return data <= 100 ? data : 100;
+        }
     }
 }

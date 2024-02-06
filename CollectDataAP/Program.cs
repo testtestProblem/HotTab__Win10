@@ -72,18 +72,19 @@ namespace CollectDataAP
             }
 
             SystemEvents.PowerModeChanged += new PowerModeChangedEventHandler(SystemEvents_PowerModeChanged);
-            
+            SystemEvents.SessionSwitch += new SessionSwitchEventHandler(SystemEvents_SessionSwitch);
+
             handle = Process.GetCurrentProcess().Handle;
 
             //add thread for hotkey
-            //new Thread(() => t_KeyCode()).Start();
+            new Thread(() => t_KeyCode()).Start();
 
-           // Connect2UWP connect2UWP = new Connect2UWP();
-            //DeviceState deviceState = new DeviceState();
+            Connect2UWP connect2UWP = new Connect2UWP();
+            DeviceState deviceState = new DeviceState();
 
             string choice = "";
 
-            //connect2UWP.InitializeAppServiceConnection();
+            connect2UWP.InitializeAppServiceConnection();
 
             Tommy.Tommy_Start();
 
@@ -95,16 +96,16 @@ namespace CollectDataAP
                 "[5] Send data to UWP for test\n" +
                 "[0] Exit");
 
-            //uint deviceStateCode = deviceState.GetDeviceStatePower();
-            //Console.WriteLine("\nDevice state code: " + deviceStateCode.ToString());
-            //Console.WriteLine(deviceState.ParseDeviceStatePowerCode());
+            uint deviceStateCode = deviceState.GetDeviceStatePower();
+            Console.WriteLine("\nDevice state code: " + deviceStateCode.ToString());
+            Console.WriteLine(deviceState.ParseDeviceStatePowerCode());
 
             //reduce cpu usage rate
-            //Application.Run();
+            Application.Run();
 
-            
+            /*
             while ((choice = Console.ReadLine()) != "0")
-            {/*
+            {
                 if (choice == "1")
                 {
                     deviceStateCode = deviceState.GetDeviceStatePower();
@@ -133,8 +134,8 @@ namespace CollectDataAP
                 else if (choice == "5")
                 {
                     connect2UWP.Send2UWP_2("Hi!", "UWP");
-                }*/
-            }
+                }
+            }*/
         }
 
         //if have second console, closed it
@@ -184,7 +185,15 @@ namespace CollectDataAP
             Trace.WriteLine("SimpleService.PowerModeChanged", "Power mode changed; time: " +
                 DateTime.Now.ToLongTimeString());
 
-            //HotKey.ModeOpen(2);    //choose hotkey mode 2
+            HotKey.ModeOpen(2);    //choose hotkey mode 2
+        }
+
+        static public void SystemEvents_SessionSwitch(object sender, EventArgs e)
+        {
+           // Trace.WriteLine("SimpleService.PowerModeChanged", "Power mode changed; time: " +
+            //    DateTime.Now.ToLongTimeString());
+
+            HotKey.ModeOpen(2);    //choose hotkey mode 2
         }
 
         static void KillAllNotepadProcesses()

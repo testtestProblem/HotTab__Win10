@@ -194,6 +194,9 @@ namespace CollectDataAP
                         //SendMessageW(handle, WM_APPCOMMAND, IntPtr.Zero, (IntPtr)APPCOMMAND_VOLUME_UP); 
                         //System.Diagnostics.Process.Start("Taskmgr");
                         HotkeyFunc.func(HotkeyFunc.funcName[0]);
+                        
+                        //for test
+                        //BacklightControl.getBrighness2();
                     }
                     else if (theKey.Contains("D4"))
                     {

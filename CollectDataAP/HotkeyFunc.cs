@@ -196,20 +196,28 @@ namespace CollectDataAP
 
             Console.WriteLine("BacklightControl.GetBrightness() -> "+ b[0]);
             */
-            BacklightControl.SetBrightness(20);
+
+            //BacklightControl.SetBrightness(20);
+            int bl=0;
+            bl=BacklightControl.getBrighness2();
+            BacklightControl.SetBrightness((byte)((bl - 5) >= 1 ? bl - 5 : 1));
         }
 
         static private void backlight100()
         {
             //string[] a = { "1", "+" };
             //BacklightControl bl = new BacklightControl(a);
-            
+
             /*byte[] b = BacklightControl.GetBrightnessLevels();
             BacklightControl.SetBrightness((byte)((b[0] + 2) <= 1000 ? b[0] + 2 : 1000));
           
             Console.WriteLine("BacklightControl.GetBrightness() -> " + b[0]);
         */
-            BacklightControl.SetBrightness(100);
+            //BacklightControl.SetBrightness(100);
+
+            int bl = 0;
+            bl = BacklightControl.getBrighness2();
+            BacklightControl.SetBrightness((byte)((bl + 5) <= 100 ? bl + 5 : 100));
         }
 
         static private void calculatorWin10()

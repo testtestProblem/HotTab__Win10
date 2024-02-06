@@ -87,6 +87,7 @@
   <ItemGroup>
     <Compile Include="AudioManager.cs" />
     <Compile Include="BacklightControl.cs" />
+    <Compile Include="BacklightControl2.cs" />
     <Compile Include="Brightness.cs" />
     <Compile Include="Connect2UWP.cs" />
     <Compile Include="DeviceState.cs" />

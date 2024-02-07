@@ -23,7 +23,8 @@
 
 # Install appx to all users and new users
 * ```PowerShell C:\> Add-AppxProvisionedPackage -Online -FolderPath "c:\Appx"``` This will get error(no applicable main package was found for this platform). I don't know how to sove it.
-
+* ```Add-AppxProvisionedPackage -Online -DependencyPackagePath "all_dependency_package_path","","" -PackagePath "appxbundle_or_msixbundle_path" -SkipLicense``` It can successfully install appx to all users and new users
+* Reference: https://stackoverflow.com/questions/57266123/can-i-use-add-appxprovisionedpackage-to-install-a-denpendency-appx-pacakge  
 
 # Object type tranform to other type
 * Error code: specified cast is not valid

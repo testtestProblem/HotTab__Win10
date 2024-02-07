@@ -22,7 +22,7 @@
 <img width="601" alt="hottabInformation" src="https://github.com/testtestProblem/HotTab_Win10/assets/107662393/47b9d6d3-7624-48e7-8111-b4c7ff34a489">  
 
 # Install appx to all users and new users
-* ```PS C:\> Add-AppxProvisionedPackage -Online -FolderPath "c:\Appx"``` This will get error(no applicable main package was found for this platform). I don't know how to sove it.
+* ```PowerShell C:\> Add-AppxProvisionedPackage -Online -FolderPath "c:\Appx"``` This will get error(no applicable main package was found for this platform). I don't know how to sove it.
 
 
 # Object type tranform to other type

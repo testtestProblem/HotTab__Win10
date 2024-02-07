@@ -21,6 +21,11 @@
 -- Information  
 <img width="601" alt="hottabInformation" src="https://github.com/testtestProblem/HotTab_Win10/assets/107662393/47b9d6d3-7624-48e7-8111-b4c7ff34a489">  
 
+# Object type tranform to other type (specified cast is not valid)
+* Due to force transform Object type to int will cause some unknow error. Using function like ```Convert.ToInt32(item.Value)``` will sove this problem.  
+* Reference: https://blog.csdn.net/u011644138/article/details/106006732
+* 
+
 # Detect S3 and sign in/out
 * This class provides access to system event notifications. This class cannot be inherited.
 * Because this is a static event, you must detach your event handlers when your application is disposed, or memory leaks will result.

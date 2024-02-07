@@ -24,7 +24,7 @@
 # Object type tranform to other type (specified cast is not valid)
 * Due to force transform Object type to int will cause some unknow error. Using function like ```Convert.ToInt32(item.Value)``` will sove this problem.  
 * Reference: https://blog.csdn.net/u011644138/article/details/106006732
-* 
+
 
 # Detect S3 and sign in/out
 * This class provides access to system event notifications. This class cannot be inherited.

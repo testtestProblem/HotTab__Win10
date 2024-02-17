@@ -23,7 +23,44 @@
 
 # Win32 allow administrator
 * Due to UWP will limmit access some resource, Using fullTrustlouncher WIN32 can sove it.
+* First. Make console as administrator. 
+Add Application Manifest File(Windows only), modify execution level to ```<requestedExecutionLevel level="highestAvailable" uiAccess="false" />```. I don't know why ```<requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />``` will show error
+![image](https://github.com/testtestProblem/HotTab_Win10/assets/107662393/151571fe-8f75-4b43-a235-ff41f2e96bce)
 
+* Change WapProj Package.appxmanifest
+```xml
+<Package
+  xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+  xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+  xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
+  
+  xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
+  xmlns:desktop="http://schemas.microsoft.com/appx/manifest/desktop/windows10"
+  xmlns:uap5="http://schemas.microsoft.com/appx/manifest/uap/windows10/5"
+	
+  xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3"
+  IgnorableNamespaces="uap mp desktop rescap uap3">
+```
+```xml
+<uap:Extension Category="windows.appService">
+        <uap:AppService Name="SampleInteropService" />
+</uap:Extension>
+						
+<desktop:Extension Category="windows.fullTrustProcess" Executable="CollectDataAP\CollectDataAP.exe">
+        <desktop:FullTrustProcess>
+                <desktop:ParameterGroup GroupId="User" Parameters="/user" />
+                <desktop:ParameterGroup GroupId="Admin" Parameters="/admin" />
+        </desktop:FullTrustProcess>
+</desktop:Extension>
+```
+-- allow Elevation
+```xml
+<Capabilities>
+    <Capability Name="internetClient" />
+    <rescap:Capability Name="runFullTrust" />
+    <rescap:Capability Name="allowElevation" />
+</Capabilities>
+```
 # CMD Kill process
 * Get current user process: ```tasklist | more```
 * Kill process: ```taskkill /IM “process name” /F```

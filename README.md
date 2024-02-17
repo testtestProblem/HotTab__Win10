@@ -21,6 +21,14 @@
 -- Information  
 <img width="601" alt="hottabInformation" src="https://github.com/testtestProblem/HotTab_Win10/assets/107662393/47b9d6d3-7624-48e7-8111-b4c7ff34a489">  
 
+
+# CMD Kill process
+* Get current user process: ```tasklist | more```
+* Kill process: ```taskkill /IM “process name” /F```
+* Kill multiple process: ```taskkill /IM "Process Name" /IM "Process Name" /F```; using PID ```PID taskkill /PID PID  /PID PID /F``` 
+
+
+
 # Install appx to all users and new users
 * ```PowerShell C:\> Add-AppxProvisionedPackage -Online -FolderPath "c:\Appx"``` This will get error(no applicable main package was found for this platform). I don't know how to sove it.
 * ```Add-AppxProvisionedPackage -Online -DependencyPackagePath "all_dependency_package_path","","" -PackagePath "appxbundle_or_msixbundle_path" -SkipLicense``` It can successfully install appx to all users and new users

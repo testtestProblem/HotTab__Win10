@@ -21,6 +21,8 @@
 -- Information  
 <img width="601" alt="hottabInformation" src="https://github.com/testtestProblem/HotTab_Win10/assets/107662393/47b9d6d3-7624-48e7-8111-b4c7ff34a489">  
 
+# Win32 allow administrator
+* Due to UWP will limmit access some resource, Using fullTrustlouncher WIN32 can sove it.
 
 # CMD Kill process
 * Get current user process: ```tasklist | more```

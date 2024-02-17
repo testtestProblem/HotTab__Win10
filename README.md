@@ -24,7 +24,8 @@
 # Win32 allow administrator
 * Due to UWP will limmit access some resource, Using fullTrustlouncher WIN32 can sove it.  
 * First. Make console as administrator.   
-Add Application Manifest File(Windows only), modify execution level to ```<requestedExecutionLevel level="highestAvailable" uiAccess="false" />```. I don't know why ```<requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />``` will show error  
+Add Application Manifest File(Windows only), modify execution level to ```<requestedExecutionLevel level="highestAvailable" uiAccess="false" />```. 
+I don't know why ```<requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />``` will show error  
 ![image](https://github.com/testtestProblem/HotTab_Win10/assets/107662393/151571fe-8f75-4b43-a235-ff41f2e96bce)  
 
 * Change WapProj Package.appxmanifest  

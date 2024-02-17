@@ -22,12 +22,12 @@
 <img width="601" alt="hottabInformation" src="https://github.com/testtestProblem/HotTab_Win10/assets/107662393/47b9d6d3-7624-48e7-8111-b4c7ff34a489">  
 
 # Win32 allow administrator
-* Due to UWP will limmit access some resource, Using fullTrustlouncher WIN32 can sove it.
-* First. Make console as administrator. 
-Add Application Manifest File(Windows only), modify execution level to ```<requestedExecutionLevel level="highestAvailable" uiAccess="false" />```. I don't know why ```<requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />``` will show error
-![image](https://github.com/testtestProblem/HotTab_Win10/assets/107662393/151571fe-8f75-4b43-a235-ff41f2e96bce)
+* Due to UWP will limmit access some resource, Using fullTrustlouncher WIN32 can sove it.  
+* First. Make console as administrator.   
+Add Application Manifest File(Windows only), modify execution level to ```<requestedExecutionLevel level="highestAvailable" uiAccess="false" />```. I don't know why ```<requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />``` will show error  
+![image](https://github.com/testtestProblem/HotTab_Win10/assets/107662393/151571fe-8f75-4b43-a235-ff41f2e96bce)  
 
-* Change WapProj Package.appxmanifest
+* Change WapProj Package.appxmanifest  
 ```xml
 <Package
   xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
@@ -40,7 +40,7 @@ Add Application Manifest File(Windows only), modify execution level to ```<reque
 	
   xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3"
   IgnorableNamespaces="uap mp desktop rescap uap3">
-```
+```  
 ```xml
 <uap:Extension Category="windows.appService">
         <uap:AppService Name="SampleInteropService" />
@@ -52,9 +52,9 @@ Add Application Manifest File(Windows only), modify execution level to ```<reque
                 <desktop:ParameterGroup GroupId="Admin" Parameters="/admin" />
         </desktop:FullTrustProcess>
 </desktop:Extension>
-```
--- allow Elevation
-```xml
+```  
+-- allow Elevation  
+```xml  
 <Capabilities>
     <Capability Name="internetClient" />
     <rescap:Capability Name="runFullTrust" />

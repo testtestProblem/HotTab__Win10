@@ -198,7 +198,18 @@ namespace CollectDataAP
 
         static void KillAllNotepadProcesses()
         {
-            System.Diagnostics.Process[] procs = System.Diagnostics.Process.GetProcessesByName("CollectDataAP", "."); // use "." for this machine
+            //string userName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+            //System.Diagnostics.Process[] procs = System.Diagnostics.Process.GetProcessesByName("CollectDataAP", userName); // use "." for this machine
+            //Console.WriteLine(userName, "  ", Environment.UserName);
+
+            //string userName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+            //System.Diagnostics.Process[] procs = System.Diagnostics.Process.GetProcessesByName("CollectDataAP", "."); // use "." for this machine
+            //Console.WriteLine(userName+ "  "+Environment.UserName);
+
+            //System.Diagnostics.Process[] procs = System.Diagnostics.Process.GetProcessesByName("CollectDataAP", Environment.UserName); // use "." for this machine
+
+            System.Diagnostics.Process[] procs = System.Diagnostics.Process.GetProcessesByName("CollectDataAP"); // use "." for this machine
+
             foreach (var proc in procs)
                 if (proc.Id != Process.GetCurrentProcess().Id) proc.Kill();
         }

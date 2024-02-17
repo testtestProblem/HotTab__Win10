@@ -9,7 +9,8 @@ using VideoPlayerController;
 namespace CollectDataAP
 {
     class HotkeyFunc
-    {   /*
+    {   
+        /*
         public delegate void HotkeyFuncList();
         public delegate void HotkeyFuncCustomiz(string a);
 
@@ -200,7 +201,7 @@ namespace CollectDataAP
             //BacklightControl.SetBrightness(20);
             int bl=0;
             bl=BacklightControl.getBrighness2();
-            BacklightControl.SetBrightness((byte)((bl - 5) >= 1 ? bl - 5 : 1));
+            BacklightControl.SetBrightness((byte)((bl - 5) >= 0 ? bl - 5 : 0));
         }
 
         static private void backlight100()

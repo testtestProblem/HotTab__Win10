@@ -1,3 +1,255 @@
+# HotTab Win10
+* Function description: HotTab can turn on/off device power; can show hotkey function also can change it; can show battery remain power and others information.
+* Requirement: Above windows10 version 1809; X64 architecture
+* UI illustration
+
+-- Main  
+<img width="601" alt="hottabMain" src="https://github.com/testtestProblem/HotTab_Win10/assets/107662393/a1445ed4-4a2b-4803-bb50-83c7652c6f7c">
+
+-- Device state  
+<img width="601" alt="hottabDevice" src="https://github.com/testtestProblem/HotTab_Win10/assets/107662393/715e8763-b49b-4a55-aa8e-383f0a449fae">  
+
+-- Hotkey no change function  
+<img width="601" alt="hottabHotkeyNoChoose" src="https://github.com/testtestProblem/HotTab_Win10/assets/107662393/21fde1ec-dd6d-4b51-b08c-0e97701a5182">  
+
+-- Hotkey change function  
+<img width="601" alt="hottabHotkeyChoose" src="https://github.com/testtestProblem/HotTab_Win10/assets/107662393/c91c3a68-f4ad-44e9-a98e-05d3fac46e34">  
+
+-- Startup  
+<img width="511" alt="enableStartup" src="https://github.com/testtestProblem/HotTab_Win10/assets/107662393/29951430-991a-4e7d-a807-aabc3b479cb9">  
+
+-- Information  
+<img width="601" alt="hottabInformation" src="https://github.com/testtestProblem/HotTab_Win10/assets/107662393/47b9d6d3-7624-48e7-8111-b4c7ff34a489">  
+
+# Win32 allow administrator
+* Due to UWP will limmit access some resource, Using fullTrustlouncher WIN32 can sove it.  
+* First. Make console as administrator.   
+Add Application Manifest File(Windows only), modify execution level to ```<requestedExecutionLevel level="highestAvailable" uiAccess="false" />```.   
+I don't know why ```<requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />``` will show error  
+![image](https://github.com/testtestProblem/HotTab_Win10/assets/107662393/151571fe-8f75-4b43-a235-ff41f2e96bce)  
+
+* Change WapProj Package.appxmanifest  
+```xml
+<Package
+  xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+  xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+  xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
+  
+  xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
+  xmlns:desktop="http://schemas.microsoft.com/appx/manifest/desktop/windows10"
+  xmlns:uap5="http://schemas.microsoft.com/appx/manifest/uap/windows10/5"
+	
+  xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3"
+  IgnorableNamespaces="uap mp desktop rescap uap3">
+```  
+```xml
+<uap:Extension Category="windows.appService">
+        <uap:AppService Name="SampleInteropService" />
+</uap:Extension>
+						
+<desktop:Extension Category="windows.fullTrustProcess" Executable="CollectDataAP\CollectDataAP.exe">
+        <desktop:FullTrustProcess>
+                <desktop:ParameterGroup GroupId="User" Parameters="/user" />
+                <desktop:ParameterGroup GroupId="Admin" Parameters="/admin" />
+        </desktop:FullTrustProcess>
+</desktop:Extension>
+```  
+-- allow Elevation  
+```xml  
+<Capabilities>
+    <Capability Name="internetClient" />
+    <rescap:Capability Name="runFullTrust" />
+    <rescap:Capability Name="allowElevation" />
+</Capabilities>
+```
+# CMD Kill process
+* Get current user process: ```tasklist | more```
+* Kill process: ```taskkill /IM “process name” /F```
+* Kill multiple process: ```taskkill /IM "Process Name" /IM "Process Name" /F```; using PID ```PID taskkill /PID PID  /PID PID /F``` 
+
+
+
+# Install appx to all users and new users
+* ```PowerShell C:\> Add-AppxProvisionedPackage -Online -FolderPath "c:\Appx"``` This will get error(no applicable main package was found for this platform). I don't know how to sove it.
+* ```Add-AppxProvisionedPackage -Online -DependencyPackagePath "all_dependency_package_path","","" -PackagePath "appxbundle_or_msixbundle_path" -SkipLicense``` It can successfully install appx to all users and new users
+* Reference: https://stackoverflow.com/questions/57266123/can-i-use-add-appxprovisionedpackage-to-install-a-denpendency-appx-pacakge  
+
+# Object type tranform to other type
+* Error code: specified cast is not valid
+* Due to force transform Object type to int will cause some unknow error. Using function like ```Convert.ToInt32(item.Value)``` will sove this problem.  
+* Reference: https://blog.csdn.net/u011644138/article/details/106006732
+
+
+# Detect S3 and sign in/out
+* This class provides access to system event notifications. This class cannot be inherited.
+* Because this is a static event, you must detach your event handlers when your application is disposed, or memory leaks will result.
+* Reference: https://learn.microsoft.com/en-us/dotnet/api/microsoft.win32.systemevents?view=dotnet-plat-ext-8.0
+
+* Detect sleep mode  
+Add event  
+```C#
+SystemEvents.PowerModeChanged += new PowerModeChangedEventHandler(SystemEvents_PowerModeChanged);
+```
+```C#
+static public void SystemEvents_PowerModeChanged(object sender, EventArgs e)
+        {
+            Trace.WriteLine("SimpleService.PowerModeChanged", "Power mode changed; time: " +
+                DateTime.Now.ToLongTimeString());
+
+            HotKey.ModeOpen(2);    //choose hotkey mode 2
+        }
+```
+
+* Detect sign in/out  
+```C#
+SystemEvents.SessionSwitch += new SessionSwitchEventHandler(SystemEvents_SessionSwitch);
+```
+```C#
+static public void SystemEvents_SessionSwitch(object sender, EventArgs e)
+        {
+           // Trace.WriteLine("SimpleService.PowerModeChanged", "Power mode changed; time: " +
+            //    DateTime.Now.ToLongTimeString());
+
+            HotKey.ModeOpen(2);    //choose hotkey mode 2
+        }
+```
+
+
+# Windows register
+* The class Register is static
+* I can not find any register key path in windows reg programe
+* ```Registry.GetValue(keyPath, key, "noValue")``` When first run app, because the path not exit, it will get null and create path. If have path exist but no value, will get "noValue". 
+* ```Registry.SetValue(keyPath, key, value);``` If no path or value, it will create it.
+```C#
+class RegistryWindows
+    {
+        //private Registry registryKey;
+        private const string userRoot = "HKEY_CURRENT_USER";
+        private const string subkey = @"SOFTWARE\HotTabTest1";
+        private static string keyPath = userRoot + "\\" + subkey;
+
+        public static void setValue(string key, object value)
+        {
+            Registry.SetValue(keyPath, key, value);
+        }
+
+        public static string getValue(string key)
+        {
+            return (string)Registry.GetValue(keyPath, key, "noValue");
+        }
+    }
+```
+> [!WARNING]
+> If restart app, the value not exist, the path maybe exist. Because of UWP sideload, the permission is not enough.
+
+* RegisterKey represents a key-level node in the Windows registry. 
+
+# XAML UWP button background while focuing will disappear 
+* Qustion: While using mounce fouce button, the background picture will disappear.
+* Soultion 1: This have a problem. It will apply all button. 
+```xml
+<Page.Resources>
+    <StaticResource x:Key="ButtonBackground" ResourceKey="MyMyImageBrush" />
+    <StaticResource x:Key="ButtonBackgroundPointerOver" ResourceKey="MyMyImageBrush" />
+    <StaticResource x:Key="ButtonBackgroundPressed" ResourceKey="SystemControlBackgroundBaseMediumLowBrush" />
+    <ImageBrush x:Key="MyMyImageBrush" ImageSource="ms-appx:///assets/Button.png" />
+</Page.Resources>
+```
+* Solution 2: Disable mounce fouce event
+```xml
+    <Page.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <ContentPresenter x:Name="ContentPresenter"
+                                              Padding="{TemplateBinding Padding}"
+                                              HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              AutomationProperties.AccessibilityView="Raw"
+                                              Background="{TemplateBinding Background}"
+                                              BorderBrush="{TemplateBinding BorderBrush}"
+                                              BorderThickness="{TemplateBinding BorderThickness}"
+                                              Content="{TemplateBinding Content}"
+                                              ContentTemplate="{TemplateBinding ContentTemplate}"
+                                              ContentTransitions="{TemplateBinding ContentTransitions}"
+                                              CornerRadius="{TemplateBinding CornerRadius}">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal">
+                                        <Storyboard>
+                                            <PointerUpThemeAnimation Storyboard.TargetName="ContentPresenter" />
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Opacity">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="1" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="PointerOver">
+                                        <Storyboard>
+                                            <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonForeground}" />
+                                            </ObjectAnimationUsingKeyFrames>-->
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonForeground}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonForeground}" />
+                                            </ObjectAnimationUsingKeyFrames>-->
+                                            <PointerUpThemeAnimation Storyboard.TargetName="ContentPresenter" />
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Pressed">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBackgroundPressed}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBorderBrushPressed}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonForegroundPressed}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <PointerDownThemeAnimation Storyboard.TargetName="ContentPresenter" />
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Disabled">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Opacity">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="0.65" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBorderBrushDisabled}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </ContentPresenter>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+```
+
+
+
+# Relative xmal layout
+* RelativePanel: Elements are arranged in relation to the edge or center of the panel, and in relation to each other.  
+* Relative xmal layout example
+```xml
+<RelativePanel >
+        <Button x:Name="return_btn" Content="&#xea5c;" FontFamily="{StaticResource ResourceKey=CustomIconFont}" Margin="0,0,0,0" Height="75" Width="75" Click="return_btn_Click" FontSize="50"/>
+
+        <Button x:Name="btn_wifi" Width="70" Height="70" Margin="-100,-500,0,0"  RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" Click="btn_wifi_Click" >
+        </Button>
+</RelativePanel>
+```  
+
+# Absoluty xmal layout
+* Grid: Elements are arranged in rows and columns using Grid.Row and Grid.Column attached properties.
+* This is default layout
+
 # SplashScreen UWP (UWP startup picture)
 * To turn off full screen while starting UWP.
 * Package.appxmanifest file from UWP and add ```a:Optional="true"```
@@ -60,6 +312,10 @@ static void KillAllNotepadProcesses()
 * Reference: https://github.com/JeroenvO/screen-brightness/blob/master/BrightnessConsoleJvO/Class1.cs  
 * Add System.Management in Reference  
 ![image](https://github.com/testtestProblem/HotTab_Win10/assets/107662393/095fc4c0-fd4a-4396-8c70-73c02c2ed826)  
+> [!IMPORTANT]  
+> Should not enable "night mode", "auto brightness change"
+
+
 
 # Startup
 refrence: https://learn.microsoft.com/en-us/uwp/api/windows.applicationmodel.startuptask?view=winrt-22621

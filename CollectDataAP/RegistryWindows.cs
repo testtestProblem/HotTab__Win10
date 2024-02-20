@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,12 +11,11 @@ namespace CollectDataAP
     class RegistryWindows
     {
         private const string userRoot = "HKEY_CURRENT_USER";
-        private static string subkey = @"SOFTWARE\HotTabTest1";        
+        private static string subkey = @"SOFTWARE\HotTabTest1";
         //private static string subkey = @"SOFTWARE\HotTab10";
         private static string subkey1 = "abcd";
         private static string subkey2 = "efgh";
         //private static string keyPath = userRoot + "\\" + subkey;
-
 
         //private static RegistryKey registryKey = Registry.CurrentUser.CreateSubKey(subkey);
         //Registry.CurrentUser.CreateSubKey(subkey);
@@ -24,7 +24,7 @@ namespace CollectDataAP
         {
             return keyPath += "\\" + name;
         }*/
-
+        //[assembly: RegistryPermissionAttribute(SecurityAction.RequestMinimum, Write = @"HKEY_CURRENT_USER\\SOFTWARE\\HotTabTest1")]
         public static void setValue(string key, string value)
         {/*
             RegistryKey registryKey = Registry.CurrentUser.CreateSubKey(subkey1, true);

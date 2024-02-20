@@ -8,12 +8,14 @@
   xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
   xmlns:desktop="http://schemas.microsoft.com/appx/manifest/desktop/windows10"
   xmlns:uap5="http://schemas.microsoft.com/appx/manifest/uap/windows10/5"
-	IgnorableNamespaces="uap mp desktop rescap">
+	
+	xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3"
+	IgnorableNamespaces="uap mp desktop rescap uap3">
 
   <Identity
     Name="747e73e9-556f-4468-8093-8c898243ee88"
     Publisher="CN=Tommy_WE1914"
-    Version="1.0.159.0" />
+    Version="1.0.161.0" />
 
   <Properties>
     <DisplayName>WapProj_HotTab_Win10</DisplayName>
@@ -48,8 +50,14 @@
 						<uap:Extension Category="windows.appService">
 								<uap:AppService Name="SampleInteropService" />
 						</uap:Extension>
-						<desktop:Extension Category="windows.fullTrustProcess" Executable="CollectDataAP\CollectDataAP.exe" />
-
+						
+						<desktop:Extension Category="windows.fullTrustProcess" Executable="CollectDataAP\CollectDataAP.exe">
+								<desktop:FullTrustProcess>
+										<desktop:ParameterGroup GroupId="User" Parameters="/user" />
+										<desktop:ParameterGroup GroupId="Admin" Parameters="/admin" />
+								</desktop:FullTrustProcess>
+						</desktop:Extension>
+						
 						<uap5:Extension
 							Category="windows.startupTask"
 							Executable="CollectDataAP\CollectDataAP.exe"
@@ -67,5 +75,6 @@
   <Capabilities>
     <Capability Name="internetClient" />
     <rescap:Capability Name="runFullTrust" />
+		<rescap:Capability Name="allowElevation" />
   </Capabilities>
 </Package>

@@ -49,7 +49,7 @@ namespace CollectDataAP
 
             //string patch = System.Windows.Forms.Application.StartupPath;
             //string patch = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            if (RegistryWindows.getValue("F1S") == "nothing" || RegistryWindows.getValue("F1S") == "noValue")
+            //if (RegistryWindows.getValue("F1S") == "nothing" || RegistryWindows.getValue("F1S") == "noValue")
             {
                 IniFile inifile = new IniFile();
                 inifile.path = "C:\\Program Files\\HotTab\\HottabCfg.ini";
@@ -69,6 +69,9 @@ namespace CollectDataAP
                 RegistryWindows.setValue("F2L", HotkeyFunc.funcName[5]);
                 RegistryWindows.setValue("F3S", HotkeyFunc.funcName[2]);
                 RegistryWindows.setValue("F3L", HotkeyFunc.funcName[3]);
+
+                RegistryWindows.setValue("aabb", "1234");
+                Console.WriteLine("reg ok");
             }
 
             SystemEvents.PowerModeChanged += new PowerModeChangedEventHandler(SystemEvents_PowerModeChanged);

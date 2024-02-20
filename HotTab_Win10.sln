@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.32929.386
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotTab_Win10", "HotTab_Win10\HotTab_Win10.csproj", "{AD785C4C-250E-46B6-AB6B-7CC657C7EE03}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3F69F041-3C2A-42DA-8582-844756FEA682} = {3F69F041-3C2A-42DA-8582-844756FEA682}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CollectDataAP", "CollectDataAP\CollectDataAP.csproj", "{3F69F041-3C2A-42DA-8582-844756FEA682}"
 EndProject

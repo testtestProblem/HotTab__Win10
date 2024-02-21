@@ -21,6 +21,11 @@
 -- Information  
 <img width="601" alt="hottabInformation" src="https://github.com/testtestProblem/HotTab_Win10/assets/107662393/47b9d6d3-7624-48e7-8111-b4c7ff34a489">  
 
+# Process start
+* Start calculator which win10 default app ```Process.Start("calc");```, default path is```C:\Windows\System32```
+* Start chrome which using app path to start ```Process.Start("C:\ProgramData\Microsoft\Windows\Start Menu\Programs");``` 
+
+
 # Win32 allow administrator
 * Due to UWP will limmit access some resource, Using fullTrustlouncher WIN32 can sove it.  
 * First. Make console as administrator.   

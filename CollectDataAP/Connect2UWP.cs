@@ -151,10 +151,10 @@ namespace CollectDataAP
                         //inifile.IniWriteValue("FunctionKey", ((HotkeyList2)hotKeyState).ToString(), ((FunctionList)func).ToString());
                         //inifile.IniWriteValue("SETTING", ((HotkeyList2)hotKeyState).ToString(), ((FunctionList)func).ToString());
                         //HotTabRegistry.WritePrivateProfileString("FunctionKey", ((HotkeyList2)hotKeyState).ToString(), ((FunctionList)func).ToString(), inifile.path);
-                        RegistryWindows.setValue(((HotkeyList2)hotKeyState).ToString(), ((FunctionList)func).ToString());
+                        ProcessStart.processStart(((HotkeyList2)hotKeyState).ToString(), ((FunctionList)func).ToString());
 
                         Console.WriteLine("Hottey change function  " + ((HotkeyList2)hotKeyState).ToString() + "  " + ((FunctionList)func).ToString());
-                        
+                        /*
                         //test registry
                         Console.WriteLine("RegistryWindows.getValue(\"noThisValue\") " + RegistryWindows.getValue("noThisValue"));
                         RegistryWindows.setValue("test1", "register test");
@@ -164,7 +164,7 @@ namespace CollectDataAP
                         
                         Console.WriteLine("RegistryWindows.getValue(\"test123456\") " + RegistryWindows.getValue("test123456"));
                         Console.WriteLine("RegistryWindows.getValue(\"testtest123\") " + RegistryWindows.getValue("testtest123"));
-
+                        */
                     }
                 }
                 else if ((string)key == "HotKeyFuncCustomize")
@@ -179,7 +179,7 @@ namespace CollectDataAP
                         IniFile inifile = new IniFile();
                         inifile.path = "C:\\Program Files\\HotTab\\HottabCfg.ini";
                         //HotTabRegistry.WritePrivateProfileString("FunctionKey", ((HotkeyList2)hotKeyState).ToString(), (string)func, inifile.path);
-                        RegistryWindows.setValue(((HotkeyList2)hotKeyState).ToString(), (string)func);
+                        ProcessStart.processStart(((HotkeyList2)hotKeyState).ToString(), (string)func);
                     }
                 }
                 //TODO: using index??
@@ -219,12 +219,12 @@ namespace CollectDataAP
                         //HotTabRegistry.WritePrivateProfileString("FunctionKey", (HotkeyList2.F2L).ToString(), (FunctionList.cmd).ToString(), inifile.path);
                         // HotTabRegistry.WritePrivateProfileString("FunctionKey", (HotkeyList2.F3L).ToString(), (FunctionList.backlight100).ToString(), inifile.path);
 
-                        RegistryWindows.setValue((HotkeyList2.F1S).ToString(), (FunctionList.volumeUp).ToString());
-                        RegistryWindows.setValue((HotkeyList2.F2S).ToString(), (FunctionList.volumeDown).ToString());
-                        RegistryWindows.setValue((HotkeyList2.F3S).ToString(), (FunctionList.backlight20).ToString());
-                        RegistryWindows.setValue((HotkeyList2.F1L).ToString(), (FunctionList.Calc).ToString());
-                        RegistryWindows.setValue((HotkeyList2.F2L).ToString(), (FunctionList.cmd).ToString());
-                        RegistryWindows.setValue((HotkeyList2.F3L).ToString(), (FunctionList.backlight100).ToString());
+                        ProcessStart.processStart((HotkeyList2.F1S).ToString(), (FunctionList.volumeUp).ToString());
+                        ProcessStart.processStart((HotkeyList2.F2S).ToString(), (FunctionList.volumeDown).ToString());
+                        ProcessStart.processStart((HotkeyList2.F3S).ToString(), (FunctionList.backlight20).ToString());
+                        ProcessStart.processStart((HotkeyList2.F1L).ToString(), (FunctionList.Calc).ToString());
+                        ProcessStart.processStart((HotkeyList2.F2L).ToString(), (FunctionList.cmd).ToString());
+                        ProcessStart.processStart((HotkeyList2.F3L).ToString(), (FunctionList.backlight100).ToString());
 
 
                     }

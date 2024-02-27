@@ -36,7 +36,7 @@ namespace CollectDataAP
             registryKey2.Dispose();
             registryKey.Dispose();*/
 
-            RegistryKey registryKey = Registry.CurrentUser.CreateSubKey(subkey);
+            RegistryKey registryKey = Registry.CurrentUser.CreateSubKey(subkey, RegistryKeyPermissionCheck.ReadWriteSubTree);
             registryKey.SetValue(key, (string)value, RegistryValueKind.String);
             registryKey.Close();
         }

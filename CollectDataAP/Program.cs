@@ -49,7 +49,7 @@ namespace CollectDataAP
 
             //string patch = System.Windows.Forms.Application.StartupPath;
             //string patch = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            //if (RegistryWindows.getValue("F1S") == "nothing" || RegistryWindows.getValue("F1S") == "noValue")
+            if (RegistryWindows.getValue("F1S") == "nothing" || RegistryWindows.getValue("F1S") == "noValue")
             {
                 IniFile inifile = new IniFile();
                 inifile.path = "C:\\Program Files\\HotTab\\HottabCfg.ini";
@@ -62,15 +62,25 @@ namespace CollectDataAP
                 HotkeyFunc.funcName[5] = inifile.IniReadValue("FunctionKey", "F2L");
                 HotkeyFunc.funcName[2] = inifile.IniReadValue("FunctionKey", "F3S");
                 HotkeyFunc.funcName[3] = inifile.IniReadValue("FunctionKey", "F3L");
-
+                /*
                 RegistryWindows.setValue("F1S", HotkeyFunc.funcName[0]);
                 RegistryWindows.setValue("F1L", HotkeyFunc.funcName[4]);
                 RegistryWindows.setValue("F2S", HotkeyFunc.funcName[1]);
                 RegistryWindows.setValue("F2L", HotkeyFunc.funcName[5]);
                 RegistryWindows.setValue("F3S", HotkeyFunc.funcName[2]);
-                RegistryWindows.setValue("F3L", HotkeyFunc.funcName[3]);
+                RegistryWindows.setValue("F3L", HotkeyFunc.funcName[3]);*/
 
-                RegistryWindows.setValue("aabb", "1234");
+                //RegistryWindows.setValue("aabb", "1234");
+
+                //ProcessStart.processStart("aabbccdd", "123412");
+
+                ProcessStart.processStart("F1S", HotkeyFunc.funcName[0]);
+                ProcessStart.processStart("F1L", HotkeyFunc.funcName[4]);
+                ProcessStart.processStart("F2S", HotkeyFunc.funcName[1]);
+                ProcessStart.processStart("F2L", HotkeyFunc.funcName[5]);
+                ProcessStart.processStart("F3S", HotkeyFunc.funcName[2]);
+                ProcessStart.processStart("F3L", HotkeyFunc.funcName[3]);
+
                 Console.WriteLine("reg ok");
             }
 

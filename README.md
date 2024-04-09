@@ -467,7 +467,8 @@ private static IntPtr SetHook(LowLevelKeyboardProc proc)
         private const int WM_SYSKEYDOWN = 0x0104;                  //Value passed on  KeyDown for menu (alt)
         private const int WM_KEYUP = 0x0101;                      //Value passed on KeyUp
 ```
-* hook funcion
+* hook funcion  
+  Attention: Should add ```CallNextHookEx```, or will error
 ```C#
 private static IntPtr HookCallback(int nCode, IntPtr wParam, IntPtr lParam)
         {
@@ -485,8 +486,13 @@ private static IntPtr HookCallback(int nCode, IntPtr wParam, IntPtr lParam)
             return CallNextHookEx(_hookID, nCode, wParam, lParam); //Call the next hook
 
         }
-            
 ```
+* Using delagate to start hook function
+```C#
+private delegate IntPtr LowLevelKeyboardProc(int nCode, IntPtr wParam, IntPtr lParam);
+private static LowLevelKeyboardProc _proc = HookCallback; //The function called when a key is pressed
+```
+* Start monitor function which can be call by other function 
 > [!CAUTION]
 > Do not use administrator to install or start app, it will get unexpectedly problem 
 

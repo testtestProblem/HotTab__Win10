@@ -468,7 +468,7 @@ private static IntPtr SetHook(LowLevelKeyboardProc proc)
         private const int WM_KEYUP = 0x0101;                      //Value passed on KeyUp
 ```
 * hook funcion  
-  Attention: Should add ```CallNextHookEx```, or will error
+  Attention: Should add ```CallNextHookEx``` in the end, or will error
 ```C#
 private static IntPtr HookCallback(int nCode, IntPtr wParam, IntPtr lParam)
         {

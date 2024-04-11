@@ -122,8 +122,8 @@ static public void SystemEvents_SessionSwitch(object sender, EventArgs e)
 
 # Windows register
 * The class Register is static
-* I can not find any register key path in windows reg programe
-* ```Registry.GetValue(keyPath, key, "noValue")``` When first run app, because the path not exit, it will get null and create path. If have path exist but no value, will get "noValue". 
+* If use UWP can not write register, because it permissions has been limmit.
+* ```Registry.GetValue(keyPath, key, "noValue")``` In UWP, When first run app, because the path not exit, it will get null and create path. If have path exist but no value, will get "noValue". 
 * ```Registry.SetValue(keyPath, key, value);``` If no path or value, it will create it.
 ```C#
 class RegistryWindows

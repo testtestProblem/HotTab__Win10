@@ -151,7 +151,7 @@ namespace CollectDataAP
                         //inifile.IniWriteValue("FunctionKey", ((HotkeyList2)hotKeyState).ToString(), ((FunctionList)func).ToString());
                         //inifile.IniWriteValue("SETTING", ((HotkeyList2)hotKeyState).ToString(), ((FunctionList)func).ToString());
                         //HotTabRegistry.WritePrivateProfileString("FunctionKey", ((HotkeyList2)hotKeyState).ToString(), ((FunctionList)func).ToString(), inifile.path);
-                        ProcessStart.processStart(((HotkeyList2)hotKeyState).ToString(), ((FunctionList)func).ToString());
+                        ProcessStart.processStart_reg(((HotkeyList2)hotKeyState).ToString(), ((FunctionList)func).ToString());
 
                         Console.WriteLine("Hottey change function  " + ((HotkeyList2)hotKeyState).ToString() + "  " + ((FunctionList)func).ToString());
                         /*
@@ -179,7 +179,7 @@ namespace CollectDataAP
                         IniFile inifile = new IniFile();
                         inifile.path = "C:\\Program Files\\HotTab\\HottabCfg.ini";
                         //HotTabRegistry.WritePrivateProfileString("FunctionKey", ((HotkeyList2)hotKeyState).ToString(), (string)func, inifile.path);
-                        ProcessStart.processStart(((HotkeyList2)hotKeyState).ToString(), (string)func);
+                        ProcessStart.processStart_reg(((HotkeyList2)hotKeyState).ToString(), (string)func);
                     }
                 }
                 //TODO: using index??
@@ -219,12 +219,12 @@ namespace CollectDataAP
                         //HotTabRegistry.WritePrivateProfileString("FunctionKey", (HotkeyList2.F2L).ToString(), (FunctionList.cmd).ToString(), inifile.path);
                         // HotTabRegistry.WritePrivateProfileString("FunctionKey", (HotkeyList2.F3L).ToString(), (FunctionList.backlight100).ToString(), inifile.path);
 
-                        ProcessStart.processStart((HotkeyList2.F1S).ToString(), (FunctionList.volumeUp).ToString());
-                        ProcessStart.processStart((HotkeyList2.F2S).ToString(), (FunctionList.volumeDown).ToString());
-                        ProcessStart.processStart((HotkeyList2.F3S).ToString(), (FunctionList.backlight20).ToString());
-                        ProcessStart.processStart((HotkeyList2.F1L).ToString(), (FunctionList.Calc).ToString());
-                        ProcessStart.processStart((HotkeyList2.F2L).ToString(), (FunctionList.cmd).ToString());
-                        ProcessStart.processStart((HotkeyList2.F3L).ToString(), (FunctionList.backlight100).ToString());
+                        ProcessStart.processStart_reg((HotkeyList2.F1S).ToString(), (FunctionList.volumeUp).ToString());
+                        ProcessStart.processStart_reg((HotkeyList2.F2S).ToString(), (FunctionList.volumeDown).ToString());
+                        ProcessStart.processStart_reg((HotkeyList2.F3S).ToString(), (FunctionList.backlight20).ToString());
+                        ProcessStart.processStart_reg((HotkeyList2.F1L).ToString(), (FunctionList.Calc).ToString());
+                        ProcessStart.processStart_reg((HotkeyList2.F2L).ToString(), (FunctionList.cmd).ToString());
+                        ProcessStart.processStart_reg((HotkeyList2.F3L).ToString(), (FunctionList.backlight100).ToString());
 
 
                     }

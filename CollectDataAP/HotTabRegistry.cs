@@ -42,7 +42,7 @@ namespace Win8Hottab_unknow
             }
             catch (Exception e)
             {
-                // AAAAAAAAAAARGH, an error!
+                //an error!
                 //ShowErrorMessage(e, "Deleting SubKey " + HotTabRegisterPath);
                 return false;
             }

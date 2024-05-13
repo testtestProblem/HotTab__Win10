@@ -496,7 +496,7 @@ private static LowLevelKeyboardProc _proc = HookCallback; //The function called 
 ```
 * Start monitor function which can be call by other function 
 > [!CAUTION]
-> Do not use administrator to install or start app, it will get unexpectedly problem 
+> Sould use administrator to install, and avoid open highest level app in background or foreground. Or it will show unexpectedly problem 
 
 # Create thread  
 Create new thread can not make others function stop by using ```Application.Run(); ```  

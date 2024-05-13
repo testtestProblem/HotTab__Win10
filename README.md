@@ -1,8 +1,8 @@
 # HotTab Win10
-* Function description: HotTab can turn on/off device power; can show hotkey function also can change it; can show battery remain power and others information.
-* Requirement: Above windows10 version 1809; X64 architecture
-  Should put KillProcess_forHotTab.exe in C:\Program Files\HotTab  
-  Should put RegistryKey.exe in C:\Program Files\HotTab  
+* Function description: HotTab can turn on/off device power; can show hotkey function also can change it; can show battery remain power and others information.  
+* Requirement: Above windows10 version 1809; X64 architecture  
+  Should put KillProcess_forHotTab.exe in C:\Program Files\HotTab    
+  Should put RegistryKey.exe in C:\Program Files\HotTab    
 * UI illustration
 
 -- Main  

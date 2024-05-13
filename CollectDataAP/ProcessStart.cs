@@ -13,7 +13,7 @@ namespace CollectDataAP
     {
         public static void processStart_reg(string key, string value)
         {
-            string path = "C:\\Program Files\\HotTab\\HottabCfg.ini";
+            string path = "C:\\Program Files\\HotTab\\RegistryKey.exe";
             if (!File.Exists(path))
             {
                 MessageBox.Show("Can not find "+ path, "Error",

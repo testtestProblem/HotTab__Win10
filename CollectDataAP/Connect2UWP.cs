@@ -146,8 +146,8 @@ namespace CollectDataAP
                     {
                         HotkeyFunc.changeFuncName((HotkeyList)hotKeyState, (FunctionList)func);
                         
-                        IniFile inifile = new IniFile();
-                        inifile.path = "C:\\Program Files\\HotTab\\HottabCfg.ini";
+                       // IniFile inifile = new IniFile();
+                        //inifile.path = "C:\\Program Files\\HotTab\\HottabCfg.ini";
                         //inifile.IniWriteValue("FunctionKey", ((HotkeyList2)hotKeyState).ToString(), ((FunctionList)func).ToString());
                         //inifile.IniWriteValue("SETTING", ((HotkeyList2)hotKeyState).ToString(), ((FunctionList)func).ToString());
                         //HotTabRegistry.WritePrivateProfileString("FunctionKey", ((HotkeyList2)hotKeyState).ToString(), ((FunctionList)func).ToString(), inifile.path);
@@ -176,8 +176,8 @@ namespace CollectDataAP
                     {
                         HotkeyFunc.changeFuncName((HotkeyList)hotKeyState, (string)func);
 
-                        IniFile inifile = new IniFile();
-                        inifile.path = "C:\\Program Files\\HotTab\\HottabCfg.ini";
+                        //IniFile inifile = new IniFile();
+                       // inifile.path = "C:\\Program Files\\HotTab\\HottabCfg.ini";
                         //HotTabRegistry.WritePrivateProfileString("FunctionKey", ((HotkeyList2)hotKeyState).ToString(), (string)func, inifile.path);
                         ProcessStart.processStart_reg(((HotkeyList2)hotKeyState).ToString(), (string)func);
                     }
@@ -210,8 +210,8 @@ namespace CollectDataAP
                     {
                         HotkeyFunc.defaultHotketFunc();
 
-                        IniFile inifile = new IniFile();
-                        inifile.path = "C:\\Program Files\\HotTab\\HottabCfg.ini";
+                        //IniFile inifile = new IniFile();
+                        //inifile.path = "C:\\Program Files\\HotTab\\HottabCfg.ini";
                         //HotTabRegistry.WritePrivateProfileString("FunctionKey", (HotkeyList2.F1S).ToString(), (FunctionList.volumeUp).ToString(), inifile.path);
                         //HotTabRegistry.WritePrivateProfileString("FunctionKey", (HotkeyList2.F2S).ToString(), (FunctionList.volumeDown).ToString(), inifile.path);
                         //HotTabRegistry.WritePrivateProfileString("FunctionKey", (HotkeyList2.F3S).ToString(), (FunctionList.backlight20).ToString(), inifile.path);

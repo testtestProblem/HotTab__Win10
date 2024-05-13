@@ -5,6 +5,7 @@ using System.Text;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
 using Win8Hottab_unknow;
+using static CollectDataAP.HotkeyInitial;
 
 namespace GlobalVar
 {

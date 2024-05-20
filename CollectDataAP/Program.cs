@@ -29,24 +29,26 @@ namespace CollectDataAP
 
         static void Main(string[] args)
         {
-            //MutexForConsole();
-            
-            //Mutex mutex = new Mutex(true, appName, out createdNew);
-            
-            //Mutex.OpenExisting
-            if (!createdNew)
-            {
-                //MessageBox.Show("Hottab" + " is already running! Please exiting the application.", "Hottab", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                //Console.ReadKey();
-                //return;
+            MessageBox.Show(Environment.UserName);
 
-                //KillAllNotepadProcesses();
-                ProcessStart.processStart_KillProcesses(Process.GetCurrentProcess().Id.ToString());
-            }
-            else
-            {
+            //MutexForConsole();
+
+            //Mutex mutex = new Mutex(true, appName, out createdNew);
+
+            //Mutex.OpenExisting
+            //if (!createdNew)
+            //{
+            //MessageBox.Show("Hottab" + " is already running! Please exiting the application.", "Hottab", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //Console.ReadKey();
+            //return;
+
+            //KillAllNotepadProcesses();
+            ProcessStart.processStart_KillProcesses(Process.GetCurrentProcess().Id.ToString());
+            //}
+            //else
+            //{
                 //MessageBox.Show(appName + "Start is running!");
-            }
+            //}
             //System.Threading.Thread.Sleep(10000);
 
             //string patch = System.Windows.Forms.Application.StartupPath;

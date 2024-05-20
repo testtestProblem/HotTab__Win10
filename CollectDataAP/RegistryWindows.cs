@@ -56,6 +56,8 @@ namespace CollectDataAP
             string data = registryKey.GetValue(key, "") as string;
             registryKey.Close();
 
+            Console.WriteLine("registry key,data -> " +key+","+ data);
+
             if (data == "" || data == null) return "nothing";
             else return data;
         }

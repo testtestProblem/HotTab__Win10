@@ -151,7 +151,6 @@ namespace CollectDataAP
                     return len;
                 else
                     len++;
-
             }
 
             return len;

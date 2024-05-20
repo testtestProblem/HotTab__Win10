@@ -16,7 +16,7 @@ namespace CollectDataAP
             string path = "C:\\Program Files\\HotTab\\RegistryKey.exe";
             if (!File.Exists(path))
             {
-                MessageBox.Show("Can not find "+ path, "Error",
+                MessageBox.Show("Can not find " + path, "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }

@@ -1,6 +1,9 @@
 # HotTab Win10
-* Function description: HotTab can turn on/off device power; can show hotkey function also can change it; can show battery remain power and others information.
-* Requirement: Above windows10 version 1809; X64 architecture
+* Function description: HotTab can turn on/off device power; can show hotkey function also can change it; can show battery remain power and others information.  
+* Requirement: Above windows10 version 1809; X64 architecture  
+  Should put KillProcess_forHotTab.exe in C:\Program Files\HotTab    
+  Should put RegistryKey.exe in C:\Program Files\HotTab  
+  Should put HottabCfg.ini in C:\Program Files\HotTab  
 * UI illustration
 
 -- Main  
@@ -494,7 +497,7 @@ private static LowLevelKeyboardProc _proc = HookCallback; //The function called 
 ```
 * Start monitor function which can be call by other function 
 > [!CAUTION]
-> Do not use administrator to install or start app, it will get unexpectedly problem 
+> Sould use administrator to install, and avoid open highest level app in background or foreground. Or it will show unexpectedly problem 
 
 # Create thread  
 Create new thread can not make others function stop by using ```Application.Run(); ```  

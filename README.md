@@ -75,7 +75,11 @@ I don't know why ```<requestedExecutionLevel  level="requireAdministrator" uiAcc
 * Kill process: ```taskkill /IM “process name” /F```
 * Kill multiple process: ```taskkill /IM "Process Name" /IM "Process Name" /F```; using PID ```PID taskkill /PID PID  /PID PID /F``` 
 
-
+# Startup using register
+```C#
+RegistryKey registryKey = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+            registryKey.SetValue("GCS_Battery_Monitor", Application.ExecutablePath);
+```  
 
 # Install appx to all users and new users
 * ```PowerShell C:\> Add-AppxProvisionedPackage -Online -FolderPath "c:\Appx"``` This will get error(no applicable main package was found for this platform). I don't know how to sove it.
